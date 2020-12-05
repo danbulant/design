@@ -10,11 +10,11 @@
 </script>
 
 {#if href}
-    <a {href} class:darkmode on:click={click} {...$$restProps} class:outline>
+    <a {href} class:darkmode={$darkmode} on:click={click} {...$$restProps} class:outline>
         <slot />
     </a>
 {:else}
-    <button class:darkmode on:click={click} {...$$restProps} class:outline>
+    <button class:darkmode={$darkmode} on:click={click} {...$$restProps} class:outline>
         <slot />
     </button>
 {/if}
@@ -24,6 +24,8 @@
         color: #f4f4f4;
     }
     button, a {
+        margin: 2.5px 0;
+        display: inline-block;
         color: #333;
         background-color: #f4f4f4;
         border: 1px solid #ccc;

@@ -1,5 +1,6 @@
 <script>
 	import Button from "./components/button.svelte";
+import Flexbox from "./components/flexbox.svelte";
 	import Link from "./components/link.svelte";
 	import Navbar from "./components/navbar.svelte";
 	import Project from "./components/project.svelte";
@@ -9,7 +10,8 @@
 </script>
 
 <svelte:head>
-	<title>Daniel Bulant design</title>
+	<title>Daniel Bulant - Homepage</title>
+	<meta name="description" content="Homepage of danbulant.eu - List of my projects, contact info.">
 </svelte:head>
 
 <Navbar darkmode={$darkmode}>
@@ -17,6 +19,9 @@
 		Daniel Bulant
 	</Link>
 	<Separator />
+	<Link href="#contact">
+		Contact
+	</Link>
 	<Button bind:value={$darkmode} outline={$darkmode}>{$darkmode ? "Dark" : "Light"} mode</Button>
 </Navbar>
 
@@ -24,7 +29,7 @@
 	<h1 class="center">Daniel Bulant</h1>
 
 	<section>
-		<h2 class="center">Projects</h2>
+		<h2 class="center" id="projects">Projects</h2>
 
 		<Project title="igni">
 			<p slot="description">
@@ -71,17 +76,41 @@
 		</Project>
 	</section>
 
+	<section>
+		<h2 id="contact">Contact info</h2>
+
+		<ul>
+			<li>Discord - TechmandanCZ#0135, you can find me in my <Link href="https://discord.gg/EgBGYmA" colored>server</Link>.</li>
+			<li>Github - <Link href="https://github.com/danbulant"> @danbulant </Link> </li>
+			<li>Youtube - <Link href="https://youtube.com/thetutorials"> TheTutorials </Link> </li>
+		</ul>
+	</section>
+
+
+	<footer>
+		<Flexbox>
+			&copy; Daniel Bulant {(new Date()).getFullYear()}.
+			<Separator />
+			<Link href="/"> danbulant.eu </Link>
+		</Flexbox>
+	</footer>
 </main>
 	
 <style>
 	main {
 		min-height: calc(100vh - 50px);
+		padding-bottom: 10px;
 	}
 	main section {
 		max-width: 720px;
 		margin: auto;
 		padding: 0 20px;
 		width: calc(100vw - 55px);
+	}
+
+	footer {
+		margin-top: 20px;
+		padding: 10px 20px;
 	}
 	.darkmode {
 		background: #242423;

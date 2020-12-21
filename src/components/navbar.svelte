@@ -14,7 +14,7 @@
     .spacer {
         height: 50px;
     }
-    .darkmode {
+    nav.bar.darkmode {
         background: #242423;
     }
     nav.bar .inner {
@@ -30,6 +30,7 @@
     }
     nav.bar {
         position: fixed;
+        background: white;
         top: 0;
         left: 0;
         width: 100vw;

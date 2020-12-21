@@ -11,10 +11,12 @@
     <div class="line" class:left>
         <div class="info">
             <h3>{title}</h3>
-            {#if screenWidth < 765}
-                <div class="preview small">
-                    <slot name="preview" />
-                </div>
+            {#if $$slots.preview}
+                {#if screenWidth < 765}
+                    <div class="preview small">
+                        <slot name="preview" />
+                    </div>
+                {/if}
             {/if}
             <p><slot name="description" /></p>
             <div class="actions">

@@ -1,8 +1,9 @@
 <script>
     import darkmode from "../stores/darkmode";
     export var outline = false;
-    export var href;
+    export var href = null;
     export var value = null;
+    export var newTab = false;
 
     function click() {
         value = !value;
@@ -10,7 +11,7 @@
 </script>
 
 {#if href}
-    <a {href} class:darkmode={$darkmode} on:click={click} {...$$restProps} class:outline>
+    <a {href} target={newTab ? "_blank" : undefined} class:darkmode={$darkmode} on:click={click} {...$$restProps} class:outline>
         <slot />
     </a>
 {:else}
@@ -49,11 +50,12 @@
         width: 0;
         height: 100%;
         border-radius: 0;
-        transition: width .3s, border-radius .3s;
+        transition: width .3s, border-radius .3s, background-color .3s;
         z-index: -1;
     }
     .outline:hover::before {
         width: 100%;
+        background-color: #e0a500;
     }
     a:hover, button:hover {
         background-color: #e0a500;

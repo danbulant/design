@@ -19,7 +19,7 @@ import Flexbox from "./components/flexbox.svelte";
 		Daniel Bulant
 	</Link>
 	<Separator />
-	<Link href="#contact">
+	<Link href="#contact" padded>
 		Contact
 	</Link>
 	<Button bind:value={$darkmode} outline={$darkmode}>{$darkmode ? "Dark" : "Light"} mode</Button>
@@ -60,7 +60,7 @@ import Flexbox from "./components/flexbox.svelte";
 			<!-- <img draggable={false} src="https://learner.danbulant.eu/logo.png" alt="Learner logo" slot="preview" class="preview"> -->
 			<div slot="actions">
 				<Button newTab href="https://play.google.com/store/apps/details?id=cz.janrossler.learner">Application</Button>
-				<Button newTab outline href="https://learner.danbulant.eu">Website</Button>
+				<Button newTab outline href="https://beta.learnerapp.eu">Website</Button>
 			</div>
 		</Project>
 

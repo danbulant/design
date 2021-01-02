@@ -1,9 +1,10 @@
 <script>
     export var colored = true;
+    export var padded = false;
 </script>
 
 <span>
-    <a {...$$restProps} class:colored>
+    <a {...$$restProps} class:colored class:padded>
         <slot />
     </a>
 </span>
@@ -12,6 +13,10 @@
     *, *:after, *:before {
         box-sizing: border-box;
         -moz-box-sizing: border-box;
+    }
+    .padded {
+        display: inline-block;
+        margin: 0 5px;
     }
     * {
         margin:0;
@@ -45,7 +50,7 @@
         border-radius: 5px;
         transform: scaleX(0);
         opacity: 0.1;
-        transition: .25s linear, .4s opacity;
+        transition: .2s linear, .4s opacity;
     }
     a:hover:before,
     a:focus:before {

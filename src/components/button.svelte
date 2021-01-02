@@ -53,16 +53,16 @@
         transition: width .3s, border-radius .3s, background-color .3s;
         z-index: -1;
     }
-    .outline:hover::before {
+    .outline:hover::before, .outline:focus::before {
         width: 100%;
         background-color: #e0a500;
     }
-    a:hover, button:hover {
+    a:hover, a:focus, button:hover, button:focus {
         background-color: #e0a500;
         text-decoration: none;
         box-shadow: 0 0 3px black;
     }
-    a.outline:hover, button.outline:hover {
+    a.outline:hover, a.outline:focus, button.outline:hover, button.focus:hover {
         background: transparent;
     }
 </style>

@@ -1,61 +1,48 @@
 <script>
-    export var title;
-    export var left = false;
-    
-    var screenWidth;
+    export var image = "https://picsum.photos/725/350?random=" + Math.floor(Math.random() * 5000);
+    export var link = "";
+    export var tags = [];
 </script>
 
-<svelte:window bind:innerWidth={screenWidth} />
-
-<article>
-    <div class="line" class:left>
-        <div class="info">
-            <h3>{title}</h3>
-            {#if $$slots.preview}
-                {#if screenWidth < 765}
-                    <div class="preview small">
-                        <slot name="preview" />
-                    </div>
+<a href={link} target="_blank" class="full">
+    <div class="project">
+        <img src={image} alt="Project" draggable={false}>
+        <h3><slot /></h3>
+        <div class="tags">
+            {#each tags as tag, i}
+                <span>{tag}</span>
+                {#if i !== tags.length - 1}
+                    <span>&middot;</span>
                 {/if}
-            {/if}
-            <p><slot name="description" /></p>
-            <div class="actions">
-                <slot name="actions" />
-            </div>
+            {/each}
         </div>
-        {#if screenWidth > 764}
-            <div class="preview">
-                <slot name="preview" />
-            </div>
-        {/if}
+        <a href={link} target="_blank">View</a>
     </div>
-</article>
+</a>
 
 <style>
-    .line {
-        display: flex;
-        justify-content: space-between;
-        max-width: 720px;
+    a.full:hover {
+        text-decoration: none;
+    }
+    .tags {
+        margin: 5px 0;
+        margin-left: -3px;
+    }
+    .tags span {
+        padding: 0 3px;
+    }
+    .project {
         width: 100%;
-        margin: auto;
+        margin-bottom: 30px;
     }
-    .info {
-        width: calc(100% - 192px);
-        flex-grow: 1;
-        flex-shrink: 0;
+    a.full {
+        width: 100%;
     }
-    .left .preview {
-        float: left;
+    img {
+        width: 100%;
+        border-radius: 5px;
     }
-    .left .info {
-        float: right;
-    }
-    .preview {
-        width: 50%;
-        flex-shrink: 1;
-        flex-grow: 0;
-    }
-    .preview.small {
-        height: 50%;
+    h3 {
+        font-weight: 400;
     }
 </style>

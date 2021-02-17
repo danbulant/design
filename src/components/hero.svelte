@@ -1,47 +1,29 @@
-<script>
-    export var navbar = false;
-</script>
-
-<section class="hero" class:navbar>
-    {#if $$slots.content}
-        <div class="title">
-            <slot name="title" />
-        </div>
-        <div class="content">
-            <slot name="content" />
-        </div>
-    {:else}
-        <div class="title full">
-            <slot name="title" />
-        </div>
-    {/if}
+<div class="hero">
     <slot />
-</section>
+</div>
 
 <style>
     .hero {
-        display: flex;
-        height: 100%;
-        max-height: 720px;
-        max-width: 1080px;
-        margin: auto;
-        padding: 0 5px;
-        position: relative;
+        border-radius: 5px;
+        background: #F4C4C4;
+        padding: 40px 120px;
+        padding: 40px min(120px, 10vw);
+        margin: 0 20px;
+        /* min-height: calc(100vh - 129px - 80px + 5px); */
+        max-height: 1080px;
+        max-width: 1500px;
+        
+        margin-bottom: 30px;
     }
-    .navbar {
-        height: calc(100% - 50px);
+    @media (min-width: 1760px) {
+        .hero {
+            margin: 0 auto;
+        }
     }
-
-    .title {
-        width: 50%;
-        text-align: center;
-    }
-    .title.full {
-        width: 100%;
-    }
-
-    .content {
-        width: 50%;
-        text-align: center;
-    }
+	@media (max-width: 1100px) {
+        .hero {
+            min-height: auto;
+            margin-bottom: 30px;
+        }
+	}
 </style>

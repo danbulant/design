@@ -1,14 +1,19 @@
 html, body {
 	position: relative;
 	width: 100%;
-	height: 100%;
+	min-height: 100vh;
 }
 
 body {
 	color: #333;
 	margin: 0;
 	box-sizing: border-box;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	margin-top: 30px;
+}
+
+html {
+	background-image: linear-gradient(to top, rgb(242,210,223), transparent min(180vh, 1080px));
 }
 
 h1 {
@@ -21,7 +26,8 @@ h1 {
 }
 
 a {
-	color: rgb(0,100,200);
+	/* color: rgb(0,100,200); */
+	color: inherit;
 	text-decoration: none;
 }
 
@@ -30,7 +36,8 @@ a:hover {
 }
 
 a:visited {
-	color: rgb(0,80,160);
+	color: inherit;
+	/* color: rgb(0,80,160); */
 }
 
 label {

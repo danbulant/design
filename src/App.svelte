@@ -1,12 +1,13 @@
 <script>
+	import Bar from "./components/bar.svelte";
 	import Button from "./components/button.svelte";
-import Flexbox from "./components/flexbox.svelte";
-	import Link from "./components/link.svelte";
-	import Navbar from "./components/navbar.svelte";
+	import Contact from "./components/contact.svelte";
+	import Hero from "./components/hero.svelte";
+	import Posts from "./components/posts.svelte";
 	import Project from "./components/project.svelte";
-	import Separator from "./components/separator.svelte";
-
+	import Split from "./components/split.svelte";
 	import darkmode from "./stores/darkmode";
+
 </script>
 
 <svelte:head>
@@ -14,119 +15,157 @@ import Flexbox from "./components/flexbox.svelte";
 	<meta name="description" content="Homepage of danbulant.eu - List of my projects, contact info.">
 </svelte:head>
 
-<Navbar darkmode={$darkmode}>
-	<Link href="/" colored>
-		Daniel Bulant
-	</Link>
-	<Separator />
-	<Link href="#contact" padded>
-		Contact
-	</Link>
-	<Button bind:value={$darkmode} outline={$darkmode}>{$darkmode ? "Dark" : "Light"} mode</Button>
-</Navbar>
-
-<main class:darkmode={$darkmode}>
-	<h1 class="center">Daniel Bulant</h1>
-
-	<section>
-		<h2 class="center" id="projects">Projects</h2>
-
-		<Project title="igni">
-			<p slot="description">
-				igni is a universal discord bot with advanced moderation, advanced configuration and unique command handling. It can replace majority of other bots and is being actively worked on.
-			</p>
-			<img draggable={false} class="preview" src="igni.png" alt="igni avatar" slot="preview">
-			<div slot="actions">
-				<Button newTab href="https://discordbotlist.com/bots/igni">More information</Button>
-				<Button newTab outline href="https://discord.com/oauth2/authorize?client_id=739864286775738399&scope=bot&permissions=1039199350">Add igni to your server</Button>
-			</div>
-		</Project>
-
-		<Project title="The Tutorials">
-			<p slot="description">
-				Czech tutorials, blog and news about node, php and scratch for everyone.
-			</p>
-			<img draggable={false} class="preview thetutorials" src="thetutorials.jpg" alt="The Tutorials logo" slot="preview">
-			<div slot="actions">
-				<Button newTab href="https://thetutorials.cz">Website</Button>
-				<Button newTab outline href="https://youtube.com/thetutorials">Youtube channel</Button>
-			</div>
-		</Project>
-
-		<Project title="Learner">
-			<div slot="description">
-				Czech e-learning website and application, currently in closed beta.
-			</div>
-			<!-- <img draggable={false} src="https://learner.danbulant.eu/logo.png" alt="Learner logo" slot="preview" class="preview"> -->
-			<div slot="actions">
-				<Button newTab href="https://play.google.com/store/apps/details?id=cz.janrossler.learner">Application</Button>
-				<Button newTab outline href="https://beta.learnerapp.eu">Website</Button>
-			</div>
-		</Project>
-
-		<Project title="Ice Productions">
-			<div slot="description">
-				Independent team of developers, worked on Aztec, browser and more.
-			</div>
-			<img draggable={false} src="/iceproductions.svg" alt="Ice Productions Logo" slot="preview" class="preview">
-			<div slot="actions">
-				<Button newTab href="https://iceproductions.dev">Website</Button>
-				<Button newTab outline href="https://discord.gg/JUTFUKH">Discord server</Button>
-			</div>
-		</Project>
-	</section>
-
-	<section>
-		<h2 id="contact">Contact info</h2>
-
-		<ul>
-			<li>Discord - TechmandanCZ#0135, you can find me in my <Link href="https://discord.gg/EgBGYmA" colored>server</Link>.</li>
-			<li>Github - <Link href="https://github.com/danbulant"> @danbulant </Link> </li>
-			<li>Youtube - <Link href="https://youtube.com/thetutorials"> TheTutorials </Link> </li>
-		</ul>
-	</section>
-
-
-	<footer>
-		<Flexbox>
-			&copy; Daniel Bulant {(new Date()).getFullYear()}.
-			<Separator />
-			<Link href="/"> danbulant.eu </Link>
-		</Flexbox>
-	</footer>
+<div class="bar">
+	<Bar>
+		<h3>Daniel Bulant</h3>
+		<a href="#contact" class="big">Contact</a>
+		<Split />
+		<a href="#contact" class="small">Contact</a>
+		<a href="mailto:danbulant@danbulant.eu" class="big">danbulant@danbulant.eu</a>
+	</Bar>
+</div>
+<main>
+	<Hero>
+		<h1>I'm a young developer making <u>websites</u> and <u>discord bots</u>.</h1>
+		<!-- <h3>To be used later</h3> -->
+		<Button href="#projects">Check out my work</Button>
+	</Hero>
+	<div class="projects" id="projects">
+		<div>
+			<blockquote>
+				I helped many projects come to life. Here are some examples:
+			</blockquote>
+			<Project link="https://learnerapp.eu" tags={["Website design", "Frontend"]}>
+				<b>Learner</b> - A learning platform for students
+			</Project>
+			<Project link="https://thetutorials.cz" tags={["Writer", "Full stack"]}>
+				<b>TheTutorials</b> - Czech tutorials and blog about programming
+			</Project>
+		</div>
+		<div>
+			<div class="pad"></div>
+			<Project link="https://top.gg/bot/739864286775738399" tags={["Discord bot", "Backend"]}>
+				<b>igni</b> - The universal discord bot
+			</Project>
+			<Project link={"data:text/plain,No website available yet"} tags={["Backend"]}>
+				<b>Animasher</b> - Platform for creating and sharing animations
+			</Project>
+		</div>
+	</div>
+	<Posts />
+	<div id="contact">
+		<Contact />
+	</div>
 </main>
-	
+<div class="bottombar">
+	<Bar>
+		<h3>Daniel Bulant</h3>
+		<Split />
+		<a href="https://github.com/shinoa-hiragi" target="_blank">
+			<h3>
+				Design by Carl Hansen
+			</h3>
+		</a>
+	</Bar>
+</div>
+
 <style>
 	main {
-		min-height: calc(100vh - 50px);
-		padding-bottom: 10px;
+		margin: 0 min(50px, 5%) 0 min(50px, 5%);
+		width: calc(100% - min(100px, 10%));
 	}
-	main section {
-		max-width: 720px;
-		margin: auto;
-		padding: 0 20px;
-		width: calc(100vw - 55px);
+	.bar .small {
+		display: none;
 	}
-
-	footer {
-		margin-top: 20px;
-		padding: 10px 20px;
+	@media (max-width: 570px) {
+		.bar .big {
+			display: none;
+		}
+		.bar .small {
+			display: initial;
+		}
 	}
-	.darkmode {
-		background: #242423;
-		color: #E8EDDF;
+	.projects, .bottombar {
+		max-width: 1380px;
 	}
-	.center {
-		text-align: center;
+	.bottombar {
+		margin: 30px auto 30px auto;
+		width: calc(100% - min(100px, 10%));
 	}
-	img.preview {
-		height: 18rem;
-		max-height: 100%;
-		max-width: 100%;
+	@media (max-width: 520px) {
+		.bottombar {
+			margin: 30px 0 0 0;
+			width: 100%;
+			background: white;
+		}
 	}
-	img.preview.thetutorials {
-		border-radius: 50%;
-		height: 200px;
-		width: auto;
+	.bottombar h3 {
+		font-size: 18px;
+		font-weight: bold;
+		margin: 0;
+	}
+	.projects {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 0 20px 50px 20px;
+	}
+	@media (min-width: 1520px) {
+		.projects {
+			margin: 0 auto 50px auto;
+		}
+	}
+	.projects > div {
+		width: calc(50% - 40px);
+	}
+	.projects .pad {
+		margin-top: 110px;
+	}
+	@media (max-width: 860px) {
+		.projects > div {
+			width: calc(100% - 80px);
+			margin: auto;
+		}
+		.projects .pad {
+			margin-top: 0px;
+		}
+		.projects blockquote {
+			margin: 1em 0 1em 10px;
+		}
+	}
+	.projects blockquote {
+		font-size: 29px;
+	}
+	.bar {
+		position: -webkit-sticky; /* Safari */
+		position: sticky;
+		top: 0;
+		left: 0;
+		width: calc(100vw - 15px);
+		max-width: 1920px;
+		margin: 0 auto 30px auto;
+		background: white;
+	}
+	.bar h3 {
+		font-size: 18px;
+		font-weight: bold;
+	}
+	h1, h3 {
+		color: #282B29;
+	}
+	h1 {
+		font-size: 72px;
+	}
+	@media (max-width: 1100px) {
+		h1 {
+			font-size: 40px;
+		}
+	}
+	h3 {
+		font-size: 29px;
+		font-weight: 400;
+	}
+	.bar a {
+		color: #202020b2;
 	}
 </style>

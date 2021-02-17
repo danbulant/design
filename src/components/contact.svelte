@@ -6,7 +6,7 @@
         <a href="https://github.com/danbulant" target="_blank">
             <div class="github" title="GitHub">
                 <img src="/github.png" alt="Github Icon" draggable={false}>
-                <span>GitHub</span>
+                <span>danbulant</span>
             </div>
         </a>
         <a href="https://discord.gg/EgBGYmA" target="_blank">

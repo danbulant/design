@@ -12,6 +12,9 @@
         align-items: center;
         padding: 10px;
     }
+    :global(.dark nav.bar-component) {
+        background: rgb(28, 28, 33);
+    }
     :global(nav.bar-component > *) {
         margin: 10px;
     }

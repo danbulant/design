@@ -3,11 +3,24 @@
 	import Button from "./components/button.svelte";
 	import Contact from "./components/contact.svelte";
 	import Hero from "./components/hero.svelte";
-	import Posts from "./components/posts.svelte";
+	// import Posts from "./components/posts.svelte";
 	import Project from "./components/project.svelte";
 	import Split from "./components/split.svelte";
 	import darkmode from "./stores/darkmode";
 
+	function toggle() {
+		$darkmode = !$darkmode;
+	}
+
+	$: {
+		if(typeof document !== "undefined") {
+			if($darkmode) {
+				document.body.classList.add("dark");
+			} else {
+				document.body.classList.remove("dark");
+			}
+		}
+	}
 </script>
 
 <svelte:head>
@@ -15,16 +28,17 @@
 	<meta name="description" content="Homepage of danbulant.eu - List of my projects, contact info.">
 </svelte:head>
 
-<div class="bar">
+<div class="bar" class:dark={$darkmode}>
 	<Bar>
 		<h3>Daniel Bulant</h3>
 		<a href="#contact" class="big">Contact</a>
 		<Split />
+		<Button text on:click={toggle}>{$darkmode ? "Light" : "Dark"} mode</Button>
 		<a href="#contact" class="small">Contact</a>
 		<a href="mailto:danbulant@danbulant.eu" class="big">danbulant@danbulant.eu</a>
 	</Bar>
 </div>
-<main>
+<main class:dark={$darkmode}>
 	<Hero>
 		<h1>I'm a young developer making <u>websites</u> and <u>discord bots</u>.</h1>
 		<!-- <h3>To be used later</h3> -->
@@ -52,12 +66,12 @@
 			</Project>
 		</div>
 	</div>
-	<Posts />
+	<!-- <Posts /> -->
 	<div id="contact">
 		<Contact />
 	</div>
 </main>
-<div class="bottombar">
+<div class="bottombar" class:dark={$darkmode}>
 	<Bar>
 		<h3>Daniel Bulant</h3>
 		<Split />
@@ -97,6 +111,9 @@
 			margin: 30px 0 0 0;
 			width: 100%;
 			background: white;
+		}
+		.dark.bottombar {
+			background: rgb(28, 28, 33);
 		}
 	}
 	.bottombar h3 {
@@ -146,12 +163,18 @@
 		margin: 0 auto 30px auto;
 		background: white;
 	}
+	.dark.bar {
+		background: rgb(28, 28, 33);
+	}
 	.bar h3 {
 		font-size: 18px;
 		font-weight: bold;
 	}
 	h1, h3 {
 		color: #282B29;
+	}
+	.dark h3 {
+		color: rgb(191, 191, 191);
 	}
 	h1 {
 		font-size: 72px;
@@ -167,5 +190,8 @@
 	}
 	.bar a {
 		color: #202020b2;
+	}
+	.dark.bar a {
+		color: rgba(191, 191, 191, 0.698);
 	}
 </style>

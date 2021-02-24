@@ -1,12 +1,14 @@
 <script>
+	import darkmode from "../stores/darkmode";
+
     export var href = "";
     export var text = false;
 </script>
 
 {#if href}
-    <a href={href} class="button" class:text><slot /></a>
+    <a href={href} class="button" class:text class:dark={$darkmode}><slot /></a>
 {:else}
-    <button on:click class:text><slot /></button>
+    <button on:click class:text class:dark={$darkmode}><slot /></button>
 {/if}
 
 <style>
@@ -33,5 +35,8 @@
         background: transparent;
         color: black;
         border-color: transparent;
+    }
+    .dark.text {
+        color: white;
     }
 </style>

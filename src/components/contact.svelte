@@ -1,5 +1,8 @@
+<script>
+    import darkmode from "../stores/darkmode";
+</script>
 
-<div class="contact">
+<div class="contact" class:dark={$darkmode}>
     <div class="address">Prague, Czech Republic</div>
     <a href="mailto:danbulant@danbulant.eu" target="_blank">danbulant@danbulant.eu</a>
     <div class="profiles">
@@ -26,6 +29,9 @@
     .address {
         color: #202020d5;
     }
+    .dark .address {
+        color: rgba(191, 191, 191, 0.835);
+    }
     .contact > a {
         color: #202020;
         font-size: 36px;
@@ -33,6 +39,9 @@
         margin: 20px 0;
         display: block;
         font-size: max(min(36px, 4vw), 23px);
+    }
+    .dark.contact > a {
+        color: rgb(191, 191, 191);
     }
     .profiles {
         display: flex;
@@ -59,6 +68,9 @@
     }
     .github {
         color: #333333;
+    }
+    .dark .github {
+        color: rgb(191, 191, 191);
     }
     .discord {
         color: #7289DA;

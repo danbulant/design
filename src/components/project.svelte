@@ -1,12 +1,20 @@
 <script>
-    export var image = "https://picsum.photos/725/350?random=" + Math.floor(Math.random() * 5000);
+    export var image = ""; // "https://picsum.photos/725/350?random=" + Math.floor(Math.random() * 5000);
     export var link = "";
     export var tags = [];
+    function handle(e) {
+        if(!link) {
+            e.preventDefault();
+            alert("No link available");
+        }
+    }
 </script>
 
-<a href={link} target="_blank" class="full">
+<a href={link} target="_blank" class="full" on:click={handle}>
     <div class="project">
-        <img src={image} alt="Project" draggable={false}>
+        {#if image}
+            <img src={image} alt="Project" draggable={false}>
+        {/if}
         <h3><slot /></h3>
         <div class="tags">
             {#each tags as tag, i}

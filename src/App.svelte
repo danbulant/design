@@ -31,11 +31,9 @@
 <div class="bar" class:dark={$darkmode}>
 	<Bar>
 		<h3>Daniel Bulant</h3>
-		<a href="#contact" class="big">Contact</a>
 		<Split />
 		<Button text on:click={toggle}>{$darkmode ? "Light" : "Dark"} mode</Button>
-		<a href="#contact" class="small">Contact</a>
-		<a href="mailto:danbulant@danbulant.eu" class="big">danbulant@danbulant.eu</a>
+		<a href="#contact" class="big">Contact</a>
 	</Bar>
 </div>
 <main class:dark={$darkmode}>
@@ -49,19 +47,19 @@
 			<blockquote>
 				I helped many projects come to life. Here are some examples:
 			</blockquote>
-			<Project link="https://learnerapp.eu" tags={["Website design", "Frontend"]}>
+			<Project link="https://learnerapp.eu" tags={["Website design", "Frontend"]} image="https://beta.learnerapp.eu/app.png">
 				<b>Learner</b> - A learning platform for students
 			</Project>
-			<Project link="https://thetutorials.cz" tags={["Writer", "Full stack"]}>
+			<Project link="https://thetutorials.cz" tags={["Writer", "Full stack"]} image="/screenshots/thetutorials.jpg">
 				<b>TheTutorials</b> - Czech tutorials and blog about programming
 			</Project>
 		</div>
 		<div>
 			<div class="pad"></div>
-			<Project link="https://top.gg/bot/739864286775738399" tags={["Discord bot", "Backend"]}>
+			<Project link="https://top.gg/bot/739864286775738399" tags={["Discord bot", "Backend"]} image="/screenshots/igni.png">
 				<b>igni</b> - The universal discord bot
 			</Project>
-			<Project link={"data:text/plain,No website available yet"} tags={["Backend"]}>
+			<Project tags={["Backend"]} image="/screenshots/animasher.png">
 				<b>Animasher</b> - Platform for creating and sharing animations
 			</Project>
 		</div>
@@ -75,7 +73,7 @@
 	<Bar>
 		<h3>Daniel Bulant</h3>
 		<Split />
-		<a href="https://github.com/shinoa-hiragi" target="_blank">
+		<a href="https://github.com/shinoa-hiragi" target="_blank" class="text-right">
 			<h3>
 				Design by Carl Hansen
 			</h3>
@@ -84,6 +82,9 @@
 </div>
 
 <style>
+	.text-right {
+		text-align: right;
+	}
 	main {
 		margin: 0 min(50px, 5%) 0 min(50px, 5%);
 		width: calc(100% - min(100px, 10%));
@@ -162,6 +163,11 @@
 		max-width: 1920px;
 		margin: 0 auto 30px auto;
 		background: white;
+	}
+	@media (max-width: 400px) {
+		.bar {
+			width: 100vw;
+		}
 	}
 	.dark.bar {
 		background: rgb(28, 28, 33);

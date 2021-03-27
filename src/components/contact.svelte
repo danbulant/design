@@ -12,10 +12,10 @@
                 <span>danbulant</span>
             </div>
         </a>
-        <a href="https://discord.gg/EgBGYmA" target="_blank">
+        <a href="https://discord.gg/XKPbz5xRuK" target="_blank">
             <div class="discord" title="Discord">
                 <img src="/discord.png" alt="Discord Icon" draggable={false}>
-                <span>TechmandanCZ#0135</span>
+                <span>TechmandanCZ#3372</span>
             </div>
         </a>
     </div>

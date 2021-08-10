@@ -4,7 +4,6 @@
 
 <div class="contact" class:dark={$darkmode}>
     <div class="address">Prague, Czech Republic</div>
-    <a href="mailto:danbulant@danbulant.eu" target="_blank">danbulant@danbulant.eu</a>
     <div class="profiles">
         <a href="https://github.com/danbulant" target="_blank">
             <div class="github" title="GitHub">

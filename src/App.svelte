@@ -159,7 +159,7 @@
 		position: sticky;
 		top: 0;
 		left: 0;
-		width: calc(100vw - 15px);
+		/*width: calc(100vw - 15px);*/
 		max-width: 1920px;
 		margin: 0 auto 30px auto;
 		background: white;

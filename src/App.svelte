@@ -159,10 +159,12 @@
 		position: sticky;
 		top: 0;
 		left: 0;
+		z-index: 99;
 		/*width: calc(100vw - 15px);*/
 		max-width: 1920px;
 		margin: 0 auto 30px auto;
-		background: white;
+		background: rgba(255,255,255, 0.2);
+		backdrop-filter: blur(10px);
 	}
 	@media (max-width: 400px) {
 		.bar {
@@ -170,7 +172,7 @@
 		}
 	}
 	.dark.bar {
-		background: rgb(28, 28, 33);
+		background: rgba(28, 28, 33, 0.2);
 	}
 	.bar h3 {
 		font-size: 18px;

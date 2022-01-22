@@ -6,6 +6,7 @@
 	// import Posts from "./components/posts.svelte";
 	import Project from "./components/project.svelte";
 	import Split from "./components/split.svelte";
+	import TechnologyDetails from "./components/technologyDetails.svelte";
 	import darkmode from "./stores/darkmode";
 
 	function toggle() {
@@ -21,6 +22,8 @@
 			}
 		}
 	}
+
+	var technologySelected = null;
 </script>
 
 <svelte:head>
@@ -47,21 +50,112 @@
 			<blockquote>
 				I helped many projects come to life. Here are some examples:
 			</blockquote>
-			<Project link="https://learnerapp.eu" tags={["Website design", "Frontend"]} image="https://beta.learnerapp.eu/app.png">
-				<b>Learner</b> - A learning platform for students
+			<Project link="https://top.gg/bot/739864286775738399" tags={["Discord bot", "Backend", "Discord.js", "Typescript"]} image="/screenshots/igni.png">
+				<b>igni</b> - The universal discord bot
 			</Project>
-			<Project link="https://thetutorials.cz" tags={["Writer", "Full stack"]} image="/screenshots/thetutorials.jpg">
-				<b>TheTutorials</b> - Czech tutorials and blog about programming
+			<Project link="https://danbulant.itch.io/heaventaker" tags={["Website", "Application", "Phaser", "Svelte"]} image="/screenshots/heaventaker.png">
+				<b>Heaventaker</b> - Helltaker fan game
 			</Project>
 		</div>
 		<div>
 			<div class="pad"></div>
-			<Project link="https://top.gg/bot/739864286775738399" tags={["Discord bot", "Backend"]} image="/screenshots/igni.png">
-				<b>igni</b> - The universal discord bot
-			</Project>
-			<Project tags={["Backend"]} image="/screenshots/animasher.png">
+			<Project tags={["Backend", "Website", "Svelte", "React", "Typescript"]} image="/screenshots/animasher.png">
 				<b>Animasher</b> - Platform for creating and sharing animations
 			</Project>
+			<Project link="https://manga.danbulant.eu" tags={["Website", "Svelte"]} image="/screenshots/mangadex.jfif">
+				<b>Mangades</b> - Mangadex downloader
+			</Project>
+		</div>
+	</div>
+	<div class="also relative">
+		<TechnologyDetails bind:selected={technologySelected} />
+		<h2 class="text-center">I also worked with the following:</h2>
+		<span class="text-center text-gray">Click each technology for more details about why I'm using it.</span>
+		<div class="split">
+			<ul>
+				<li on:click={() => technologySelected = "typescript"}>
+					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="" draggable={false} />
+					Typescript
+				</li>
+				<li on:click={() => technologySelected = "rust"}>
+					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg" alt="" draggable={false} />
+					Rust
+				</li>
+				<li on:click={() => technologySelected = "x11"}>
+					<img src="/x11.png" alt="" draggable={false} />
+					X11
+				</li>
+				<li on:click={() => technologySelected = "cs"}>
+					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-plain.svg" alt="" draggable={false} />
+					C#
+				</li>
+				<li on:click={() => technologySelected = "git"}>
+					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" draggable={false} />
+					Git + GitHub
+				</li>
+				<li on:click={() => technologySelected = "docker"}>
+					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain.svg" alt="" draggable={false} />
+					Docker + Docker compose + Docker desktop
+				</li>
+				<li on:click={() => technologySelected = "react"}>
+					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="" draggable={false} />
+					React
+				</li>
+				<li on:click={() => technologySelected = "nomad"}>
+					<img src="/nomad.svg" alt="" draggable={false} />
+					Nomad
+				</li>
+				<li on:click={() => technologySelected = "consul"}>
+					<img src="/consul.svg" alt="" draggable={false} />
+					Consul
+				</li>
+				<li on:click={() => technologySelected = "discord"}>
+					<img src="/discord.png" alt="" draggable={false}>
+					Discord
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/electron/electron-original.svg" alt="" draggable={false} />
+					Electron
+				</li>
+				<li>
+					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original.svg" alt="" draggable={false} />
+					Svelte
+				</li>
+				<li>
+					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="" draggable={false} />
+					MySQL/MariaDB
+				</li>
+				<li>
+					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-plain.svg" alt="" draggable={false} />
+					MongoDB
+				</li>
+				<li>
+					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain.svg" alt="" draggable={false} />
+					PostgreSQL
+				</li>
+				<li>
+					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="" draggable={false} />
+					Node
+				</li>
+				<li>
+					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/denojs/denojs-original.svg" alt="" draggable={false} />
+					Deno
+				</li>
+				<li>
+					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="" draggable={false} />
+					Linux
+				</li>
+				<li>
+					<img src="/openai.png" alt="" draggable={false} />
+					GPT-3
+				</li>
+				<li>
+					<img src="/markdown.png" alt="" draggable={false} />
+					Markdown
+				</li>
+			</ul>
 		</div>
 	</div>
 	<!-- <Posts /> -->
@@ -82,8 +176,17 @@
 </div>
 
 <style>
+	.relative {
+		position: relative;
+	}
 	.text-right {
 		text-align: right;
+	}
+	.text-center {
+		text-align: center;
+	}
+	.text-gray { 
+		color: rgb(150, 150, 150);
 	}
 	main {
 		margin: 0 min(50px, 5%) 0 min(50px, 5%);
@@ -127,6 +230,57 @@
 		flex-wrap: wrap;
 		justify-content: space-between;
 		margin: 0 20px 50px 20px;
+	}
+	.also {
+		margin: auto;
+		max-width: 850px;
+		border-radius: 15px;
+	}
+	.also h2 {
+		margin-block-end: 0;
+		margin-bottom: 0;
+	}
+	.also > span {
+		margin-bottom: 25px;
+		display: block;
+	}
+	.split {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	.split ul {
+		min-width: 340px;
+	}
+	.also li {
+		height: 32px;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: left;
+		cursor: pointer;
+		transition: transform .3s;
+	}
+	.also li::active {
+		transform: scale(0.8);
+	}
+	.also li::before {
+		content: "";
+		position: absolute;
+		top: 13px;
+		left: -20px;
+		width: 6px;
+		height: 6px;
+		border-radius: 6px;
+		background-color: black;
+		transition: background-color .3s;
+	}
+	.dark .also li::before {
+		background-color: white;
+	}
+	.also li img {
+		height: 24px;
+		padding-right: 6px;
 	}
 	@media (min-width: 1520px) {
 		.projects {

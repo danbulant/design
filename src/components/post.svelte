@@ -5,9 +5,20 @@
     export var date;
     export var title;
     export var authorIcon;
+    export var currentHover;
+    
+    var grayscale = false;
+    $: grayscale = currentHover && currentHover !== title;
+
+    function mouseenter() {
+        currentHover = title;
+    }
+    function mouseleave() {
+        if(currentHover == title) currentHover = null;
+    }
 </script>
 
-<div class="post">
+<div class="post" class:grayscale on:mouseenter={mouseenter} on:mouseleave={mouseleave}>
     <img src={thumbnail} alt="Thumbnail" class="thumbnail" draggable={false}>
     <div class="data">
         <div class="categories">
@@ -27,10 +38,16 @@
 </div>
 
 <style>
+    .grayscale {
+        filter: grayscale(100%) blur(2px);
+    }
     .post {
+        transition: filter .3s;
+        cursor: pointer;
+        user-select: none;
         width: 100%;
         height: 150px;
-        margin: 10px 0;
+        padding: 10px 0;
         display: flex;
         align-items: center;
     }

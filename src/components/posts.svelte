@@ -41,6 +41,8 @@
         categories: ["test"],
         date: "16-01-2021"
     }];
+
+    var currentHover = null;
 </script>
 
 <h2>Posts</h2>
@@ -49,8 +51,8 @@
         <HeroPost {...heroPost} />
     </div>
     <div class="posts">
-        {#each posts as post}
-            <Post {...post} />
+        {#each posts as post (post.title)}
+            <Post {...post} bind:currentHover />
         {/each}
     </div>
 </div>
@@ -64,9 +66,10 @@
         margin: auto;
     }
     h2 {
-        font-weight: 400;
+        font-weight: 500;
         max-width: 1360px;
         margin: auto;
+        margin-top: 50px;
     }
     .hero {
         width: calc(60% - 5px);

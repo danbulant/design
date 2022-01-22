@@ -29,6 +29,10 @@
 </div>
 
 <style>
+    .post {
+        cursor: pointer;
+        user-select: none;
+    }
     .thumbnail {
         border-radius: 5px;
         width: 100%;

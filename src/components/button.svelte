@@ -17,6 +17,7 @@
         border-radius: 5px;
         padding: 10px 15px;
         color: white;
+        cursor: pointer;
     }
     .button:hover {
         text-decoration: none;
@@ -25,12 +26,20 @@
         display: inline-block;
     }
 
+    button {
+        border: 1px solid transparent;
+    }
+
     button:active, .button:active {
         background: #007bc7;
     }
-    button:focus, .button:focus {
+    button:focus, .button:focus, button:hover {
+        border-color: black;
+    }
+    button.dark:focus, .button.dark:focus, button.dark:hover {
         border-color: white;
     }
+
     .text {
         background: transparent;
         color: black;

@@ -25,6 +25,8 @@
 
 	var technologySelected = null;
 	var technologyHover = false;
+	/** @type {null | "websites" | "applications" | "bots"} */
+	var appTypeHover = null;
 </script>
 
 <svelte:head>
@@ -42,7 +44,9 @@
 </div>
 <main class:dark={$darkmode}>
 	<Hero>
-		<h1>I'm a young developer making <u>websites</u> and <u>discord bots</u>.</h1>
+		<h1>I'm a young developer making <u on:mouseenter={() => appTypeHover = "websites"} on:mouseleave={() => appTypeHover == "websites" && (appTypeHover = null)}>websites</u>,
+			<u on:mouseenter={() => appTypeHover = "applications"} on:mouseleave={() => appTypeHover == "applications" && (appTypeHover = null)}>applications</u> and
+			<u on:mouseenter={() => appTypeHover = "bots"} on:mouseleave={() => appTypeHover == "bots" && (appTypeHover = null)}>discord bots</u>.</h1>
 		<!-- <h3>To be used later</h3> -->
 		<Button href="#projects">Check out my work</Button>
 	</Hero>
@@ -51,20 +55,52 @@
 			<blockquote>
 				I helped many projects come to life. Here are some examples:
 			</blockquote>
-			<Project link="https://top.gg/bot/739864286775738399" tags={["Discord bot", "Backend", "Discord.js", "Typescript"]} image="/screenshots/igni.png">
-				<b>igni</b> - The universal discord bot
+			<Project link="https://top.gg/bot/739864286775738399" tags={["Discord bot", "Backend", "Discord.js", "Typescript"]} image="/screenshots/ignibg.png" grayscale={appTypeHover && appTypeHover === "applications"}>
+				<b>igni</b> - The universal Discord bot
+				<svelte:fragment slot="desc">
+					<p>
+						igni is a universal Discord bot, making managing Discord communities easy.
+					</p>
+					<p>
+						It includes customizability, music playback (Youtube, SoundCloud, Spotify), moderation commands, anime, automation, games and more.
+					</p>
+				</svelte:fragment>
 			</Project>
-			<Project tags={["Backend", "Website", "Svelte", "React", "Typescript"]} image="/screenshots/animasher.png">
+			<Project tags={["Backend", "Website", "Svelte", "React", "Typescript"]} image="/screenshots/animasher.png" grayscale={appTypeHover && appTypeHover !== "websites"} extradark>
 				<b>Animasher</b> - Platform for creating and sharing animations
+				<svelte:fragment slot="desc">
+					<p>
+						Animasher is a work in progress platform for creating and sharing animations online.
+					</p>
+					<p>
+						It allows people to easily create animations inside the website, and then share it with the world, as well as communicate with other creators to improve themselves.
+					</p>
+				</svelte:fragment>
 			</Project>
 		</div>
 		<div>
 			<div class="pad"></div>
-			<Project link="https://danbulant.itch.io/heaventaker" tags={["Website", "Application", "Phaser", "Svelte"]} image="/screenshots/heaventaker.png">
+			<Project link="https://danbulant.itch.io/heaventaker" tags={["Website", "Application", "Phaser", "Svelte"]} image="/screenshots/heaventaker.png" grayscale={appTypeHover && appTypeHover === "bots"}>
 				<b>Heaventaker</b> - Helltaker fan game
+				<svelte:fragment slot="desc">
+					<p>
+						<img src="/azrael.gif" alt="" style="height: 24px;"> Heaventaker is a helltaker fan-game visual novel and puzzle game.
+					</p>
+					<p>
+						Heaventaker currently has 3 different puzzles and 4 angels to collect. Playable online on the website, or on Android devices (application installable from Google Play Store)
+					</p>
+				</svelte:fragment>
 			</Project>
-			<Project link="https://manga.danbulant.eu" tags={["Website", "Svelte"]} image="/screenshots/mangadex.jfif">
+			<Project link="https://manga.danbulant.eu" tags={["Website", "Svelte"]} image="/screenshots/mangadex.jfif" grayscale={appTypeHover && appTypeHover !== "websites"}>
 				<b>Mangades</b> - Mangadex downloader
+				<svelte:fragment slot="desc">
+					<p>
+						Mangades is a manga downloader from Mangadex.
+					</p>
+					<p>
+						It can download mangas to EPUB or CBZ files online from browsers
+					</p>
+				</svelte:fragment>
 			</Project>
 		</div>
 	</div>
@@ -203,15 +239,9 @@
 		margin: 0 min(50px, 5%) 0 min(50px, 5%);
 		width: calc(100% - min(100px, 10%));
 	}
-	.bar .small {
-		display: none;
-	}
 	@media (max-width: 570px) {
 		.bar .big {
 			display: none;
-		}
-		.bar .small {
-			display: initial;
 		}
 	}
 	.projects, .bottombar {

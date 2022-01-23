@@ -66,10 +66,13 @@
         margin: auto;
     }
     h2 {
+        text-align: center;
+        font-size: 40px;
         font-weight: 500;
         max-width: 1360px;
         margin: auto;
         margin-top: 50px;
+        margin-bottom: 20px;
     }
     .hero {
         width: calc(60% - 5px);

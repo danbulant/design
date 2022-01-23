@@ -3,7 +3,7 @@
 	import Button from "./components/button.svelte";
 	import Contact from "./components/contact.svelte";
 	import Hero from "./components/hero.svelte";
-	// import Posts from "./components/posts.svelte";
+	import Posts from "./components/posts.svelte";
 	import Project from "./components/project.svelte";
 	import Split from "./components/split.svelte";
 	import TechnologyDetails from "./components/technologyDetails.svelte";
@@ -24,6 +24,7 @@
 	}
 
 	var technologySelected = null;
+	var technologyHover = false;
 </script>
 
 <svelte:head>
@@ -53,14 +54,14 @@
 			<Project link="https://top.gg/bot/739864286775738399" tags={["Discord bot", "Backend", "Discord.js", "Typescript"]} image="/screenshots/igni.png">
 				<b>igni</b> - The universal discord bot
 			</Project>
-			<Project link="https://danbulant.itch.io/heaventaker" tags={["Website", "Application", "Phaser", "Svelte"]} image="/screenshots/heaventaker.png">
-				<b>Heaventaker</b> - Helltaker fan game
+			<Project tags={["Backend", "Website", "Svelte", "React", "Typescript"]} image="/screenshots/animasher.png">
+				<b>Animasher</b> - Platform for creating and sharing animations
 			</Project>
 		</div>
 		<div>
 			<div class="pad"></div>
-			<Project tags={["Backend", "Website", "Svelte", "React", "Typescript"]} image="/screenshots/animasher.png">
-				<b>Animasher</b> - Platform for creating and sharing animations
+			<Project link="https://danbulant.itch.io/heaventaker" tags={["Website", "Application", "Phaser", "Svelte"]} image="/screenshots/heaventaker.png">
+				<b>Heaventaker</b> - Helltaker fan game
 			</Project>
 			<Project link="https://manga.danbulant.eu" tags={["Website", "Svelte"]} image="/screenshots/mangadex.jfif">
 				<b>Mangades</b> - Mangadex downloader
@@ -70,8 +71,9 @@
 	<div class="also relative">
 		<TechnologyDetails bind:selected={technologySelected} />
 		<h2 class="text-center">I also worked with the following:</h2>
-		<span class="text-center text-gray">Click each technology for more details about why I'm using it.</span>
-		<div class="split">
+		<noscript class="text-center text-white">Clicking won't work if javascript is not enabled.</noscript>
+		<span class="text-center" class:text-gray={!technologyHover} class:text-white={technologyHover}>Click each technology for more details about why I'm using it.</span>
+		<div class="split" on:mouseenter={() => technologyHover = true} on:mouseleave={() => technologyHover = false}>
 			<ul>
 				<li on:click={() => technologySelected = "typescript"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="" draggable={false} />
@@ -115,50 +117,50 @@
 				</li>
 			</ul>
 			<ul>
-				<li>
+				<li on:click={() => technologySelected = "electron"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/electron/electron-original.svg" alt="" draggable={false} />
 					Electron
 				</li>
-				<li>
+				<li on:click={() => technologySelected = "svelte"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original.svg" alt="" draggable={false} />
-					Svelte
+					Svelte + SvelteKit
 				</li>
-				<li>
+				<li on:click={() => technologySelected = "mysql"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="" draggable={false} />
 					MySQL/MariaDB
 				</li>
-				<li>
+				<li on:click={() => technologySelected = "mongodb"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-plain.svg" alt="" draggable={false} />
 					MongoDB
 				</li>
-				<li>
+				<li on:click={() => technologySelected = "postgresql"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain.svg" alt="" draggable={false} />
 					PostgreSQL
 				</li>
-				<li>
+				<li on:click={() => technologySelected = "node"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="" draggable={false} />
-					Node
+					Node.js
 				</li>
-				<li>
+				<li on:click={() => technologySelected = "deno"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/denojs/denojs-original.svg" alt="" draggable={false} />
 					Deno
 				</li>
-				<li>
+				<li on:click={() => technologySelected = "linux"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="" draggable={false} />
 					Linux
 				</li>
-				<li>
-					<img src="/openai.png" alt="" draggable={false} />
-					GPT-3
+				<li on:click={() => technologySelected = "nginx"}>
+					<img src="/nginx.svg" alt="" draggable={false} />
+					Nginx
 				</li>
-				<li>
-					<img src="/markdown.png" alt="" draggable={false} />
-					Markdown
+				<li on:click={() => technologySelected = "cloudflare"}>
+					<img src="/cloudflare.png" alt="" draggable={false} />
+					Cloudflare
 				</li>
 			</ul>
 		</div>
 	</div>
-	<!-- <Posts /> -->
+	<Posts />
 	<div id="contact">
 		<Contact />
 	</div>
@@ -185,8 +187,17 @@
 	.text-center {
 		text-align: center;
 	}
+	.also > span {
+		transition: color .3s;
+	}
 	.text-gray { 
 		color: rgb(150, 150, 150);
+	}
+	.text-white {
+		color: black;
+	}
+	.dark .text-white {
+		color: white;
 	}
 	main {
 		margin: 0 min(50px, 5%) 0 min(50px, 5%);

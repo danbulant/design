@@ -138,9 +138,6 @@
         cursor: pointer;
         background: rgba(255,255,255,0.1);
     }
-    .dark .dialog {
-        background: rgba(0,0,0,0.1);
-    }
     h2 {
         margin-top: 0;
         margin-block-start: 0;

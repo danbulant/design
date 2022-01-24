@@ -5,13 +5,13 @@
 <div class="contact" class:dark={$darkmode}>
     <div class="address">Prague, Czech Republic</div>
     <div class="profiles">
-        <a href="https://github.com/danbulant" target="_blank">
+        <a href="https://github.com/danbulant" rel="noreferrer noopener" target="_blank">
             <div class="github" title="GitHub">
                 <img src="/github.png" alt="Github Icon" draggable={false}>
                 <span>danbulant</span>
             </div>
         </a>
-        <a href="https://discord.gg/XKPbz5xRuK" target="_blank">
+        <a href="https://discord.gg/XKPbz5xRuK" rel="noreferrer noopener" target="_blank">
             <div class="discord" title="Discord">
                 <img src="/discord.png" alt="Discord Icon" draggable={false}>
                 <span>TechmandanCZ#3372</span>

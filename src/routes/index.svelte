@@ -205,7 +205,7 @@
 	<Bar>
 		<h3>Daniel Bulant</h3>
 		<Split />
-		<a href="https://github.com/shinoa-hiragi" target="_blank" class="text-right">
+		<a href="https://github.com/shinoa-hiragi" rel="noreferrer noopener" target="_blank" class="text-right">
 			<h3>
 				Design by Carl Hansen
 			</h3>

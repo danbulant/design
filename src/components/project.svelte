@@ -31,7 +31,7 @@
                 <span>{tag}</span>{#if i !== tags.length - 1}<span>&middot;</span>{/if}
             {/each}
         </div>
-        <a href={link} target="_blank">View</a>
+        <a href={link || "#"} target="_blank">View</a>
     </div>
 </a>
 

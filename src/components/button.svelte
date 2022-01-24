@@ -13,7 +13,7 @@
 
 <style>
     button, .button {
-        background: #008EE8;
+        background: #006db3;
         border-radius: 5px;
         padding: 10px 15px;
         color: white;

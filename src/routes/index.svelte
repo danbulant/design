@@ -52,9 +52,9 @@
 	</Hero>
 	<div class="projects" id="projects">
 		<div>
-			<blockquote>
+			<h2>
 				I helped many projects come to life. Here are some examples:
-			</blockquote>
+			</h2>
 			<Project link="https://top.gg/bot/739864286775738399" tags={["Discord bot", "Backend", "Discord.js", "Typescript"]} image="/screenshots/ignibg.png" grayscale={appTypeHover && appTypeHover === "applications"}>
 				<b>igni</b> - The universal Discord bot
 				<svelte:fragment slot="desc">
@@ -342,12 +342,17 @@
 		.projects .pad {
 			margin-top: 0px;
 		}
-		.projects blockquote {
+		.projects h2 {
 			margin: 1em 0 1em 10px;
 		}
 	}
-	.projects blockquote {
+	.projects h2 {
 		font-size: 29px;
+		font-weight: 400;
+		margin-block-start: 1em;
+		margin-block-end: 1em;
+		margin-inline-start: 40px;
+		margin-inline-end: 40px;
 	}
 	.bar {
 		position: -webkit-sticky; /* Safari */

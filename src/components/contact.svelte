@@ -31,17 +31,6 @@
     .dark .address {
         color: rgba(191, 191, 191, 0.835);
     }
-    .contact > a {
-        color: #202020;
-        font-size: 36px;
-        font-weight: 500;
-        margin: 20px 0;
-        display: block;
-        font-size: max(min(36px, 4vw), 23px);
-    }
-    .dark.contact > a {
-        color: rgb(191, 191, 191);
-    }
     .profiles {
         display: flex;
         justify-content: center;

@@ -8,6 +8,9 @@
     export let categories;
     export let bigThumbnail;
     export let thumbnail;
+
+    let dt = DateTime.fromISO(date);
+    $: dt = DateTime.fromISO(date);
 </script>
 
 <svelte:head>
@@ -29,10 +32,10 @@
     <meta property="og:image:height" content="256" />
 </svelte:head>
 
-<main class:dark={$darkmode}>
-    <span>Posts /</span>
+<main class:dark={$darkmode} class="post-layout">
+    <span><a href="/posts">Posts</a> /</span>
     <h1>{title}</h1>
-    <span>Written {DateTime.fromISO(date).toRelativeCalendar()}</span>
+    <span>Written {dt.toRelativeCalendar()} ({dt.toLocaleString(DateTime.DATE_FULL)})</span>
     <slot />
     <script src="https://utteranc.es/client.js"
         repo="danbulant/design"
@@ -51,6 +54,12 @@
 </footer>
 
 <style>
+    :global(body .post-layout a) {
+        color: rgb(4, 192, 192);
+    }
+    :global(body .post-layout a:hover) {
+        color: rgb(2, 218, 218);
+    }
 	main {
         margin: 0 auto;
         max-width: 700px;

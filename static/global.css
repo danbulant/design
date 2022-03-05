@@ -26,6 +26,10 @@ h1 {
     padding-block-end: 0.67em;
 }
 
+img {
+	max-width: 100%;
+}
+
 a {
 	/* color: rgb(0,100,200); */
 	color: inherit;
@@ -76,4 +80,13 @@ button:not(:disabled):active {
 
 button:focus {
 	border-color: #666;
+}
+
+body::-webkit-scrollbar {
+	width: 1em;
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: darkgrey;
+	outline: 1px solid slategrey;
 }

@@ -1,4 +1,3 @@
-// import adapter from '@sveltejs/adapter-auto';
 import adapter from '@sveltejs/adapter-static';
 import { mdsvex } from 'mdsvex';
 
@@ -10,14 +9,18 @@ const config = {
 		})
 	},
 	extensions: ['.svelte', '.md'],
-  
+
 	preprocess: [
-	  mdsvex({
-		extensions: ['.md'],
-		layout: {
-			_: "./src/lib/layouts/post.svelte"
-		}
-	  })
+		mdsvex({
+			extensions: ['.md'],
+			layout: {
+				_: "./src/lib/layouts/post.svelte"
+			},
+			smartypants: {
+				quotes: false,
+				backticks: "all"
+			}
+		})
 	]
 };
 

@@ -7,13 +7,13 @@
     <div class="profiles">
         <a href="https://github.com/danbulant" rel="noreferrer noopener" target="_blank">
             <div class="github" title="GitHub">
-                <img src="/github.png" alt="Github Icon" draggable={false}>
+                <img src="/tech/github.png" alt="Github Icon" draggable={false}>
                 <span>danbulant</span>
             </div>
         </a>
         <a href="https://discord.gg/XKPbz5xRuK" rel="noreferrer noopener" target="_blank">
             <div class="discord" title="Discord">
-                <img src="/discord.png" alt="Discord Icon" draggable={false}>
+                <img src="/tech/discord.png" alt="Discord Icon" draggable={false}>
                 <span>TechmandanCZ#3372</span>
             </div>
         </a>

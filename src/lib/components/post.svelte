@@ -6,6 +6,7 @@
     export var title;
     export var authorIcon;
     export var currentHover;
+    export var path;
     
     var grayscale = false;
     $: grayscale = currentHover && currentHover !== title;
@@ -18,8 +19,8 @@
     }
 </script>
 
-<div class="post" class:grayscale on:mouseenter={mouseenter} on:mouseleave={mouseleave}>
-    <img src={thumbnail} alt="Thumbnail" class="thumbnail" draggable={false}>
+<a href={path} class="post" class:grayscale on:mouseenter={mouseenter} on:mouseleave={mouseleave}>
+    <img src={thumbnail} height="256" width="256" alt="Thumbnail" class="thumbnail" draggable={false}>
     <div class="data">
         <div class="categories">
             {#each categories as category}
@@ -35,11 +36,14 @@
             <span class="date">{date}</span>
         </div>
     </div>
-</div>
+</a>
 
 <style>
     .grayscale {
         filter: grayscale(100%) blur(2px);
+    }
+    a.post:hover {
+        text-decoration: none;
     }
     .post {
         transition: filter .3s;

@@ -1,15 +1,16 @@
 <script>
-    export var thumbnail;
+    export var bigThumbnail;
     export var categories = [];
     export var author;
-    export var date;
+    export var relDate;
     export var title;
     export var authorIcon;
     export var description;
+    export var path;
 </script>
 
-<div class="post">
-    <img src={thumbnail} alt="Thumbnail" class="thumbnail" draggable={false}>
+<a href={path} class="post">
+    <img src={bigThumbnail} width="800" height="400" alt="Thumbnail" class="thumbnail" draggable={false}>
     <div class="data">
         <div class="categories">
             {#each categories as category}
@@ -20,18 +21,21 @@
         <p>{description}</p>
         <div class="author">
             <img src={authorIcon} alt="Avatar of author" draggable={false}>
-            —
+            <span class="spacer">—</span>
             <span class="author">{author}</span>
-            —
-            <span class="date">{date}</span>
+            <span class="spacer">—</span>
+            <span class="date">{relDate}</span>
         </div>
     </div>
-</div>
+</a>
 
 <style>
     .post {
         cursor: pointer;
         user-select: none;
+    }
+    a.post:hover {
+        text-decoration: none;
     }
     .thumbnail {
         border-radius: 5px;
@@ -59,5 +63,6 @@
     .author img {
         height: 100%;
         border-radius: 50%;
+        padding-right: 5px;
     }
 </style>

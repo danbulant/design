@@ -1,32 +1,35 @@
+<script context="module">
+	/** @type {import('./[slug]').Load} */
+	export async function load({ params, fetch, session, stuff }) {
+		const response = await fetch("/api/posts.json");
+	
+		return {
+			props: {
+				posts: response.ok && (await response.json())
+			}
+		};
+	}
+</script>
+
 <script>
 	import Bar from "$lib/components/bar.svelte";
 	import Button from "$lib/components/button.svelte";
 	import Contact from "$lib/components/contact.svelte";
 	import Hero from "$lib/components/hero.svelte";
-	// import Posts from "$lib/components/posts.svelte";
+	import Navbar from "$lib/components/navbar.svelte";
+	import Posts from "$lib/components/posts.svelte";
 	import Project from "$lib/components/project.svelte";
 	import Split from "$lib/components/split.svelte";
 	import TechnologyDetails from "$lib/components/technologyDetails.svelte";
 	import darkmode from "$lib/stores/darkmode";
 
-	function toggle() {
-		$darkmode = !$darkmode;
-	}
-
-	$: {
-		if(typeof document !== "undefined") {
-			if($darkmode) {
-				document.body.classList.add("dark");
-			} else {
-				document.body.classList.remove("dark");
-			}
-		}
-	}
-
 	var technologySelected = null;
 	var technologyHover = false;
 	/** @type {null | "websites" | "applications" | "bots"} */
 	var appTypeHover = null;
+
+	export var posts;
+	$: console.log(posts);
 </script>
 
 <svelte:head>
@@ -34,14 +37,7 @@
 	<meta name="description" content="Homepage of danbulant.eu - List of my projects, contact info.">
 </svelte:head>
 
-<div class="bar" class:dark={$darkmode}>
-	<Bar>
-		<h3>Daniel Bulant</h3>
-		<Split />
-		<Button text on:click={toggle}>{$darkmode ? "Light" : "Dark"} mode</Button>
-		<a href="#contact" class="big">Contact</a>
-	</Bar>
-</div>
+<Navbar />
 <main class:dark={$darkmode}>
 	<Hero>
 		<h1>I'm a young developer making <u on:mouseenter={() => appTypeHover = "websites"} on:mouseleave={() => appTypeHover == "websites" && (appTypeHover = null)}>websites</u>,
@@ -120,7 +116,7 @@
 					Rust
 				</li>
 				<li on:click={() => technologySelected = "x11"}>
-					<img src="/x11.png" alt="" draggable={false} />
+					<img src="/tech/x11.png" alt="" draggable={false} />
 					X11
 				</li>
 				<li on:click={() => technologySelected = "cs"}>
@@ -140,15 +136,15 @@
 					React
 				</li>
 				<li on:click={() => technologySelected = "nomad"}>
-					<img src="/nomad.svg" alt="" draggable={false} />
+					<img src="/tech/nomad.svg" alt="" draggable={false} />
 					Nomad
 				</li>
 				<li on:click={() => technologySelected = "consul"}>
-					<img src="/consul.svg" alt="" draggable={false} />
+					<img src="/tech/consul.svg" alt="" draggable={false} />
 					Consul
 				</li>
 				<li on:click={() => technologySelected = "discord"}>
-					<img src="/discord.png" alt="" draggable={false}>
+					<img src="/tech/discord.png" alt="" draggable={false}>
 					Discord
 				</li>
 			</ul>
@@ -186,17 +182,19 @@
 					Linux
 				</li>
 				<li on:click={() => technologySelected = "nginx"}>
-					<img src="/nginx.svg" alt="" draggable={false} />
+					<img src="/tech/nginx.svg" alt="" draggable={false} />
 					Nginx
 				</li>
 				<li on:click={() => technologySelected = "cloudflare"}>
-					<img src="/cloudflare.png" alt="" draggable={false} />
+					<img src="/tech/cloudflare.png" alt="" draggable={false} />
 					Cloudflare
 				</li>
 			</ul>
 		</div>
 	</div>
-	<!-- <Posts /> -->
+	{#if posts}
+		<Posts {posts} />
+	{/if}
 	<div id="contact">
 		<Contact />
 	</div>
@@ -205,15 +203,19 @@
 	<Bar>
 		<h3>Daniel Bulant</h3>
 		<Split />
-		<a href="https://github.com/shinoa-hiragi" rel="noreferrer noopener" target="_blank" class="text-right">
-			<h3>
-				Design by Carl Hansen
-			</h3>
-		</a>
+		<h3>
+			Design by Carl Hansen
+		</h3>
 	</Bar>
 </div>
 
 <style>
+	/* :global(body) {
+		background-image: linear-gradient(to top, rgb(242,210,223), transparent min(180vh, 1080px));
+	}
+	:global(body.dark) {
+		background-image: linear-gradient(to top, rgba(94, 61, 74, 0.685), transparent min(180vh, 1080px));
+	} */
 	.relative {
 		position: relative;
 	}

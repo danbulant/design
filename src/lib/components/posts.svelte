@@ -2,45 +2,9 @@
     import HeroPost from "./heroPost.svelte";
     import Post from "./post.svelte";
 
-    var heroPost = {
-        title: "Test hero post",
-        author: "Daniel Bulant",
-        authorIcon: "/logo.png",
-        thumbnail: "https://picsum.photos/800/400?random=1",
-        categories: ["test"],
-        description: "Test description",
-        date: "16-01-2021"
-    };
+    export var posts;
 
-    var posts = [{
-        title: "Test post 1",
-        author: "Daniel Bulant",
-        authorIcon: "/logo.png",
-        thumbnail: "https://picsum.photos/150?random=1",
-        categories: ["test"],
-        date: "16-01-2021"
-    }, {
-        title: "Test post 2",
-        author: "Daniel Bulant",
-        authorIcon: "/logo.png",
-        thumbnail: "https://picsum.photos/150?random=2",
-        categories: ["test"],
-        date: "16-01-2021"
-    }, {
-        title: "Test post 3",
-        author: "Daniel Bulant",
-        authorIcon: "/logo.png",
-        thumbnail: "https://picsum.photos/150?random=3",
-        categories: ["test"],
-        date: "16-01-2021"
-    }, {
-        title: "Test post 4",
-        author: "Daniel Bulant",
-        authorIcon: "/logo.png",
-        thumbnail: "https://picsum.photos/150?random=4",
-        categories: ["test"],
-        date: "16-01-2021"
-    }];
+    var heroPost = posts[0];
 
     var currentHover = null;
 </script>
@@ -50,11 +14,13 @@
     <div class="hero">
         <HeroPost {...heroPost} />
     </div>
-    <div class="posts">
-        {#each posts as post (post.title)}
-            <Post {...post} bind:currentHover />
-        {/each}
-    </div>
+    {#if posts.length > 1}
+        <div class="posts">
+            {#each posts.slice(1) as post (post.title)}
+                <Post {...post} bind:currentHover />
+            {/each}
+        </div>
+    {/if}
 </div>
 
 <style>

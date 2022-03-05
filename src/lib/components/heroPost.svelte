@@ -10,7 +10,9 @@
 </script>
 
 <a href={path} class="post">
-    <img src={bigThumbnail} width="800" height="400" alt="Thumbnail" class="thumbnail" draggable={false}>
+    {#if bigThumbnail}
+        <img src={bigThumbnail} styles="width: 800px; height: 400px;" alt="Thumbnail" class="thumbnail" draggable={false}>
+    {/if}
     <div class="data">
         <!-- <div class="categories">
             {#each categories as category}

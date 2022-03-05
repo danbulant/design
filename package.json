@@ -16,7 +16,18 @@
   },
   "type": "module",
   "dependencies": {
+    "katex": "^0.15.2",
     "luxon": "^2.3.1",
+    "rehype-autolink-headings": "^6.1.1",
+    "rehype-katex-svelte": "^1.0.3",
+    "rehype-slug": "^5.0.1",
+    "remark-extended-table": "^1.0.0",
+    "remark-gfm": "^3.0.1",
+    "remark-math": "2",
+    "remark-parse": "^10.0.1",
+    "remark-twemoji": "^0.1.1",
+    "twemoji": "^13.1.0",
+    "unist-util-visit": "2",
     "xterm": "^4.18.0"
   }
 }

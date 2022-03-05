@@ -23,7 +23,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:article:published_time" content={date} />
     <meta property="og:article:author" content="Daniel Bulant" />
-    <meta property="og:article:tag" content={categories.join(" ")} />
+    <meta property="og:article:tag" content={categories && categories.join(" ") || ""} />
     <meta property="og:image" content={bigThumbnail} />
     <meta property="og:image:width" content="800" />
     <meta property="og:image:height" content="400" />
@@ -59,6 +59,44 @@
     }
     :global(body .post-layout a:hover) {
         color: rgb(2, 218, 218);
+    }
+    :global(body .post-layout table) {
+        border-spacing: 0;
+    }
+    :global(body .post-layout table thead tr th:first-child) {
+        border-top-left-radius: 5px;
+    }
+    :global(body .post-layout table thead tr th:last-child) {
+        border-top-right-radius: 5px;
+    }
+    :global(body .post-layout table th) {
+        border: 2px solid rgb(0, 0, 0);
+        background-color: rgb(211, 211, 211);
+        padding: 6px;
+    }
+    :global(.dark .post-layout table th) {
+        border: 2px solid white;
+        background-color: rgb(39, 39, 39);
+    }
+    :global(body .post-layout table td) {
+        border: 1px solid rgb(0, 0, 0);
+        padding: 4px;
+    }
+    :global(.dark .post-layout table td) {
+        border: 1px solid white;
+        padding: 4px;
+    }
+    :global(body .post-layout table tr:hover) {
+        background: rgb(196, 196, 196);
+    }
+    :global(.dark .post-layout table tr:hover) {
+        background: rgb(54, 54, 54);
+    }
+    :global(body .post-layout table tr:last-child td:first-child) {
+        border-bottom-left-radius: 5px;
+    }
+    :global(body .post-layout table tr:last-child td:last-child) {
+        border-bottom-right-radius: 5px;
     }
 	main {
         margin: 0 auto;

@@ -7,6 +7,7 @@
     export var authorIcon;
     export var currentHover;
     export var path;
+    export var description
     
     var grayscale = false;
     $: grayscale = currentHover && currentHover !== title;
@@ -20,7 +21,11 @@
 </script>
 
 <a href={path} class="post" class:grayscale on:mouseenter={mouseenter} on:mouseleave={mouseleave}>
-    <img src={thumbnail} height="256" width="256" alt="Thumbnail" class="thumbnail" draggable={false}>
+    {#if thumbnail}
+        <img src={thumbnail} alt="Thumbnail" class="thumbnail" draggable={false}>
+    {:else}
+        <div style="width: 150px; height: 150px;"></div>
+    {/if}
     <div class="data">
         <!-- <div class="categories">
             {#each categories as category}
@@ -28,6 +33,7 @@
             {/each}
         </div> -->
         <h4>{title}</h4>
+        <p>{description}</p>
         <div class="author">
             <img src={authorIcon} alt="Avatar of author" draggable={false}>
             <span class="spacer">—</span>
@@ -58,14 +64,16 @@
     h4 {
         margin: 5px 0;
         font-weight: 400;
-        font-size: 18px;
+        font-size: 22px;
     }
-    .categories {
+    /* .categories {
         color: #0054E2;
-    }
+    } */
     .thumbnail {
         width: 150px;
+        height: 150px;
         margin-right: 15px;
+        object-fit: cover;
     }
     img {
         height: 100%;

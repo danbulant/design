@@ -9,7 +9,7 @@
     var currentHover = null;
 </script>
 
-<h2>Posts</h2>
+<h2><a href="/posts">Posts</a></h2>
 <div class="main">
     <div class="hero">
         <HeroPost {...heroPost} />

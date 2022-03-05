@@ -3,7 +3,7 @@
 	import Button from "$lib/components/button.svelte";
 	import Contact from "$lib/components/contact.svelte";
 	import Hero from "$lib/components/hero.svelte";
-	import Posts from "$lib/components/posts.svelte";
+	// import Posts from "$lib/components/posts.svelte";
 	import Project from "$lib/components/project.svelte";
 	import Split from "$lib/components/split.svelte";
 	import TechnologyDetails from "$lib/components/technologyDetails.svelte";
@@ -196,7 +196,7 @@
 			</ul>
 		</div>
 	</div>
-	<Posts />
+	<!-- <Posts /> -->
 	<div id="contact">
 		<Contact />
 	</div>

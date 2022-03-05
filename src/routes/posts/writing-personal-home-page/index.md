@@ -14,8 +14,8 @@ description: So I added blog to my personal home page.
     import darkmode from "$lib/stores/darkmode";
     import ExampleWrapper from "$lib/components/posts/exampleWrapper.svelte";
     import Screenshot2020 from "./2020-website.png";
-    import SimpleExample from "./simpleExample.svelte";
-    import BidiExample from "./bidiExample.svelte";
+    import SimpleExample from "./_comp/simpleExample.svelte";
+    import BidiExample from "./_comp/bidiExample.svelte";
 </script>
 
 I'm mainly a web developer, yet for quite a while, my personal site looked like this:
@@ -184,7 +184,13 @@ I recommend simply copy pasting one of the CSS files [here](https://github.com/P
 
 ### Gotchas
 
+`mdsvex` has a few gotchas.
 
+As mentioned before, using strings may not always work correctly with `smartypants` option.
+
+Using any preprocessor (typescript or scss) won't work in markdown files. Make them a separate components and import them.
+
+Markdown files won't receive loaded props, but `_layout` will, so you can go around that using layouts.
 
 ### Frontmatter
 

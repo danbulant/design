@@ -1,0 +1,5 @@
+# Hey there.
+# I don't think there's a valid vulnerability given this website is static, but I still put the file here just in case
+Contact: mailto:danbulant@danbulant.eu
+Preferred-Languages: en, cs
+Canonical: https://danbulant.eu/.well-known/security.txt

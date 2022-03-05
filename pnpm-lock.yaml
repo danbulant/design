@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@sveltejs/adapter-auto': next
   '@sveltejs/adapter-static': ^1.0.0-next.28
-  '@sveltejs/kit': next
+  '@sveltejs/kit': 1.0.0-next.291
   luxon: ^2.3.1
   mdsvex: ^0.10.5
   svelte: ^3.44.0
@@ -16,7 +16,7 @@ dependencies:
 devDependencies:
   '@sveltejs/adapter-auto': 1.0.0-next.30
   '@sveltejs/adapter-static': 1.0.0-next.28
-  '@sveltejs/kit': 1.0.0-next.292_svelte@3.46.2
+  '@sveltejs/kit': 1.0.0-next.291_svelte@3.46.2
   mdsvex: 0.10.5_svelte@3.46.2
   svelte: 3.46.2
 
@@ -68,14 +68,14 @@ packages:
       esbuild: 0.14.25
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.292_svelte@3.46.2:
-    resolution: {integrity: sha512-sWLuN7/rOsV3xX0VtT562PXhGqkuU9np03Gv3k0v+MKh+NW59TUGgQTWIe0LP6ImHiZaMt0Uaw4oYfIn0wsTmQ==}
+  /@sveltejs/kit/1.0.0-next.291_svelte@3.46.2:
+    resolution: {integrity: sha512-mFd1EJbxoyPGiomYwYhZnjNLPYahCC2gHfKvPetguL/7BCHcyUjjYQbwTTmjVxtgBs0oLzKVA9bt45gpr9JqBQ==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
       svelte: ^3.44.0
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 1.0.0-next.35_svelte@3.46.2+vite@2.8.6
+      '@sveltejs/vite-plugin-svelte': 1.0.0-next.39_svelte@3.46.2+vite@2.8.6
       sade: 1.8.1
       svelte: 3.46.2
       vite: 2.8.6
@@ -87,8 +87,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/vite-plugin-svelte/1.0.0-next.35_svelte@3.46.2+vite@2.8.6:
-    resolution: {integrity: sha512-PuhI+1L6xqn5gc6jiK4mHmeS8kf3c1E+IaAsJclHbZTNiPQdC5SiTM3cV0FAA4zhwHmXV6pjt8rRHRx8ouFv3g==}
+  /@sveltejs/vite-plugin-svelte/1.0.0-next.39_svelte@3.46.2+vite@2.8.6:
+    resolution: {integrity: sha512-gnvvcAW2LK+KnUn8lKb2ypcXKwSp2K57mem5C4VNKfjxdRpM6+XwNavWwVf6otnDhz3qPYl/TKKW6/dRr6eeAw==}
     engines: {node: ^14.13.1 || >= 16}
     peerDependencies:
       diff-match-patch: ^1.0.5
@@ -103,7 +103,7 @@ packages:
       kleur: 4.1.4
       magic-string: 0.25.7
       svelte: 3.46.2
-      svelte-hmr: 0.14.9_svelte@3.46.2
+      svelte-hmr: 0.14.10_svelte@3.46.2
       vite: 2.8.6
     transitivePeerDependencies:
       - supports-color
@@ -482,8 +482,9 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /svelte-hmr/0.14.9_svelte@3.46.2:
-    resolution: {integrity: sha512-bKE9+4qb4sAnA+TKHiYurUl970rjA0XmlP9TEP7K/ncyWz3m81kA4HOgmlZK/7irGK7gzZlaPDI3cmf8fp/+tg==}
+  /svelte-hmr/0.14.10_svelte@3.46.2:
+    resolution: {integrity: sha512-VffsN0fT4cTJ7b4apf9VDIrgsbLFaJzPypcAuy4NcHx2PKKayfwLwabaYPWdHK5lJ/uQ/HBrkEsWHzo64NU6mQ==}
+    engines: {node: ^12.20 || ^14.13.1 || >= 16}
     peerDependencies:
       svelte: '>=3.19.0'
     dependencies:

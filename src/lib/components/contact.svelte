@@ -27,6 +27,7 @@
     }
     .address {
         color: #202020d5;
+        margin-bottom: 15px;
     }
     .dark .address {
         color: rgba(191, 191, 191, 0.835);

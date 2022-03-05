@@ -1,13 +1,13 @@
 <script>
-	import Bar from "../components/bar.svelte";
-	import Button from "../components/button.svelte";
-	import Contact from "../components/contact.svelte";
-	import Hero from "../components/hero.svelte";
-	// import Posts from "../components/posts.svelte";
-	import Project from "../components/project.svelte";
-	import Split from "../components/split.svelte";
-	import TechnologyDetails from "../components/technologyDetails.svelte";
-	import darkmode from "../stores/darkmode";
+	import Bar from "$lib/components/bar.svelte";
+	import Button from "$lib/components/button.svelte";
+	import Contact from "$lib/components/contact.svelte";
+	import Hero from "$lib/components/hero.svelte";
+	import Posts from "$lib/components/posts.svelte";
+	import Project from "$lib/components/project.svelte";
+	import Split from "$lib/components/split.svelte";
+	import TechnologyDetails from "$lib/components/technologyDetails.svelte";
+	import darkmode from "$lib/stores/darkmode";
 
 	function toggle() {
 		$darkmode = !$darkmode;
@@ -196,7 +196,7 @@
 			</ul>
 		</div>
 	</div>
-	<!-- <Posts /> -->
+	<Posts />
 	<div id="contact">
 		<Contact />
 	</div>

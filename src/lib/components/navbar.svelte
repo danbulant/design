@@ -49,6 +49,10 @@
 	.bar h3 {
 		font-size: 18px;
 		font-weight: bold;
+		color: black;
+	}
+	.dark.bar h3 {
+		color: white;
 	}
 	.bar a {
 		color: #202020b2;

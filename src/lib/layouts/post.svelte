@@ -1,21 +1,21 @@
 <script>
-    import Navbar from "$lib/components/navbar.svelte";
     import darkmode from "$lib/stores/darkmode";
+    import { DateTime } from "luxon";
 
     export let title;
     export let date;
+    export let description;
 </script>
 
 <svelte:head>
-	<title>Daniel Bulant - Homepage</title>
-	<meta name="description" content="Homepage of danbulant.eu - List of my projects, contact info.">
+	<title>{title} - Daniel Bulant</title>
+	<meta name="description" content={description}>
 </svelte:head>
 
-<Navbar />
-
 <main class:dark={$darkmode}>
+    <span>Posts /</span>
     <h1>{title}</h1>
-    <span>{date}</span>
+    <span>Written {DateTime.fromISO(date).toRelativeCalendar()}</span>
     <slot />
 </main>
 
@@ -25,4 +25,10 @@
         max-width: 700px;
         padding: 0 20px;
 	}
+    h1 {
+        padding: 0 0 15px;
+    }
+    span {
+        color: gray;
+    }
 </style>

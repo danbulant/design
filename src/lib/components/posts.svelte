@@ -16,7 +16,7 @@
     </div>
     {#if posts.length > 1}
         <div class="posts">
-            {#each posts.slice(1) as post (post.title)}
+            {#each posts.slice(1, 6) as post (post.title)}
                 <Post {...post} bind:currentHover />
             {/each}
         </div>

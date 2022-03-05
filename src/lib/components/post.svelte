@@ -2,7 +2,7 @@
     export var thumbnail;
     export var categories = [];
     export var author;
-    export var date;
+    export var relDate;
     export var title;
     export var authorIcon;
     export var currentHover;
@@ -30,10 +30,10 @@
         <h4>{title}</h4>
         <div class="author">
             <img src={authorIcon} alt="Avatar of author" draggable={false}>
-            —
+            <span class="spacer">—</span>
             <span class="author">{author}</span>
-            —
-            <span class="date">{date}</span>
+            <span class="spacer">—</span>
+            <span class="date">{relDate}</span>
         </div>
     </div>
 </a>
@@ -56,7 +56,7 @@
         align-items: center;
     }
     h4 {
-        margin: 0;
+        margin: 5px 0;
         font-weight: 400;
         font-size: 18px;
     }

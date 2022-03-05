@@ -98,6 +98,20 @@
     :global(body .post-layout table tr:last-child td:last-child) {
         border-bottom-right-radius: 5px;
     }
+    :global(body .post-layout blockquote) {
+        position: relative;
+        margin-inline-start: 40px;
+        font-style: italic;
+    }
+    :global(body .post-layout blockquote::before) {
+        left: -40px;
+        position: absolute;
+        height: 100%;
+        width: 5px;
+        border-radius: 5px;
+        background: rgb(51,51,51);
+        content: "";
+    }
 	main {
         margin: 0 auto;
         max-width: 700px;

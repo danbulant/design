@@ -1,6 +1,6 @@
 <script>
     export var thumbnail;
-    export var categories = [];
+    // export var categories = [];
     export var author;
     export var relDate;
     export var title;
@@ -22,11 +22,11 @@
 <a href={path} class="post" class:grayscale on:mouseenter={mouseenter} on:mouseleave={mouseleave}>
     <img src={thumbnail} height="256" width="256" alt="Thumbnail" class="thumbnail" draggable={false}>
     <div class="data">
-        <div class="categories">
+        <!-- <div class="categories">
             {#each categories as category}
                 <span>{category}</span>
             {/each}
-        </div>
+        </div> -->
         <h4>{title}</h4>
         <div class="author">
             <img src={authorIcon} alt="Avatar of author" draggable={false}>

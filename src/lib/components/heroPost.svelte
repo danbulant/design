@@ -1,6 +1,6 @@
 <script>
     export var bigThumbnail;
-    export var categories = [];
+    // export var categories = [];
     export var author;
     export var relDate;
     export var title;
@@ -12,11 +12,11 @@
 <a href={path} class="post">
     <img src={bigThumbnail} width="800" height="400" alt="Thumbnail" class="thumbnail" draggable={false}>
     <div class="data">
-        <div class="categories">
+        <!-- <div class="categories">
             {#each categories as category}
                 <span>{category}</span>
             {/each}
-        </div>
+        </div> -->
         <h3>{title}</h3>
         <p>{description}</p>
         <div class="author">

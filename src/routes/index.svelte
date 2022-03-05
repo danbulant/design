@@ -13,6 +13,7 @@
 
 <script>
 	import Bar from "$lib/components/bar.svelte";
+import Bottombar from "$lib/components/bottombar.svelte";
 	import Button from "$lib/components/button.svelte";
 	import Contact from "$lib/components/contact.svelte";
 	import Hero from "$lib/components/hero.svelte";
@@ -34,7 +35,16 @@
 
 <svelte:head>
 	<title>Daniel Bulant - Homepage</title>
+    <meta property="og:title" content="Daniel Bulant - Homepage"/>
 	<meta name="description" content="Homepage of danbulant.eu - List of my projects, contact info.">
+	<meta name="og:description" content="Homepage of danbulant.eu - List of my projects, contact info.">
+    <meta property="og:site_name" content="Daniel Bulant"/>
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:profile:first_name" content="Daniel" />
+    <meta property="og:profile:last_name" content="Bulant" />
+    <meta property="og:profile:username" content="danbulant" />
+    <meta property="og:profile:gender" content="male" />
 </svelte:head>
 
 <Navbar />
@@ -199,15 +209,7 @@
 		<Contact />
 	</div>
 </main>
-<div class="bottombar" class:dark={$darkmode}>
-	<Bar>
-		<h3>Daniel Bulant</h3>
-		<Split />
-		<h3>
-			Design by Carl Hansen
-		</h3>
-	</Bar>
-</div>
+<Bottombar />
 
 <style>
 	/* :global(body) {
@@ -238,27 +240,8 @@
 		margin: 0 min(50px, 5%) 0 min(50px, 5%);
 		width: calc(100% - min(100px, 10%));
 	}
-	.projects, .bottombar {
+	.projects {
 		max-width: 1380px;
-	}
-	.bottombar {
-		margin: 30px auto 30px auto;
-		width: calc(100% - min(100px, 10%));
-	}
-	@media (max-width: 520px) {
-		.bottombar {
-			margin: 30px 0 0 0;
-			width: 100%;
-			background: white;
-		}
-		.dark.bottombar {
-			background: rgb(28, 28, 33);
-		}
-	}
-	.bottombar h3 {
-		font-size: 18px;
-		font-weight: bold;
-		margin: 0;
 	}
 	.projects {
 		display: flex;
@@ -348,11 +331,8 @@
 		margin-inline-start: 40px;
 		margin-inline-end: 40px;
 	}
-	h1, h3 {
+	h1 {
 		color: #282B29;
-	}
-	.dark h3 {
-		color: rgb(191, 191, 191);
 	}
 	h1 {
 		font-size: 72px;
@@ -361,9 +341,5 @@
 		h1 {
 			font-size: 40px;
 		}
-	}
-	h3 {
-		font-size: 29px;
-		font-weight: 400;
 	}
 </style>

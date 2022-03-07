@@ -37,6 +37,7 @@
     <h1>{title}</h1>
     <span>Written {dt.toRelativeCalendar()} ({dt.toLocaleString(DateTime.DATE_FULL)})</span>
     <slot />
+    <noscript>Although the page mostly works without Javascript, you won't be able to comment. Also, I acknowledge the privacy flaws, but Javascript is a fundamental part of modern web, and shouldn't be disabled. Maybe use an adblock instead of disabling it for everything?</noscript>
     <script src="https://utteranc.es/client.js"
         repo="danbulant/design"
         issue-term="pathname"

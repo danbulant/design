@@ -38,6 +38,7 @@
             <h2>Git + GitHub</h2>
             <p>I use Git version control system for all of my projects, even if I don't upload them to GitHub. Most of my projects can be found on GitHub.</p>
             <p>My GitHub profile is @<a href="https://github.com/danbulant" target="_blank" rel="noopener noreferrer">danbulant</a>.</p>
+            <p>The source code of this website is available <a href="https://github.com/danbulant/design" target="_blank" rel="noopener noreferrer">here</a></p>
         {:else if selected === "docker"}
             <h2>Docker + Docker compose + Docker desktop</h2>
             <p><a href="https://www.docker.com" rel="noopener noreferrer" target="_blank">Docker</a> is the most widely used container runtime. <a href="https://docs.docker.com/compose/" target="_blank" rel="noopener noreferrer">Docker compose</a> makes it easy to orchestrate multiple containers, and finally, <a href="https://docs.docker.com/desktop/" target="_blank" rel="noopener noreferrer">Docker desktop</a> is the easiest way to get Docker on Windows.</p>

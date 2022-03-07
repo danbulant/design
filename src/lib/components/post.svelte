@@ -1,10 +1,12 @@
 <script>
+    import darkmode from "$lib/stores/darkmode";
+
     export var thumbnail;
     // export var categories = [];
-    export var author;
+    // export var author;
     export var relDate;
     export var title;
-    export var authorIcon;
+    // export var authorIcon;
     export var currentHover;
     export var path;
     export var description
@@ -20,11 +22,11 @@
     }
 </script>
 
-<a href={path} class="post" class:grayscale on:mouseenter={mouseenter} on:mouseleave={mouseleave}>
+<a href={path} class:dark={$darkmode} class="post" class:grayscale on:mouseenter={mouseenter} on:mouseleave={mouseleave}>
     {#if thumbnail}
         <img src={thumbnail} alt="Thumbnail" class="thumbnail" draggable={false}>
     {:else}
-        <div style="width: 150px; height: 150px;"></div>
+        <div class="thumbnail"></div>
     {/if}
     <div class="data">
         <!-- <div class="categories">
@@ -35,10 +37,10 @@
         <h4>{title}</h4>
         <p>{description}</p>
         <div class="author">
-            <img src={authorIcon} alt="Avatar of author" draggable={false}>
+            <!-- <img src={authorIcon} alt="Avatar of author" draggable={false}>
             <span class="spacer">—</span>
             <span class="author">{author}</span>
-            <span class="spacer">—</span>
+            <span class="spacer">—</span> -->
             <span class="date">{relDate}</span>
         </div>
     </div>
@@ -73,18 +75,23 @@
         width: 150px;
         height: 150px;
         margin-right: 15px;
+        margin-top: 5px;
         object-fit: cover;
+        box-shadow: 0 0 5px rgb(145, 145, 145);
+    }
+    .dark .thumbnail {
+        box-shadow: 0 0 5px rgb(0, 0, 0);
     }
     img {
         height: 100%;
         border-radius: 5px;
     }
-    .author img {
+    /* .author img {
         height: 100%;
         border-radius: 50%;
-    }
+    } */
     .author {
-        height: 2em;
+        color: gray;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
@@ -92,5 +99,8 @@
     }
     .author > * {
         padding: 0 5px;
+    }
+    p {
+        margin: 0;
     }
 </style>

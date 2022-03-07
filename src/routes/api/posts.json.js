@@ -1,6 +1,9 @@
 import { DateTime } from "luxon";
 
-export async function get() {
+/**
+ * @type {import("@sveltejs/kit").RequestHandler}
+ */
+export async function get(req) {
     const allPostFiles = import.meta.glob('../posts/**/*.md');
 
     const allPosts = await Promise.all(

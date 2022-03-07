@@ -36,15 +36,14 @@
         font-size: 40px;
         font-weight: 500;
         max-width: 1360px;
-        margin: auto;
-        margin-top: 50px;
-        margin-bottom: 20px;
+        margin: 50px auto 30px;
     }
     .hero {
         width: calc(60% - 5px);
         margin-right: 5px;
         min-width: 620px;
         flex-shrink: 0;
+        margin-bottom: 15px;
     }
     .posts {
         width: calc(40% - 5px);
@@ -56,10 +55,11 @@
             width: calc(100% - min(120px, 10%));
             margin: 0 min(60px, 5%);
             min-width: initial;
+            margin-bottom: 15px;
         }
         h2 {
             width: calc(100% - min(120px, 10%));
-            margin: 0 min(60px, 5%);
+            margin: 10px min(60px, 5%) 20px;
         }
         .posts {
             display: flex;

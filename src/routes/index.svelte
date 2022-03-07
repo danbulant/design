@@ -12,15 +12,13 @@
 </script>
 
 <script>
-	import Bar from "$lib/components/bar.svelte";
-import Bottombar from "$lib/components/bottombar.svelte";
+	import Bottombar from "$lib/components/bottombar.svelte";
 	import Button from "$lib/components/button.svelte";
 	import Contact from "$lib/components/contact.svelte";
 	import Hero from "$lib/components/hero.svelte";
 	import Navbar from "$lib/components/navbar.svelte";
 	import Posts from "$lib/components/posts.svelte";
 	import Project from "$lib/components/project.svelte";
-	import Split from "$lib/components/split.svelte";
 	import TechnologyDetails from "$lib/components/technologyDetails.svelte";
 	import darkmode from "$lib/stores/darkmode";
 
@@ -56,6 +54,13 @@ import Bottombar from "$lib/components/bottombar.svelte";
 		<!-- <h3>To be used later</h3> -->
 		<Button href="#projects">Check out my work</Button>
 	</Hero>
+	<div class="blog">
+		I recently started my own blog.<br>
+		You can checkout &ldquo;<a href={posts[0].path}><b>{posts[0].title}</b></a>&rdquo; and other recent blog posts:<br>
+		<div style="text-align: center; margin-top: 5px;">
+			<Button href="/posts">blog</Button>
+		</div>
+	</div>
 	<div class="projects" id="projects">
 		<div>
 			<h2>
@@ -110,11 +115,14 @@ import Bottombar from "$lib/components/bottombar.svelte";
 			</Project>
 		</div>
 	</div>
+	<div class="center">
+		In addition, this website is open-source and available on <img class="white" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" style="height: 1em;" alt=""> <a href="https://github.com/danbulant/design" style="color: rgb(255, 102, 128)">GitHub</a>
+	</div>
 	<div class="also relative">
 		<TechnologyDetails bind:selected={technologySelected} />
 		<h2 class="text-center">I also worked with the following:</h2>
 		<noscript class="text-center text-white">Clicking won't work if javascript is not enabled.</noscript>
-		<span class="text-center" class:text-gray={!technologyHover} class:text-white={technologyHover}>Click each technology for more details about why I'm using it.</span>
+		<span class="text-center" class:text-gray={!technologyHover} class:text-white={technologyHover}>{typeof window !== "undefined" && window.matchMedia("(hover: none) and (pointer: coarse)").matches ? "Touch" : "Click"} each technology for more details about why I'm using it.</span>
 		<div class="split" on:mouseenter={() => technologyHover = true} on:mouseleave={() => technologyHover = false}>
 			<ul>
 				<li on:click={() => technologySelected = "typescript"}>
@@ -122,7 +130,7 @@ import Bottombar from "$lib/components/bottombar.svelte";
 					Typescript
 				</li>
 				<li on:click={() => technologySelected = "rust"}>
-					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg" alt="" draggable={false} />
+					<img class="white" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg" alt="" draggable={false} />
 					Rust
 				</li>
 				<li on:click={() => technologySelected = "x11"}>
@@ -134,7 +142,7 @@ import Bottombar from "$lib/components/bottombar.svelte";
 					C#
 				</li>
 				<li on:click={() => technologySelected = "git"}>
-					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" draggable={false} />
+					<img class="white" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" draggable={false} />
 					Git + GitHub
 				</li>
 				<li on:click={() => technologySelected = "docker"}>
@@ -184,7 +192,7 @@ import Bottombar from "$lib/components/bottombar.svelte";
 					Node.js
 				</li>
 				<li on:click={() => technologySelected = "deno"}>
-					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/denojs/denojs-original.svg" alt="" draggable={false} />
+					<img class="white" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/denojs/denojs-original.svg" alt="" draggable={false} />
 					Deno
 				</li>
 				<li on:click={() => technologySelected = "linux"}>
@@ -212,12 +220,31 @@ import Bottombar from "$lib/components/bottombar.svelte";
 <Bottombar />
 
 <style>
+	img.white {
+		background: white;
+		border-radius: 50%;
+	}
+	.blog {
+		margin: auto;
+		max-width: max-content;
+		padding: 15px;
+		border-radius: 5px;
+		background: #282B29;
+		color: white;
+	}
+	.dark .blog {
+		background: white;
+		color: #282B29;
+	}
 	/* :global(body) {
 		background-image: linear-gradient(to top, rgb(242,210,223), transparent min(180vh, 1080px));
 	}
 	:global(body.dark) {
 		background-image: linear-gradient(to top, rgba(94, 61, 74, 0.685), transparent min(180vh, 1080px));
 	} */
+	.center {
+		text-align: center;
+	}
 	.relative {
 		position: relative;
 	}
@@ -247,10 +274,10 @@ import Bottombar from "$lib/components/bottombar.svelte";
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
-		margin: 0 20px 50px 20px;
+		margin: 0 20px 0px 20px;
 	}
 	.also {
-		margin: auto;
+		margin: 50px auto 0 auto;
 		max-width: 850px;
 		border-radius: 15px;
 	}
@@ -269,6 +296,7 @@ import Bottombar from "$lib/components/bottombar.svelte";
 	}
 	.split ul {
 		min-width: 340px;
+		margin: 0;
 	}
 	.also li {
 		height: 32px;
@@ -298,11 +326,11 @@ import Bottombar from "$lib/components/bottombar.svelte";
 	}
 	.also li img {
 		height: 24px;
-		padding-right: 6px;
+		margin-right: 6px;
 	}
 	@media (min-width: 1520px) {
 		.projects {
-			margin: 0 auto 50px auto;
+			margin: 0 auto 0px auto;
 		}
 	}
 	.projects > div {
@@ -335,7 +363,7 @@ import Bottombar from "$lib/components/bottombar.svelte";
 		color: #282B29;
 	}
 	h1 {
-		font-size: 72px;
+		font-size: 64px;
 	}
 	@media (max-width: 1100px) {
 		h1 {

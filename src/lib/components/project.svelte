@@ -12,7 +12,7 @@
     }
 </script>
 
-<a href={link} target="_blank" rel="noreferrer noopener" class="full" on:click={handle}>
+<a href={link || "#"} target="_blank" rel="noreferrer noopener" class="full" on:click={handle}>
     <div class="project">
         <div class="imgcon">
             <img src={image} alt="Project" draggable={false} class:grayscale>
@@ -28,7 +28,7 @@
         <h3><slot /></h3>
         <div class="tags">
             {#each tags as tag, i}
-                <span>{tag}</span>{#if i !== tags.length - 1}<span>&middot;</span>{/if}
+                <span>{tag}</span>{#if i !== tags.length - 1}<span>&middot;&ZeroWidthSpace;</span>{/if}
             {/each}
         </div>
         <a href={link || "#"} rel="noreferrer noopener" target="_blank">View</a>
@@ -42,6 +42,8 @@
     .tags {
         margin: 5px 0;
         margin-left: -3px;
+        max-width: 100%;
+        overflow-wrap: normal;
     }
     .tags span {
         padding: 0 3px;

@@ -1,6 +1,6 @@
 ---
 title: Rust basics, from the perspective of a high level programmer
-date: 2022-03-05
+date: 2022-03-06
 author: Daniel Bulant
 authorIcon: /logo.png
 categories: [programming, rust]
@@ -142,6 +142,15 @@ The curly braces are required.
 Types are either primitives (like numbers and str) or structs (String).  
 Nearly the only difference is that primitives are just written as they are to initialize, but complex types require some kind of constructor.
 
+#### Heap vs Stack
+
+Heap:
+- slower (still really fast)
+- bigger
+
+Stack:
+
+
 #### Common primitives
 
 Numbers:
@@ -151,7 +160,47 @@ Numbers:
 
 Strings:
 - `str` - a simple primitive UTF-8 string (all Rust strings are UTF-8. Invalid UTF-8 strings cannot be used and will throw/panic). Usually used as a pointer (i.e. `&str`)
-- `String` - a more complex type, stored on the heap.
+- `String` - a more complex type (technically not a primitive), stored on the heap.
+
+Arrays:
+- `T[]` - arrays have a fixed length (they can have fewer elements if you use `Option<T>` type).
+
+#### Tuples
+
+Tuples can be used to have multiple values with different types (basically an array with multiple types and fixed size).  
+Unlike array, they're accesssed directly by the dot notation, i.e. `tuple.0` will get the first item, and tuples don't have methods like `.len()`.  
+
+```rust
+let var = (1, "str");
+```
+
+An interesting quirk is that you can use `()` (empty tuple) to return "void". Functions that don't have a `return` statement and don't return a value return `()`.
+
+#### Common structs
+
+##### Option&amp;lt;T&amp;gt;
+
+Is an enum (we'll get to how `enum`s work later. They're kind of different from other languages) with either **`Some(T)` or `None`** values.  
+To get the value, you can use **`match`** like with other enums, or use **`.unwrap()`** (which will panic if it's `None`).
+
+#### Result&amp;lt;T, E&amp;gt;
+
+Similar to `Option`, but used to handle errors (commonly returned by <abbr title="Input Output">IO</abbr> methods).   
+It's values are either `Ok(T)` or `Err(E)`.  
+To get the value, you can again use **`match` block or `.unwrap()`**.
+
+For easier use, when a function returns `Result<T, E>`, it can use `?` after calling methods that can return `Result<T, E>` (where `E` must be of compatible type) to return the error `E` (similar to using `.unwrap()`, but instead of panic makes the function return the error).
+
+```rust
+fn example() -> Result<(), Error> { // An Error type. For simplicity, you can use String, or you can define your own enum.
+    something_that_returns_result()?;
+    Ok(()) // returns empty Tuple
+}
+```
+
+#### Vec&amp;lt;T&ampt;gt;
+
+`Vec`tors are growable arrays stored on the heap.
 
 ### Namespace
 

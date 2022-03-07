@@ -4,6 +4,10 @@ html, body {
 	min-height: 100vh;
 }
 
+* {
+	-webkit-tap-highlight-color: transparent;
+}
+
 body {
 	color: #333;
 	margin: 0;

@@ -50,7 +50,7 @@
 <hr class:dark={$darkmode}>
 
 <footer>
-    Daniel Bulant - Blog posts CC-BY-SA 
+    Daniel Bulant - Blog posts CC-BY-SA (unless otherwise specified)
 </footer>
 
 <style>

@@ -22,10 +22,10 @@
         <h3>{title}</h3>
         <p>{description}</p>
         <div class="author">
-            <img src={authorIcon} alt="Avatar of author" draggable={false}>
+            <!-- <img src={authorIcon} alt="Avatar of author" draggable={false}>
             <span class="spacer">—</span>
             <span class="author">{author}</span>
-            <span class="spacer">—</span>
+            <span class="spacer">—</span> -->
             <span class="date">{relDate}</span>
         </div>
     </div>
@@ -60,6 +60,9 @@
     }
     p {
         font-size: 18px;
+    }
+    .author {
+        color: gray;
     }
     .author > * {
         padding: 0 5px;

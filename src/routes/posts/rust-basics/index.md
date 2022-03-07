@@ -24,6 +24,8 @@ description: Rust is a fast memory-safe low level programming language. And here
 
     I later moved to JS which looked a lot like C, which I saw everywhere.
 
+    I also did few projects with Java and C#, but I always returned to JS afterwards.
+
     I also tried learning C (and C++), and although I did have a certificate about both of them on Sololearn (I no longer have the C++ one as they added new lessons), I never really used them outside, as everything seemed way to complicated.
 
     Fast RAM access is cool and all, but why do I have to use `free`? Why can't it know that if I go outside the scope it should free the memory?
@@ -144,12 +146,21 @@ Nearly the only difference is that primitives are just written as they are to in
 
 #### Heap vs Stack
 
+(as half of this article, this is simplified)  
+One of the weird things that I didn't have to think about before. (AFAIK every object in JS is stored on the heap, only primitives are on stack)
+
 Heap:
 - slower (still really fast)
 - bigger
 
 Stack:
+- faster
+- smaller
 
+Primitives and basic [`struct`](#declaring-structs)s are stored on the stack. To get values onto heap, you can use [`Box<T>`](#boxlttgt). [`Vec<T>`](#veclttgt) also puts it's values onto heap.
+
+You may need to use heap if you're using a bit more RAM or if you need to use [`enum`](#enums)s with values in structs.  
+If you see a stackoverflow, you're using too much stack memory. Try [`box`](#boxlttgt)ing some bigger (and perhaps rarely used) values.
 
 #### Common primitives
 
@@ -183,7 +194,7 @@ An interesting quirk is that you can use `()` (empty tuple) to return "void". Fu
 Is an enum (we'll get to how `enum`s work later. They're kind of different from other languages) with either **`Some(T)` or `None`** values.  
 To get the value, you can use **`match`** like with other enums, or use **`.unwrap()`** (which will panic if it's `None`).
 
-#### Result&amp;lt;T, E&amp;gt;
+##### Result&amp;lt;T, E&amp;gt;
 
 Similar to `Option`, but used to handle errors (commonly returned by <abbr title="Input Output">IO</abbr> methods).   
 It's values are either `Ok(T)` or `Err(E)`.  
@@ -198,9 +209,163 @@ fn example() -> Result<(), Error> { // An Error type. For simplicity, you can us
 }
 ```
 
-#### Vec&amp;lt;T&ampt;gt;
+##### Vec&amp;lt;T&amp;gt;
 
 `Vec`tors are growable arrays stored on the heap.
+
+Common methods like `.push()`, `.pop()` etc. are available. See [rust doc](https://doc.rust-lang.org/std/vec/struct.Vec.html).
+
+##### Box&amp;lt;T&amp;gt;
+
+Stores `T` on heap. Useful for using [`enum`s](#enums) in structs, or to free up stack space.
+
+See also [heap vs stack](#heap-vs-stack).
+
+#### Declaring structs
+
+Structs are kind of objects, except their size is static.  
+Structs can be declared in a number of ways.
+
+- use [Tuple](#tuples) as declaration (this works similar to alias of tuple)
+
+```rust
+struct Something(u8, u16); // a struct with 2 numbers, one unsigned 8 bit, the other one unsigned 16 bit
+```
+
+- use ``object'' notation (similar to how classes or objects are declared)
+
+```rust
+struct Something {
+    value: u8,
+    another_value: u16
+}
+```
+
+- use structs as an alias
+
+```rust
+struct Something = u8; // a single value
+```
+
+As stated earlier, `struct` **sizes are static**. This means you cannot use [`enum`s](#enums) with self-referencing (recursive) values directly in `structs`.  
+One of possible ``workarounds'' is to use the [heap](#heap-vs-stack) for actually storing the values, for example by using [Box&amp;lt;T&amp;gt;](#boxlttgt).
+
+```rust
+struct Something {
+    variable: Box<SomeEnum>
+}
+```
+
+Possible reason for this is when you try to create an `enum` whose value can be the struct defined, but then mention the `enum` (directly or indirectly) in the struct.
+
+```rust
+struct MaybeRecursive {
+    possibly_self: Option<MaybeRecursive> // error!
+}
+struct MaybeRecursive {
+    possibly_self: Option<Box<MaybeRecursive>> // fine
+}
+```
+
+{#if story}
+    This is something I hit when trying to create an abstract syntax tree for my shell.
+
+{/if}
+
+To instantiate the struct, use the following notation (kind of similar to defining arrays in <abbr title="See sharp">C#</abbr>):
+
+```rust
+Something { variable: 1, another_variable: 1234}
+```
+
+### Traits
+
+Oh, the holy trait system.  
+*Wait even [PHP has this](https://www.php.net/manual/en/language.oop5.traits.php)?*
+
+Traits are one of the hardest ideas in Rust to grasp, yet one of the most powerful ones.  
+Instead of being inheritance based (like <abbr title="Object Oriented Programming">OOP</abbr>, or JavaScript's prototype oriented programming), Rust throws it all out and instead embraces duck typing (i.e. if it quacks it's a duck).
+
+For every type, there can be exactly one 'default' (or nameless) trait, which can be implemented only in the same module. Those are usually unique methods for that type.  
+For everything else, there are named traits. Example:
+
+```rust
+trait Duck {
+    fn quack(&self) -> String;
+    /// returns if the duck can jump
+    fn can_jump(&self) -> bool { // default trait implementation. Code cannot have any assumptions about the type of self.
+        false // by default duck cannot jump
+    }
+}
+
+struct Dog(); // a struct with empty tuple
+
+impl Dog { // a nameless default trait. 
+    fn bark(&self) -> String { String::from("bark!") }
+}
+
+impl Duck for Dog { // implement Duck trait for Dog type (struct)
+    fn quack(&self) -> String { String::from("quark!") } // dog kind of quacks differently
+}
+
+let dog = Dog {};
+dog.bark();
+dog.quack();
+```
+
+First, we define the trait (Interface from the <abbr title="Object Oriented Programming">OOP</abbr> language, except only methods/functions).  
+Then we can implement the trait for the given type (`Dog` in our case).
+
+Some traits can be implemented automatically for you. Common example is `Display` and `Debug` traits. Their requirement is that the types used in the struct have to implement `Display` and `Debug` respectively.
+
+```rust
+#[derive(Display,Debug)]
+struct Something {
+    var: u8
+}
+
+println!("{:?}", Something { var: 1 });
+```
+
+#### Scopes
+
+Traits are scoped, and are scoped independently of the type it implements. Meaning you can use a type, but not a trait implementation (for example if said implementation is coming from another library than the type itself). You can then `use` the implementation.
+
+
+#### The self
+
+`self` in traits refers to the type it implements.  
+**`&self` is an alias to `self: &Self`**, where **`Self` refers to the type** (so `self: &Dog` in the case above).  
+`self` is also an alias to `self: Self`, but the difference is that this moves the variable (consumes it, and the variable is no longer available outside).  
+
+When there function definiton doesn't start with `self`, `&self` or `&mut self` (`&mut self` is the same as `&self` except with mutable reference), it's considered a static method.  
+Traits can still define and implement static methods like any other methods.  
+A common static method is `new`, which is used to create a new instance of the type/struct:
+
+```rust
+impl Something {
+    fn new() -> Something {
+        Something { x: 1 }
+    }
+}
+
+...
+
+let var = Something::new();
+```
+
+See also [Declaring structs](#declaring-structs)
+
+### Pointers
+
+{#if story}
+    *and the important magic of Rust.*
+
+{/if}
+
+Pointers are actually pretty easy to understand, even if coming from higher level languages. I still do make mistakes with them, a lot.
+
+`&A` points to `A`, and I can use it quite similarly, I just have to make sure that `A` exists for as long as `&A` exists, since a pointer to nowhere is not a good idea.
 
 ### Namespace
 
@@ -209,13 +374,13 @@ You can always use the fully qualified name without any imports. Imports are sor
 ```rust
 std::env::args()
 ```
-
+---
 ```rust
 use std::env;
 
 env::args()
 ```
-
+---
 ```rust
 use std::env::args;
 
@@ -239,3 +404,9 @@ args()
 ```
 
 Another thing of interest is that you can also use `use` inside functions. Then the library won't be imported if it's not used (i.e. if the function doesn't appear in the code path, for example if you use a mock library for tests and `use` only in tests, it won't be imported when building normally).
+
+---
+
+Thanks for reading this {story ? "little story (with some documentation)" : "post"}. Hope that you learned something (which I did, even during writing the post).
+
+*no crabs were harmed in the making of this post*

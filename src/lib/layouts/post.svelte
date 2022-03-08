@@ -115,7 +115,7 @@
     }
 	main {
         margin: 0 auto;
-        max-width: 700px;
+        max-width: 800px;
         padding: 0 20px 20px;
 	}
     h1 {

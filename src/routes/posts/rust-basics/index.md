@@ -1,6 +1,6 @@
 ---
 title: Rust basics, from the perspective of a high level programmer
-date: 2022-03-06
+date: 2022-03-12
 author: Daniel Bulant
 authorIcon: /logo.png
 categories: [programming, rust]
@@ -62,15 +62,39 @@ To create a new project, run `cargo init <dir>` (or without `<dir>` when in empt
 The starting point will then be in `src/main.rs`.  
 Similar to C, the contents of the main program need to be wrapped in `main`. The difference is that here it doesn't take any arguments, and shouldn't return a number - use `std::env` namespace for that.
 
+Also, I recommend using CLion with the Rust extension. VSCode does have Rust extension, but it works poorly in comparison. Other JetBrains editors work as well, but CLion has some native features (like debugging) that the other editors don't. It's free for students with the GitHub education pack.
+
 ### Interesting things to note at the start
 
 #### Everything is scoped
 
 Not just variables, but you can also nest functions and `use`s inside functions and traits. Those won't be accessible outside, and won't be in the code if they're not used. *I think*.
 
+#### Naming scheme is enforced
+
+Variables and functions/methods need to be only lowercase letters (and numbers, but cannot start with one) with underscore (i.e. snake_case).  
+Structs (and other types), enums (including enum values) and traits (but not their functions/methods) need to start with uppercase letters and cannot contain any underscore.
+
+#### There's no increment operator
+
+Actually, there is: `i += 1`. Use that. In the same way as assignment, this also returns the value post-assignment (i.e. sets i to i + 1, and then returns i).
+
+The reason for not having fancy `i++` (or it's siblings `++i`, `i--` and `--i`) is that it's confusing.
+
+Can you reliably tell what this does (especially when language is not specified)?
+```c
+a[i++ + ++i] = i++ + ++i + a[++i]
+```
+
+The thing is, until recently (or maybe even now? I just read that on SO), the actual behaviour of this was undefined, meaning it could change between different compilers (or maybe even versions of the same compiler).  
+To combat that and improve readability of code (that's a big thing in Rust, often values readability and verbosity over saving keytypes), Rust only has `i += 1`, which nearly everyone can tell will increment the variable `i` and return it's final statement.  
+So you don't have to know that `i++` actually returns the original value, not the new one, and increments.
+
+Oh and also, operator overloads are a thing using traits (for those wondering if they exist, one of the things I miss with JS). We won't get to that here though.
+
 #### Nearly everything is an expression
 
-Not just function calls, but `if`s, `while`s and `for`s as well.
+Not just function calls, but [`if`](#ifs)s, [`while`](#while)s, [`match`](#match)s and [`for`](#for)s as well.
 
 Instead of the usual ternary operator common in other languages, you can just use [`if`](#ifs) directly:
 
@@ -95,6 +119,18 @@ You can redeclare variables, in which case the previous variable will be dropped
 ```rust
 let var = 1;
 let var = "something";
+```
+
+Variables are immutable by default. If you want to change them later, use the `mut` keyword after `let`.
+
+```rust
+let var = 1;
+var = 2; // error! cannot borrow variable muttable (i.e. immutable variable cannot be mutated)
+```
+
+```rust
+let mut var = 1;
+var = 2;
 ```
 
 ### Functions
@@ -192,13 +228,15 @@ An interesting quirk is that you can use `()` (empty tuple) to return "void". Fu
 ##### Option&amp;lt;T&amp;gt;
 
 Is an enum (we'll get to how `enum`s work later. They're kind of different from other languages) with either **`Some(T)` or `None`** values.  
-To get the value, you can use **`match`** like with other enums, or use **`.unwrap()`** (which will panic if it's `None`).
+To get the value, you can use **[`match`](#match)** like with other enums, or use **`.unwrap()`** (which will panic if it's `None`).
+
+See also [Declaring enums](#declaring-enums).
 
 ##### Result&amp;lt;T, E&amp;gt;
 
 Similar to `Option`, but used to handle errors (commonly returned by <abbr title="Input Output">IO</abbr> methods).   
 It's values are either `Ok(T)` or `Err(E)`.  
-To get the value, you can again use **`match` block or `.unwrap()`**.
+To get the value, you can again use **[`match`](#match) block or `.unwrap()`**.
 
 For easier use, when a function returns `Result<T, E>`, it can use `?` after calling methods that can return `Result<T, E>` (where `E` must be of compatible type) to return the error `E` (similar to using `.unwrap()`, but instead of panic makes the function return the error).
 
@@ -277,6 +315,158 @@ To instantiate the struct, use the following notation (kind of similar to defini
 ```rust
 Something { variable: 1, another_variable: 1234}
 ```
+
+### Declaring enums
+
+I think an example is worth much more than text, so:
+
+```rust
+enum EnumName {
+    First,
+    Second
+}
+```
+
+With set number (for example when serializing or deserializing number):
+```rust
+enum EnumName {
+    First = 1,
+    Second // auto incremented
+}
+```
+
+Now the more powerful ones:
+```rust
+enum EnumName {
+    WithValue(u8),
+    WithMultipleValues(u8, u64, SomeStruct),
+    CanBeSelf(EnumName),
+    Empty
+}
+```
+
+You can ``extract'' the values using [`match`](#match).
+
+
+### Match
+
+*one of the most powerful features of Rust*
+
+Matches are switches on steroids. You can use them as normal switches, with the only exception that (to prevent common bugs), all cases must be covered.
+
+```rust
+let var = 1;
+match var {
+    1 => println!("it's 1"),
+    2 => println!("it's 2"),
+    // following required if the list is not exhaustive
+    _ => println!("it's not 1 or 2")
+}
+```
+
+You can also match ranges
+
+```rust
+match var {
+    1..=2 => println("it's between 1 and 2 (both inclusive)"),
+    _ => println!("it's something else")
+}
+```
+
+You can also do nothing
+
+```rust
+match var {
+    _ => {}
+}
+```
+
+You can use this to safely `unwrap` [`Result<T, E>`](#resultltt-egt)s and [`Option<T>`](#optionlttgt)s, and to get values from other enums
+
+```rust
+let option: Option<u8> = Some(1);
+match option {
+    Some(i) => println!("It contains {i}"),
+    None => println!("it's empty :c")
+    // notice we don't need _ here, as Some and None are the only possible values of option, thus making this list exhaustive
+}
+```
+
+Rust will complain if you don't use `i` (or the other values). You can simply use `_` in their place.
+
+```rust
+match option {
+    Some(_) => println!("yes"),
+    None => println!("no")
+}
+```
+
+Match is also an expression:
+
+```rust
+let option: Option<u8> = Some(1);
+let surely = match option {
+    Some(i) => i,
+    None => 0
+}
+println!("{surely}");
+```
+
+Although, maybe try looking into the documentation for [`Option`](https://doc.rust-lang.org/std/option/) (or view your IDEs completions for available traits/methods).  
+You might notice that you can use `.unwrap_or(val)` instead of typing this (the above match is identical to `.unwrap_or(0)`).
+
+### Loops
+
+The simplest of all the loops. Just use `loop`.
+
+```rust
+loop {
+    if something { break }
+}
+```
+
+It will run the code until `break` is used (or `return` which also returns from the parent function).
+
+### For
+
+The fanciest of the loops. There's no classic `for` loop like in other languages, but it's so easy to write something like that, yet easier to understand.
+
+```rust
+for i in 1..3 {} // for(let i = 1; i < 3; i++) // i++ is not a thing, see things to note
+for i in 1..=3 {} // for(let i = 1; i <= 3; i++)
+for i in 1..=var {} // for(let i = 1; i <= var; i++)
+for i in array_or_vec {} // for(let i of array_or_vec) in JS
+// again, as most other things, uses a trait, here named "iterator"
+// for some types, you need to call `.iter()` or `.into_iter()`.
+// Rust Compiler will usually tell you this.
+for i in something.iter() {}
+```
+
+### While
+
+Quite simple loop. Unlike other languages, there's no `do ... while`, only the basic `while`.
+
+```rust
+while condition {
+    looped();
+}
+```
+
+Syntax is the same as for [if](#ifs), just that the contents are looped.
+
+### Printing
+
+For printing, you can use `print!` and `println!`.  
+The `!` means it's a macro (i.e. a shortcut that expands to something), but you don't really need to think about that much. Another common macro is `vec![]` which creates a [`Vec<T>`](#veclttgt) from an array (values between `[]`).
+
+Those macros have a simple template system.
+
+- To simply print a new line, write `println!()`.
+- To print a single static string, write `print!("something")`. `ln` in `println!` means line, so it adds a newline (`\n`) symbol. `console.log` adds that newline by default.
+- To print a variable which implements the `Display` trait (most primitives do so), use `print!("{variable}")`.
+- To print a variable which implements the `Debug` trait (can be derived more easily than Display), use `print!("{variable:?}")`.
+- To print something more complex which implements `Display` trait, use `print!("{}", variable)`.
+- To print something more complex which implements `Debug` trait, use `print!("{:?}", variable)`.
 
 ### Traits
 
@@ -358,14 +548,35 @@ See also [Declaring structs](#declaring-structs)
 
 ### Pointers
 
-{#if story}
-    *and the important magic of Rust.*
-
-{/if}
+*and the important magic of Rust.*
 
 Pointers are actually pretty easy to understand, even if coming from higher level languages. I still do make mistakes with them, a lot.
 
 `&A` points to `A`, and I can use it quite similarly, I just have to make sure that `A` exists for as long as `&A` exists, since a pointer to nowhere is not a good idea.
+
+Rust prevents that by statically checking at compile time if the use is valid. It automatically frees variables that are out of scope, and doesn't allow pointers to outlive the original variable.  
+Another safety guarantee is that **only one mutable pointer can exist (and no other pointer can exist)** at a time.
+
+This means that this (in my eyes valid) code is invalid:
+```rust
+let a = 1;
+let b = &a;
+let c = &mut a;
+println!("{b}"); // Error! there can only be one mutable pointer
+c = 1;
+```
+
+That's kinda all there is to it. Just that the **original variable must always be in scope for the pointers to be accessible**.  
+Using pointers in structs are kind of problematic as the compiler generally doesn't like it (because structs often outlive the original variable). I usually just either **transfer ownership or clone** (`.clone()`, part of `Clone` trait. Can be `derived`.).  
+Sometimes, some functions require only pointers and not transfers. You can just prepend the value with `&` (or `&mut`) to make it work.
+
+```rust
+something(&a);
+```
+
+There can also be double, triple and... pointers, but those are rare and generally just make it harder to work with.
+
+You also don't need to care about freeing the variable, rust frees it for you when it's out of scope.
 
 ### Namespace
 
@@ -405,8 +616,98 @@ args()
 
 Another thing of interest is that you can also use `use` inside functions. Then the library won't be imported if it's not used (i.e. if the function doesn't appear in the code path, for example if you use a mock library for tests and `use` only in tests, it won't be imported when building normally).
 
+```rust
+fn test() {
+    use std::env;
+    env::var();
+}
+```
+
+I don't recommend using that for normal code paths though, use global imports instead.
+
+### Publicity
+
+Now that we've talked about namespaces, let's talk publicity.
+
+Essentially, everything's private by default to the file it's created in.
+- traits, including their methods
+- structs, including their members
+- enums (their members inherit the publicity of the enum, which kind of makes sense, see [Match](#match))
+- functions
+- trait implementations depend on the trait and struct it implements, i.e. if both of them are public then it's public as well.
+
+To make them public (i.e. accessible outside the file), use `pub` keyword.
+
+```rust
+pub struct Something {
+    pub letter: char
+}
+pub trait CustomTrait { ... }
+pub fn method() {}
+```
+
+### Using multiple files
+
+Oh well, I do sometimes miss the ol' `require("./file")`.
+
+To ``import'' a file, use the `mod` directive. Crates downloaded via `cargo` are imported automatically.
+
+`main.rs`
+```rust
+mod my;
+
+fn main() {
+    my::function();
+    // or
+    use my::function;
+    function();
+}
+```
+`my.rs`
+```rust
+pub fn function() {
+    println!("function");
+}
+```
+
+You can also re-export a file using `pub mod`. Most existing rust code does this to support folders:
+
+`main.rs`
+```rust
+mod my;
+use my::file;
+
+fn main() {
+    file::function();
+}
+```
+
+`my/mod.rs` - the `mod.rs` name is special, kind of like `index.js`
+```rust
+pub mod file;
+```
+
+`my/file.rs`
+```rust
+pub fn function() {
+    println!("function");
+}
+```
+
+For how `println!` works, see [printing](#printing).
+
+### Writing documentation
+
+To write documentation, simply use three `/`. In some IDEs, they'll get highlighted differently (my CLion setup has it slightly brighter).  
+Works kind of similarly to JSDoc, except that types cannot be annotated explicitly, as they're set in code anyway.
+
+```rust
+/// a description of var
+let var = "something";
+```
+
 ---
 
 Thanks for reading this {story ? "little story (with some documentation)" : "post"}. Hope that you learned something (which I did, even during writing the post).
 
-*no crabs were harmed in the making of this post*
+*no crabs were harmed in the making of this post. I'm not affiliated with any of the mentioned products or companies.*

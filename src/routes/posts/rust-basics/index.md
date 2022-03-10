@@ -1,6 +1,6 @@
 ---
 title: Rust basics, from the perspective of a high level programmer
-date: 2022-03-12
+date: 2022-03-17
 author: Daniel Bulant
 authorIcon: /logo.png
 categories: [programming, rust]

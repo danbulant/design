@@ -1,6 +1,6 @@
 ---
 title: Writing my personal home page
-date: 2022-03-08
+date: 2022-03-11
 author: Daniel Bulant
 authorIcon: /logo.png
 thumbnail: /posts/writing-personal-home-page/2020-website-square.png

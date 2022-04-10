@@ -22,7 +22,15 @@
 
 <svelte:head>
 	<title>Blog - Daniel Bulant</title>
+	<link href="/posts/rss.xml" type="application/rss+xml" rel="alternate" title="Blog posts - RSS" />
 	<meta name="description" content="My personal blog about work, programming and fun stuff.">
+    <meta property="og:site_name" content="Daniel Bulant"/>
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:profile:first_name" content="Daniel" />
+    <meta property="og:profile:last_name" content="Bulant" />
+    <meta property="og:profile:username" content="danbulant" />
+    <meta property="og:profile:gender" content="male" />
 </svelte:head>
 
 <div class="posts" class:dark={$darkmode}>

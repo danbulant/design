@@ -1,5 +1,3 @@
-import { DateTime } from "luxon";
-
 /**
  * @type {import("@sveltejs/kit").RequestHandler}
  */
@@ -13,7 +11,6 @@ export async function get(req) {
             if(postPath.endsWith('/index')) postPath = postPath.slice(0, -6);
             return {
                 ...metadata,
-                relDate: DateTime.fromISO(metadata.date).toRelativeCalendar(),
                 path: postPath,
             };
         })

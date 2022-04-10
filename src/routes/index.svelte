@@ -33,6 +33,7 @@
 
 <svelte:head>
 	<title>Daniel Bulant - Homepage</title>
+	<link href="/posts/rss.xml" type="application/rss+xml" rel="alternate" title="Blog posts - RSS" />
     <meta property="og:title" content="Daniel Bulant - Homepage"/>
 	<meta name="description" content="Homepage of danbulant.eu - List of my projects, contact info.">
 	<meta name="og:description" content="Homepage of danbulant.eu - List of my projects, contact info.">

@@ -1,0 +1,14 @@
+name: rebuild website daily
+
+on:
+  schedule:
+    - cron: '0 23 * * *'
+
+jobs:
+  daily-rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: send digests
+        uses: wei/curl@v1
+        with:
+          args: 'https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/${{secrets.DEPLOY_HOOK}}'

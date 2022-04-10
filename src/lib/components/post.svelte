@@ -1,10 +1,11 @@
 <script>
     import darkmode from "$lib/stores/darkmode";
+    import { DateTime } from "luxon";
 
     export var thumbnail;
     // export var categories = [];
     // export var author;
-    export var relDate;
+    export var date;
     export var title;
     // export var authorIcon;
     export var currentHover;
@@ -20,6 +21,9 @@
     function mouseleave() {
         if(currentHover == title) currentHover = null;
     }
+
+    let dt = DateTime.fromISO(date);
+    $: dt = DateTime.fromISO(date);
 </script>
 
 <a href={path} class:dark={$darkmode} class="post" class:grayscale on:mouseenter={mouseenter} on:mouseleave={mouseleave}>
@@ -41,7 +45,7 @@
             <span class="spacer">—</span>
             <span class="author">{author}</span>
             <span class="spacer">—</span> -->
-            <span class="date">{relDate}</span>
+            <span class="date">{dt.toRelativeCalendar()} ({dt.toLocaleString(DateTime.DATE_FULL)})</span>
         </div>
     </div>
 </a>

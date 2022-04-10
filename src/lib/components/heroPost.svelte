@@ -1,12 +1,17 @@
 <script>
+    import { DateTime } from "luxon";
+
     export var bigThumbnail;
     // export var categories = [];
-    export var author;
-    export var relDate;
+    // export var author;
+    export var date;
     export var title;
-    export var authorIcon;
+    // export var authorIcon;
     export var description;
     export var path;
+
+    let dt = DateTime.fromISO(date);
+    $: dt = DateTime.fromISO(date);
 </script>
 
 <a href={path} class="post">
@@ -26,7 +31,7 @@
             <span class="spacer">—</span>
             <span class="author">{author}</span>
             <span class="spacer">—</span> -->
-            <span class="date">{relDate}</span>
+            <span class="date">{dt.toRelativeCalendar()} ({dt.toLocaleString(DateTime.DATE_FULL)})</span>
         </div>
     </div>
 </a>
@@ -43,9 +48,9 @@
         border-radius: 5px;
         width: 100%;
     }
-    .categories {
+    /* .categories {
         color: #0054E2;
-    }
+    } */
     .author {
         display: flex;
         align-items: center;
@@ -67,9 +72,9 @@
     .author > * {
         padding: 0 5px;
     }
-    .author img {
+    /* .author img {
         height: 100%;
         border-radius: 50%;
         padding-right: 5px;
-    }
+    } */
 </style>

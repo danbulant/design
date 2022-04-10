@@ -227,6 +227,7 @@
 	}
 	.blog {
 		margin: auto;
+		margin-top: 20px;
 		max-width: max-content;
 		padding: 15px;
 		border-radius: 5px;

@@ -81,6 +81,11 @@
         background-color: rgba(0,0,0,0.2);
         color: rgb(214, 214, 214);
     }
+	@supports (-moz-appearance:none) {
+		.desc {
+			background: rgba(0,0,0,0.9) !important;
+		}
+	}
     .desc.extradark {
         background-color: rgba(0,0,0,0.4);
     }

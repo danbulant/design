@@ -1,4 +1,6 @@
 <script>
+    import darkmode from "$lib/stores/darkmode";
+
     export var selected = true;
 
     var shouldClose = true;
@@ -11,7 +13,7 @@
     }
 </script>
 
-<div class="dialog" class:selected on:mousedown={() => shouldClose = true} on:mousemove={() => shouldClose = false} on:mouseup={close}>
+<div class="dialog" class:dark={$darkmode} class:selected on:mousedown={() => shouldClose = true} on:mousemove={() => shouldClose = false} on:mouseup={close}>
     <div class="main">
         {#if selected === "typescript"}
             <h2>Typescript</h2>
@@ -138,7 +140,16 @@
         border-radius: 15px;
         cursor: pointer;
         background: rgba(255,255,255,0.1);
+        box-shadow: 0.6px 1.3px 1.3px hsl(0deg 0% 0% / 0.48);
     }
+	@supports (-moz-appearance:none) {
+		.dialog {
+			background: rgba(255,255,255,0.9) !important;
+		}
+        .dark.dialog {
+            background: rgba(70,70,70,0.97) !important;
+        }
+	}
     h2 {
         margin-top: 0;
         margin-block-start: 0;
@@ -158,7 +169,7 @@
     .a:hover {
         text-decoration: underline;
     }
-    :global(.dark .dialog) {
+    .dark.dialog {
         background: rgba(255,255,255,0.2);
     }
     .dialog.selected {

@@ -24,12 +24,16 @@
     <meta property="og:article:published_time" content={date} />
     <meta property="og:article:author" content="Daniel Bulant" />
     <meta property="og:article:tag" content={categories && categories.join(" ") || ""} />
-    <meta property="og:image" content={bigThumbnail} />
-    <meta property="og:image:width" content="800" />
-    <meta property="og:image:height" content="400" />
-    <meta property="og:image" content={thumbnail} />
-    <meta property="og:image:width" content="256" />
-    <meta property="og:image:height" content="256" />
+    {#if bigThumbnail}
+        <meta property="og:image" content={bigThumbnail} />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="400" />
+    {/if}
+    {#if thumbnail}
+        <meta property="og:image" content={thumbnail} />
+        <meta property="og:image:width" content="256" />
+        <meta property="og:image:height" content="256" />
+    {/if}
 </svelte:head>
 
 <main class:dark={$darkmode} class="post-layout">

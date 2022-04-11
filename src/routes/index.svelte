@@ -1,5 +1,5 @@
 <script context="module">
-	/** @type {import('./[slug]').Load} */
+	/** @type {import('./index').Load} */
 	export async function load({ params, fetch, session, stuff }) {
 		const response = await fetch("/api/posts.json");
 	
@@ -28,7 +28,9 @@
 	var appTypeHover = null;
 
 	export var posts;
-	$: console.log(posts);
+	$: if(typeof window !== "undefined") console.log(posts);
+
+	var selectedPost = posts && posts.find(t => !t.categories.includes("experiment"));
 </script>
 
 <svelte:head>
@@ -57,7 +59,9 @@
 	</Hero>
 	<div class="blog">
 		I recently started my own blog.<br>
-		You can checkout &ldquo;<a href={posts[0].path}><b>{posts[0].title}</b></a>&rdquo; and other recent blog posts:<br>
+		{#if selectedPost}
+			You can checkout &ldquo;<a href={selectedPost.path}><b>{selectedPost.title}</b></a>&rdquo; and other recent blog posts:<br>
+		{/if}
 		<div style="text-align: center; margin-top: 5px;">
 			<Button href="/posts">blog</Button>
 		</div>

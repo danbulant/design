@@ -13,7 +13,10 @@ const config = {
 	kit: {
 		adapter: adapter({
 			precompress: true
-		})
+		}),
+		vite: {
+			clearScreen: false
+		}
 	},
 	extensions: ['.svelte', '.md'],
 

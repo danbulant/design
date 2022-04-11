@@ -1,5 +1,5 @@
 <script context="module">
-	/** @type {import('./[slug]').Load} */
+	/** @type {import('./index').Load} */
 	export async function load({ params, fetch, session, stuff }) {
 		const response = await fetch("/api/posts.json");
 	
@@ -15,9 +15,26 @@
     import HeroPost from "$lib/components/heroPost.svelte";
     import Post from "$lib/components/post.svelte";
     import darkmode from "$lib/stores/darkmode";
+	import { flip } from 'svelte/animate';
 
     var currentHover = null;
     export var posts;
+
+    var tags = posts && posts.map(t => t.categories).flat().filter((t, i, a) => a.indexOf(t) == i).sort();
+
+    var selectedTags = [];
+
+    function toggle(tag) {
+        if(selectedTags.includes(tag)) {
+            selectedTags = selectedTags.filter(t => t != tag);
+        } else {
+            selectedTags.push(tag);
+            selectedTags = selectedTags;
+        }
+    }
+
+    var filteredPosts = selectedTags ? posts.slice(1).filter(post => !selectedTags.length || selectedTags.find(tag => post.categories.includes(tag))) : posts.slice(1);
+    $: filteredPosts = selectedTags ? posts.slice(1).filter(post => !selectedTags.length || selectedTags.find(tag => post.categories.includes(tag))) : posts.slice(1);
 </script>
 
 <svelte:head>
@@ -36,14 +53,29 @@
 <div class="posts" class:dark={$darkmode}>
     <h1>Posts</h1>
 
+    {#if tags}
+        <div class="tags">
+            {#each tags as tag}
+                <div class="tag" class:selected={selectedTags.includes(tag)} on:click={() => toggle(tag)}>
+                    {tag}
+                </div>
+            {/each}
+        </div>
+    {/if}
+
     <hr>
 
-    <HeroPost {...posts[0]} />
+    {#if !selectedTags.length || selectedTags.find(tag => posts[0].categories.includes(tag))}
+        <HeroPost {...posts[0]} />
 
-    <hr>
+        <hr>
+    {/if}
 
-    {#each posts.slice(1) as post (post.title)}
-        <Post {...post} bind:currentHover />
+
+    {#each filteredPosts as post (post.title)}
+        <div animate:flip={{ duration: 250 }}>
+            <Post {...post} bind:currentHover />    
+        </div>
     {/each}
 </div>
 
@@ -52,6 +84,27 @@
         margin: auto;
         max-width: 700px;
         padding: 0 20px;
+    }
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .dark .tag {
+        background: rgb(77, 77, 77);
+    }
+    .tag {
+        background:rgb(173, 173, 173);
+        padding: 5px 10px;
+        border-radius: 99px;
+        cursor: pointer;
+        user-select: none;
+    }
+    .dark .tag.selected {
+        background: rgb(0, 108, 170);
+    }
+    .tag.selected {
+        background: rgb(0, 162, 255);
     }
     h1 {
         margin: 0;

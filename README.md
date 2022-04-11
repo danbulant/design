@@ -4,7 +4,7 @@ The home page, hosted on cloudflare pages. Made with Svelte, SvelteKit and mdsve
 
 ## Licensing
 
-The code for the website and it's styles is licensed under GPLv3 (see LICENSE file).  
+The code for the website and it's styles is licensed under AGPLv3 (see LICENSE file).  
 Files in `static` are subject to their own copyright terms:
 - `posts` folder is available under the same terms as the post in which they appear, or if they have their own LICENSE file in the same location (named `image.LICENSE` where `image` is the filename of the image)
 - `prism` files have their own copyright on top of the file and are available under MIT license

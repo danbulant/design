@@ -16,6 +16,6 @@
 		background: rgba(28, 28, 33, 0.2);
     }
     :global(nav.bar-component > *) {
-        margin: 10px;
+        margin: 5px 10px;
     }
 </style>

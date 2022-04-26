@@ -58,6 +58,7 @@
 		font-size: 18px;
 		font-weight: bold;
 		color: black;
+		margin: 0;
 	}
 	.dark.bar h3 {
 		color: white;

@@ -4,7 +4,7 @@
     let funny = { "amogus": "ඞ", "AMOGUS": "sussy baka", "discord": "proprietary matrix", "never gonna give you up": "never gonna let you down" };
 </script>
 
-<h1>Hello {name[funny] || name}</h1>
+<h1>Hello {funny[name] || name}</h1>
 
 <input type=text bind:value={name}>
 

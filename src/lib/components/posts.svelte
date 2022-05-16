@@ -71,7 +71,6 @@
             margin-top: 10px;
         }
         :global(main .main > .posts > .post) {
-            width: auto;
             padding-left: 10px;
             padding-right: 10px;
         }

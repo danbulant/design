@@ -341,6 +341,7 @@
 	}
 	.also li img {
 		height: 24px;
+		width: 24px;
 		margin-right: 6px;
 	}
 	@media (min-width: 1520px) {

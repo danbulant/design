@@ -4,6 +4,8 @@
     export var tags = [];
     export var grayscale = false;
     export var extradark = false;
+    export var width = 0;
+    export var height = 0;
     function handle(e) {
         if(!link) {
             e.preventDefault();
@@ -15,7 +17,7 @@
 <a href={link || "#"} target="_blank" rel="noreferrer noopener" class="full" on:click={handle}>
     <div class="project">
         <div class="imgcon">
-            <img src={image} alt="Project" draggable={false} class:grayscale>
+            <img src={image} alt="Project" draggable={false} class:grayscale {width} {height}>
             {#if $$slots.desc}
                 <div class="desc" class:extradark>
                     <div class="content">
@@ -92,6 +94,7 @@
     }
     img {
         width: 100%;
+        height: auto;
         border-radius: 10px;
         transition: filter .3s;
     }

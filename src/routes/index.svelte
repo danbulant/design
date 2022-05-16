@@ -72,7 +72,14 @@
 			<h2>
 				I helped many projects come to life. Here are some examples:
 			</h2>
-			<Project link="https://top.gg/bot/739864286775738399" tags={["Discord bot", "Backend", "Discord.js", "Typescript"]} image="/screenshots/ignibg.webp" grayscale={appTypeHover && appTypeHover === "applications"}>
+			<Project
+				link="https://top.gg/bot/739864286775738399"
+				tags={["Discord bot", "Backend", "Discord.js", "Typescript"]}
+				image="/screenshots/ignibg.webp"
+				grayscale={appTypeHover && appTypeHover === "applications"}
+				width={1080}
+				height={720}
+			>
 				<b>igni</b> - The universal Discord bot
 				<svelte:fragment slot="desc">
 					<p>
@@ -83,7 +90,14 @@
 					</p>
 				</svelte:fragment>
 			</Project>
-			<Project tags={["Backend", "Website", "Svelte", "React", "Typescript"]} image="/screenshots/animasher.webp" grayscale={appTypeHover && appTypeHover !== "websites"} extradark>
+			<Project
+				tags={["Backend", "Website", "Svelte", "React", "Typescript"]}
+				image="/screenshots/animasher.webp"
+				grayscale={appTypeHover && appTypeHover !== "websites"}
+				extradark
+				width={1920}
+				height={940}
+			>
 				<b>Animasher</b> - Platform for creating and sharing animations
 				<svelte:fragment slot="desc">
 					<p>
@@ -97,18 +111,32 @@
 		</div>
 		<div>
 			<div class="pad"></div>
-			<Project link="https://danbulant.itch.io/heaventaker" tags={["Website", "Application", "Phaser", "Svelte"]} image="/screenshots/heaventaker.webp" grayscale={appTypeHover && appTypeHover === "bots"}>
+			<Project
+				link="https://danbulant.itch.io/heaventaker"
+				tags={["Website", "Application", "Phaser", "Svelte"]}
+				image="/screenshots/heaventaker.webp"
+				grayscale={appTypeHover && appTypeHover === "bots"}
+				width={2050}
+				height={1080}
+			>
 				<b>Heaventaker</b> - Helltaker fan game
 				<svelte:fragment slot="desc">
 					<p>
-						<img src="/azrael.gif" alt="" style="height: 24px;"> Heaventaker is a helltaker fan-game visual novel and puzzle game.
+						<img src="/azrael.gif" alt="" style="height: 24px; width: 24px;"> Heaventaker is a helltaker fan-game visual novel and puzzle game.
 					</p>
 					<p>
 						Heaventaker currently has 3 different puzzles and 4 angels to collect. Playable online on the website, or on Android devices (application installable from Google Play Store)
 					</p>
 				</svelte:fragment>
 			</Project>
-			<Project link="https://manga.danbulant.eu" tags={["Website", "Svelte"]} image="/screenshots/mangadex.webp" grayscale={appTypeHover && appTypeHover !== "websites"}>
+			<Project
+				link="https://manga.danbulant.eu"
+				tags={["Website", "Svelte"]}
+				image="/screenshots/mangadex.webp"
+				grayscale={appTypeHover && appTypeHover !== "websites"}
+				width={803}
+				height={382}
+			>
 				<b>Mangades</b> - Mangadex downloader
 				<svelte:fragment slot="desc">
 					<p>
@@ -122,7 +150,7 @@
 		</div>
 	</div>
 	<div class="center">
-		In addition, this website is open-source and available on <img class="white" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" style="height: 1em;" alt=""> <a href="https://github.com/danbulant/design" style="color: rgb(255, 102, 128)">GitHub</a>
+		In addition, this website is open-source and available on <img class="white" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" style="height: 1em; width: 1em;" alt=""> <a href="https://github.com/danbulant/design" style="color: rgb(255, 102, 128)">GitHub</a>
 	</div>
 	<div class="also relative">
 		<TechnologyDetails bind:selected={technologySelected} />

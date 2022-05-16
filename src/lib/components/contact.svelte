@@ -53,7 +53,8 @@
         text-decoration: none;
     }
     img {
-        height: 100%;
+        height: 2em;
+        width: 2em;
     }
     .github {
         color: #333333;

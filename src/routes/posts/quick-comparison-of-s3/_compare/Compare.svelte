@@ -111,7 +111,7 @@
 </p>
 
 <details>
-    <summary> Additional options </summary>
+    <summary> Additional options and details </summary>
     
     <label for="egress">Average file size</label>
     <small>It does account file count into the pricing maths, defaults to 1 file downloaded = GetObject op. I think that the ops pricing is just anti-spam measure.</small>
@@ -121,6 +121,23 @@
             <input name="storage" id="egress" type="number" min="1" max="1000" step="1" bind:value={averageSize}>
         </div>
     </div>
+
+    <table>
+        <thead>
+            <th>Service</th>
+            <th>Calculation method</th>
+            <th>Result</th>
+        </thead>
+        <tbody>
+            {#each data as service}
+                <tr>
+                    <td><a href="#{service.link}">{service.name}</a></td>
+                    <td><code>{service.price.toString().substring(service.price.toString().indexOf("=>") + 3)}</code></td>
+                    <td>{Math.floor(service.price({ egress, fileCount, storage }))}</td>
+                </tr>
+            {/each}
+        </tbody>
+    </table>
 </details>
 
 <style>

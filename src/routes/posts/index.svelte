@@ -77,6 +77,8 @@
             <Post {...post} bind:currentHover />    
         </div>
     {/each}
+
+    <small>There's also RSS feed available <a href="/posts/rss.xml">here</a>.</small>
 </div>
 
 <style>
@@ -117,5 +119,14 @@
     }
     .dark hr {
         background: white;
+    }
+    small {
+        display: block;
+        text-align: center;
+        width: 100%;
+        margin: 30px 0;
+    }
+    small a {
+        color: rgb(4, 192, 192)
     }
 </style>

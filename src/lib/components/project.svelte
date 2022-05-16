@@ -21,7 +21,6 @@
                     <div class="content">
                         <slot name="desc" />
                     </div>
-                    <div class="bottom">Click to open in new tab</div>
                 </div>
             {/if}
         </div>
@@ -31,7 +30,6 @@
                 <span>{tag}</span>{#if i !== tags.length - 1}<span>&middot;&ZeroWidthSpace;</span>{/if}
             {/each}
         </div>
-        <a href={link || "#"} rel="noreferrer noopener" target="_blank">View</a>
     </div>
 </a>
 

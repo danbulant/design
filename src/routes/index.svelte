@@ -72,7 +72,7 @@
 			<h2>
 				I helped many projects come to life. Here are some examples:
 			</h2>
-			<Project link="https://top.gg/bot/739864286775738399" tags={["Discord bot", "Backend", "Discord.js", "Typescript"]} image="/screenshots/ignibg.png" grayscale={appTypeHover && appTypeHover === "applications"}>
+			<Project link="https://top.gg/bot/739864286775738399" tags={["Discord bot", "Backend", "Discord.js", "Typescript"]} image="/screenshots/ignibg.webp" grayscale={appTypeHover && appTypeHover === "applications"}>
 				<b>igni</b> - The universal Discord bot
 				<svelte:fragment slot="desc">
 					<p>
@@ -83,7 +83,7 @@
 					</p>
 				</svelte:fragment>
 			</Project>
-			<Project tags={["Backend", "Website", "Svelte", "React", "Typescript"]} image="/screenshots/animasher.png" grayscale={appTypeHover && appTypeHover !== "websites"} extradark>
+			<Project tags={["Backend", "Website", "Svelte", "React", "Typescript"]} image="/screenshots/animasher.webp" grayscale={appTypeHover && appTypeHover !== "websites"} extradark>
 				<b>Animasher</b> - Platform for creating and sharing animations
 				<svelte:fragment slot="desc">
 					<p>
@@ -97,7 +97,7 @@
 		</div>
 		<div>
 			<div class="pad"></div>
-			<Project link="https://danbulant.itch.io/heaventaker" tags={["Website", "Application", "Phaser", "Svelte"]} image="/screenshots/heaventaker.png" grayscale={appTypeHover && appTypeHover === "bots"}>
+			<Project link="https://danbulant.itch.io/heaventaker" tags={["Website", "Application", "Phaser", "Svelte"]} image="/screenshots/heaventaker.webp" grayscale={appTypeHover && appTypeHover === "bots"}>
 				<b>Heaventaker</b> - Helltaker fan game
 				<svelte:fragment slot="desc">
 					<p>
@@ -108,7 +108,7 @@
 					</p>
 				</svelte:fragment>
 			</Project>
-			<Project link="https://manga.danbulant.eu" tags={["Website", "Svelte"]} image="/screenshots/mangadex.jfif" grayscale={appTypeHover && appTypeHover !== "websites"}>
+			<Project link="https://manga.danbulant.eu" tags={["Website", "Svelte"]} image="/screenshots/mangadex.webp" grayscale={appTypeHover && appTypeHover !== "websites"}>
 				<b>Mangades</b> - Mangadex downloader
 				<svelte:fragment slot="desc">
 					<p>

@@ -15,6 +15,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@sveltejs/pancake": "^0.0.18",
     "katex": "0.15.2",
     "luxon": "2.3.1",
     "rehype-autolink-headings": "6.1.1",

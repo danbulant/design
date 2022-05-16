@@ -1,11 +1,15 @@
 ---
 title: Quick comparison of pricing of Simple Storage Services
-date: 2022-04-26
+date: 2022-05-16
 author: Daniel Bulant
 authorIcon: /logo.png
 categories: [programming, storage, comparison, s3]
 description: There are all those ad-filled long articles comparing certain things (in this case, simple storage services, or S3), usually auto generated. So here's a note for my future self in a format I like now.
 ---
+
+<script>
+    import Compare from "./_compare/Compare.svelte";
+</script>
 
 I'm not sponsored or endorsed by any of the mentioned companies/products below, nor do I earn any commission when you get something from them.  
 If you want to help me, say something nice in the comments (or create some discussion there).  
@@ -130,3 +134,9 @@ Base plan is 5$/month.
 </details>
 
 [Home page](https://storj.io) | [Pricing page](https://www.storj.io/pricing)
+
+---
+
+## Comparison
+
+<Compare />

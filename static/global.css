@@ -73,10 +73,18 @@ button {
 	color: #333;
 	background-color: #f4f4f4;
 	outline: none;
+    transition: color .3s;
+}
+.dark button {
+    color:rgb(191, 191, 191);
 }
 
 button:disabled {
 	color: #999;
+}
+
+.dark button:disabled {
+	color: rgb(82, 82, 82);
 }
 
 button:not(:disabled):active {

@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@sveltejs/adapter-static': 1.0.0-next.28
   '@sveltejs/kit': 1.0.0-next.291
+  '@sveltejs/pancake': ^0.0.18
   katex: 0.15.2
   luxon: 2.3.1
   mdsvex: 0.10.5
@@ -19,6 +20,7 @@ specifiers:
   xterm: 4.18.0
 
 dependencies:
+  '@sveltejs/pancake': 0.0.18
   katex: 0.15.2
   luxon: 2.3.1
   rehype-autolink-headings: 6.1.1
@@ -72,6 +74,12 @@ packages:
       - stylus
       - supports-color
     dev: true
+
+  /@sveltejs/pancake/0.0.18:
+    resolution: {integrity: sha512-vnpKn+sHE0yvw/6x4juF9EoDS8iYC5JNIVtRgclA37rfxdnIpvbVxStiZ5/gWncjERN4jtSpTAplS1zCARCBXA==}
+    dependencies:
+      yootils: 0.0.16
+    dev: false
 
   /@sveltejs/vite-plugin-svelte/1.0.0-next.39_svelte@3.46.4+vite@2.8.6:
     resolution: {integrity: sha512-gnvvcAW2LK+KnUn8lKb2ypcXKwSp2K57mem5C4VNKfjxdRpM6+XwNavWwVf6otnDhz3qPYl/TKKW6/dRr6eeAw==}
@@ -1710,6 +1718,10 @@ packages:
 
   /xterm/4.18.0:
     resolution: {integrity: sha512-JQoc1S0dti6SQfI0bK1AZvGnAxH4MVw45ZPFSO6FHTInAiau3Ix77fSxNx3mX4eh9OL4AYa8+4C8f5UvnSfppQ==}
+    dev: false
+
+  /yootils/0.0.16:
+    resolution: {integrity: sha512-aIVecm5ucOzwhtKbl0zkfg0ZSOUR9c2da0k8cIc9umjjzkvVCWUUX/UHZ1CLPsv4wmJLqt0aWeLB7p9n9JDwYQ==}
     dev: false
 
   /zwitch/1.0.5:

@@ -12,27 +12,27 @@
     const data = [
         {
             name: "Cloudflare R2",
-            price: ({ storage, egress, fileCount }) => 10 * storage + Math.max(0, fileCount-10e6)*0.36/1e6,
+            price: ({ storage, egress, fileCount, dataRetention }) => 10 * storage + Math.max(0, fileCount-10e6)*0.36/1e6,
             color: "orange",
             link: "cloudflare-r2"
         }, {
             name: "Wasabi",
-            price: ({ storage, egress, fileCount}) => 5 * storage,
+            price: ({ storage, egress, fileCount, dataRetention }) => 5 * storage * (90/dataRetention),
             color: "green",
             link: "wasabi"
         }, {
             name: "Backblaze B2",
-            price: ({ storage, egress, fileCount}) => 4 * storage + 10 * egress + Math.max(0, fileCount - 2500)*4/10e6,
+            price: ({ storage, egress, fileCount, dataRetention }) => 4 * storage + 10 * egress + Math.max(0, fileCount - 2500)*4/10e6,
             color: "red",
             link: "backblaze-b2"
         }, {
             name: "DO Spaces",
-            price: ({ storage, egress, fileCount}) => 20 * storage + 10 * egress,
+            price: ({ storage, egress, fileCount, dataRetention }) => 20 * storage + 10 * egress,
             color: "blue",
             link: "digitalocean-spaces"
         }, {
             name: "Storj.io",
-            price: ({ storage, egress, fileCount}) => 4 * storage + 7 * egress,
+            price: ({ storage, egress, fileCount, dataRetention }) => 4 * storage + 7 * egress,
             color: "rgb(0,120,180)",
             link: "storjio"
         }
@@ -52,9 +52,9 @@
 	}
 	const m = spring();
 	$: size = w < 480 ? 'small' : w < 640 ? 'medium' : 'large';
-    $: $m = data.map((d, i) => ({ x: i, y: d.price({ storage, egress, fileCount }) }));
+    $: $m = data.map((d, i) => ({ x: i, y: d.price({ storage, egress, fileCount, dataRetention }) }));
 	let max = spring();
-    $: $max = Math.max(50, ...data.map(d => d.price({ storage, egress, fileCount }) + d.price({ storage, egress, fileCount }) * 0.2));
+    $: $max = Math.max(50, ...data.map(d => d.price({ storage, egress, fileCount, dataRetention }) + d.price({ storage, egress, fileCount, dataRetention }) * 0.2));
 	onMount(() => {
         w = el.clientWidth;
     });
@@ -63,6 +63,8 @@
     $: if(storage < 1) storage = 1;
     let egress = 1;
     $: if(egress < 1) egress = 1;
+    let dataRetention = 90;
+    $: if(dataRetention < 1) dataRetention = 1;
 </script>
 
 <label for="storage">Storage used</label>
@@ -77,7 +79,7 @@
 <div class="flex">
     <input type="range" min="1" max="1000" step="1" bind:value={egress}>
     <div class="input-tb">
-        <input name="storage" id="egress" type="number" min="1" max="1000" step="1" bind:value={egress}>
+        <input name="egress" id="egress" type="number" min="1" max="1000" step="1" bind:value={egress}>
     </div>
 </div>
 
@@ -107,18 +109,27 @@
 
 <p class="credit">
 	Source: Respective pricing pages (see links above), on <Date value="2022-05-16T16:00" /> <small>(hover for quick relative time)</small> <br />
-    Prices are estimates, expecting that traffic is uniform during the month, and that the average size of a file is {averageSize}MB ({fileCount} files downloaded). Doesn't account for listings or deletions. Uploads are not using multipart.
+    Prices are estimates, expecting that traffic is uniform during the month, and that the average size of a file is {averageSize}MB ({Math.ceil(fileCount)} files downloaded). Doesn't account for listings or deletions. Uploads are not using multipart.
 </p>
 
 <details>
     <summary> Additional options and details </summary>
     
-    <label for="egress">Average file size</label>
+    <label for="file-size">Average file size</label>
     <small>It does account file count into the pricing maths, defaults to 1 file downloaded = GetObject op. I think that the ops pricing is just anti-spam measure.</small>
     <div class="flex">
         <input type="range" min="1" max="1000" step="1" bind:value={averageSize}>
         <div class="input-text input-mb">
-            <input name="storage" id="egress" type="number" min="1" max="1000" step="1" bind:value={averageSize}>
+            <input name="file-size" id="file-size" type="number" min="1" max="1000" step="1" bind:value={averageSize}>
+        </div>
+    </div>
+
+    <label for="days">Average data retention</label>
+    <small>Only affects Wasabi pricing.</small>
+    <div class="flex">
+        <input type="range" min="1" max="90" step="1" bind:value={dataRetention}>
+        <div class="input-text input-days">
+            <input name="days" id="days" type="number" min="1" max="90" step="1" bind:value={dataRetention}>
         </div>
     </div>
 
@@ -133,7 +144,7 @@
                 <tr>
                     <td><a href="#{service.link}">{service.name}</a></td>
                     <td><code>{service.price.toString().substring(service.price.toString().indexOf("=>") + 3)}</code></td>
-                    <td>{Math.floor(service.price({ egress, fileCount, storage }))}</td>
+                    <td>${Math.floor(service.price({ egress, fileCount, storage, dataRetention }))}/TB/month</td>
                 </tr>
             {/each}
         </tbody>
@@ -157,7 +168,6 @@
         position: relative;
     }
     .input-text::after {
-        content: "TB";
         position: absolute;
         top: 2px;
         right: .5em;
@@ -172,6 +182,12 @@
     }
     .input-mb::after {
         content: "MB";
+    }
+    .input-days::after {
+        content: "days";
+    }
+    input#days {
+        width: 5.5em;
     }
     .input-text:hover::after, .input-text:focus-within::after {
         right: 1.5em;

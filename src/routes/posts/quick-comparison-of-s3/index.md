@@ -19,7 +19,7 @@ Out of the below, I only used `storj.io`. Others are just quick info based on th
 
 There's also a simplified comparison tool at the bottom.
 
-`egress` means outbound transfers.
+`egress` means outbound transfers. Some services have a monthly minimum fee, from what I checked it's 1TB or less. Some services may also have a minimum billable size (Wasabi 4KB, AWS 128KB).
 
 The services are in no particular order (I tried a bit by popularity, but no exact metrics were used for sorting).
 
@@ -48,9 +48,15 @@ Delete operations are free (`DeleteObject`, `DeleteBucket`, `DeleteMultipartUplo
 
 ## Wasabi
 
-***$5.99/TB/month***
+EU/NA: ***$5.99/TB/month***
+APAC: ***$6.99/TB/month***
 
-No API charge/egress.
+No API charge/egress. Minimum fee of 1TB storage.
+
+As mentioned by @spiffytech (via utteranc.es, see the bottom of the page), Wasabi always bills for a minimum of 90 days, even if you delete the files sooner.  
+If that's of a concern, try adjusting the slider in the "additional options" at the bottom graph. When you replace a file during those 90 days, it will still be billed (as if you deleted the file and created a new one).
+
+Has a policy that egress shouldn't be higher than the stored amount. Consider using CDN or a cache layer.
 
 [Home page](https://wasabi.com) | [Pricing page](https://wasabi.com/cloud-storage-pricing/)
 

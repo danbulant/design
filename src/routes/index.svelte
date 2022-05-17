@@ -73,20 +73,20 @@
 				I helped many projects come to life. Here are some examples:
 			</h2>
 			<Project
-				link="https://top.gg/bot/739864286775738399"
-				tags={["Discord bot", "Backend", "Discord.js", "Typescript"]}
-				image="/screenshots/ignibg.webp"
-				grayscale={appTypeHover && appTypeHover === "applications"}
-				width={1080}
-				height={720}
+				link="https://danbulant.itch.io/heaventaker"
+				tags={["Website", "Application", "Phaser", "Svelte"]}
+				image="/screenshots/heaventaker.webp"
+				grayscale={appTypeHover && appTypeHover === "bots"}
+				width={2050}
+				height={1080}
 			>
-				<b>igni</b> - The universal Discord bot
+				<b>Heaventaker</b> - Helltaker fan game
 				<svelte:fragment slot="desc">
 					<p>
-						igni is a universal Discord bot, making managing Discord communities easy.
+						<img src="/azrael.gif" alt="" style="height: 24px; width: 24px;"> Heaventaker is a helltaker fan-game visual novel and puzzle game.
 					</p>
 					<p>
-						It includes customizability, music playback (Youtube, SoundCloud, Spotify), moderation commands, anime, automation, games and more.
+						Heaventaker currently has 3 different puzzles and 4 angels to collect. Playable online on the website, or on Android devices (application installable from Google Play Store)
 					</p>
 				</svelte:fragment>
 			</Project>
@@ -112,24 +112,6 @@
 		<div>
 			<div class="pad"></div>
 			<Project
-				link="https://danbulant.itch.io/heaventaker"
-				tags={["Website", "Application", "Phaser", "Svelte"]}
-				image="/screenshots/heaventaker.webp"
-				grayscale={appTypeHover && appTypeHover === "bots"}
-				width={2050}
-				height={1080}
-			>
-				<b>Heaventaker</b> - Helltaker fan game
-				<svelte:fragment slot="desc">
-					<p>
-						<img src="/azrael.gif" alt="" style="height: 24px; width: 24px;"> Heaventaker is a helltaker fan-game visual novel and puzzle game.
-					</p>
-					<p>
-						Heaventaker currently has 3 different puzzles and 4 angels to collect. Playable online on the website, or on Android devices (application installable from Google Play Store)
-					</p>
-				</svelte:fragment>
-			</Project>
-			<Project
 				link="https://manga.danbulant.eu"
 				tags={["Website", "Svelte"]}
 				image="/screenshots/mangadex.webp"
@@ -137,13 +119,31 @@
 				width={803}
 				height={382}
 			>
-				<b>Mangades</b> - Mangadex downloader
+				<b>Mangades</b> - Mangadex downloader and viewer
 				<svelte:fragment slot="desc">
 					<p>
 						Mangades is a manga downloader from Mangadex.
 					</p>
 					<p>
 						It can download mangas to EPUB or CBZ files online from browsers
+					</p>
+				</svelte:fragment>
+			</Project>
+			<Project
+				link="https://top.gg/bot/739864286775738399"
+				tags={["Discord bot", "Backend", "Discord.js", "Typescript"]}
+				image="/screenshots/ignibg.webp"
+				grayscale={appTypeHover && appTypeHover === "applications"}
+				width={1080}
+				height={720}
+			>
+				<b>igni</b> - The universal Discord bot
+				<svelte:fragment slot="desc">
+					<p>
+						igni is a universal Discord bot, making managing Discord communities easy.
+					</p>
+					<p>
+						It includes customizability, music playback (Youtube, SoundCloud, Spotify), moderation commands, anime, automation, games and more.
 					</p>
 				</svelte:fragment>
 			</Project>

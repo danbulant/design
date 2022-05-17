@@ -62,6 +62,11 @@
         border-radius: 5px;
         transition: right .4s;
     }
+    @media (prefers-reduced-motion) {
+        .bg img {
+            transition: none;
+        }
+    }
     @media (min-width: 1760px) {
         .hero {
             margin: 0 auto;

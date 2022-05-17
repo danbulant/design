@@ -12,26 +12,31 @@
     const data = [
         {
             name: "Cloudflare R2",
+            nameShort: "R2",
             price: ({ storage, egress, fileCount, dataRetention }) => 10 * storage + Math.max(0, fileCount-10e6)*0.36/1e6,
             color: "orange",
             link: "cloudflare-r2"
         }, {
             name: "Wasabi",
+            nameShort: "Wasabi",
             price: ({ storage, egress, fileCount, dataRetention }) => 5 * storage * (90/dataRetention),
             color: "green",
             link: "wasabi"
         }, {
             name: "Backblaze B2",
+            nameShort: "B2",
             price: ({ storage, egress, fileCount, dataRetention }) => 4 * storage + 10 * egress + Math.max(0, fileCount - 2500)*4/10e6,
             color: "red",
             link: "backblaze-b2"
         }, {
             name: "DO Spaces",
+            nameShort: "Spaces",
             price: ({ storage, egress, fileCount, dataRetention }) => 20 * storage + 10 * egress,
             color: "blue",
             link: "digitalocean-spaces"
         }, {
             name: "Storj.io",
+            nameShort: "Storj",
             price: ({ storage, egress, fileCount, dataRetention }) => 4 * storage + 7 * egress,
             color: "rgb(0,120,180)",
             link: "storjio"
@@ -51,7 +56,7 @@
         return num;
 	}
 	const m = spring();
-	$: size = w < 480 ? 'small' : w < 640 ? 'medium' : 'large';
+	$: size = w < 640 ? 'small' : 'large';
     $: $m = data.map((d, i) => ({ x: i, y: d.price({ storage, egress, fileCount, dataRetention }) }));
 	let max = spring();
     $: $max = Math.max(50, ...data.map(d => d.price({ storage, egress, fileCount, dataRetention }) + d.price({ storage, egress, fileCount, dataRetention }) * 0.2));
@@ -100,7 +105,7 @@
 
 			<Pancake.Grid vertical count={5} let:value>
 				<span class="x label">
-                    <a href="#{data[value].link}">{data[value].name}</a>
+                    <a href="#{data[value].link}">{size === "large" ? data[value].name : data[value].nameShort}</a>
 				</span>
 			</Pancake.Grid>
 		</Pancake.Chart>

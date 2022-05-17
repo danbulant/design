@@ -62,10 +62,18 @@
         cursor: pointer;
         user-select: none;
         width: 100%;
-        height: 150px;
         padding: 10px 0;
         display: flex;
         align-items: center;
+        justify-content: center;
+    }
+    .data {
+        flex-grow: 1;
+    }
+    @media (max-width: 768px) {
+        .post {
+            flex-wrap: wrap;
+        }
     }
     h4 {
         margin: 5px 0;
@@ -82,13 +90,13 @@
         margin-top: 5px;
         object-fit: cover;
         box-shadow: 0 0 5px rgb(145, 145, 145);
+        border-radius: 5px;
     }
     .dark .thumbnail {
         box-shadow: 0 0 5px rgb(0, 0, 0);
     }
     img {
         height: 100%;
-        border-radius: 5px;
     }
     /* .author img {
         height: 100%;

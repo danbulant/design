@@ -14,30 +14,35 @@
             name: "Cloudflare R2",
             nameShort: "R2",
             price: ({ storage, egress, fileCount, dataRetention }) => 10 * storage + Math.max(0, fileCount-10e6)*0.36/1e6,
+            priceString: "10 * storage + Math.max(0, fileCount-10e6)*0.36/1e6",
             color: "orange",
             link: "cloudflare-r2"
         }, {
             name: "Wasabi",
             nameShort: "Wasabi",
             price: ({ storage, egress, fileCount, dataRetention }) => 5 * storage * (90/dataRetention),
+            priceString: "5 * storage * (90/dataRetention)",
             color: "green",
             link: "wasabi"
         }, {
             name: "Backblaze B2",
             nameShort: "B2",
             price: ({ storage, egress, fileCount, dataRetention }) => 4 * storage + 10 * egress + Math.max(0, fileCount - 2500)*4/10e6,
+            priceString: "4 * storage + 10 * egress + Math.max(0, fileCount - 2500)*4/10e6",
             color: "red",
             link: "backblaze-b2"
         }, {
             name: "DO Spaces",
             nameShort: "Spaces",
             price: ({ storage, egress, fileCount, dataRetention }) => 20 * storage + 10 * egress,
+            priceString: "20 * storage + 10 * egress",
             color: "blue",
             link: "digitalocean-spaces"
         }, {
             name: "Storj.io",
             nameShort: "Storj",
             price: ({ storage, egress, fileCount, dataRetention }) => 4 * storage + 7 * egress,
+            priceString: "4 * storage + 7 * egress",
             color: "rgb(0,120,180)",
             link: "storjio"
         }
@@ -148,7 +153,7 @@
             {#each data as service}
                 <tr>
                     <td><a href="#{service.link}">{service.name}</a></td>
-                    <td><code>{service.price.toString().substring(service.price.toString().indexOf("=>") + 3)}</code></td>
+                    <td><code>{service.priceString}</code></td>
                     <td>${Math.floor(service.price({ egress, fileCount, storage, dataRetention }))}/TB/month</td>
                 </tr>
             {/each}

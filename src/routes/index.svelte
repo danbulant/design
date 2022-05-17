@@ -50,7 +50,7 @@
 
 <Navbar />
 <main class:dark={$darkmode}>
-	<Hero>
+	<Hero {appTypeHover}>
 		<h1>I'm a young developer making <u on:mouseenter={() => appTypeHover = "websites"} on:mouseleave={() => appTypeHover == "websites" && (appTypeHover = null)}>websites</u>,
 			<u on:mouseenter={() => appTypeHover = "applications"} on:mouseleave={() => appTypeHover == "applications" && (appTypeHover = null)}>applications</u> and
 			<u on:mouseenter={() => appTypeHover = "bots"} on:mouseleave={() => appTypeHover == "bots" && (appTypeHover = null)}>discord bots</u>.</h1>

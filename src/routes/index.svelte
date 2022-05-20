@@ -48,7 +48,6 @@
     <meta property="og:profile:gender" content="male" />
 </svelte:head>
 
-<Navbar />
 <main class:dark={$darkmode}>
 	<Hero {appTypeHover}>
 		<h1>I'm a young developer making <u on:mouseenter={() => appTypeHover = "websites"} on:mouseleave={() => appTypeHover == "websites" && (appTypeHover = null)}>websites</u>,
@@ -79,6 +78,7 @@
 				grayscale={appTypeHover && appTypeHover === "bots"}
 				width={2050}
 				height={1080}
+                name="Heaventaker"
 			>
 				<b>Heaventaker</b> - Helltaker fan game
 				<svelte:fragment slot="desc">
@@ -97,6 +97,7 @@
 				extradark
 				width={1920}
 				height={940}
+                name="Animasher"
 			>
 				<b>Animasher</b> - Platform for creating and sharing animations
 				<svelte:fragment slot="desc">
@@ -118,6 +119,7 @@
 				grayscale={appTypeHover && appTypeHover !== "websites"}
 				width={803}
 				height={382}
+                name="Mangades reader"
 			>
 				<b>Mangades</b> - Mangadex downloader and viewer
 				<svelte:fragment slot="desc">
@@ -136,6 +138,7 @@
 				grayscale={appTypeHover && appTypeHover === "applications"}
 				width={1080}
 				height={720}
+                name="igni discord bot"
 			>
 				<b>igni</b> - The universal Discord bot
 				<svelte:fragment slot="desc">

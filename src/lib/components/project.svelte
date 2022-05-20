@@ -1,11 +1,13 @@
 <script>
+    import { goatCounter } from "$lib/goatcounter";
     export var image; // "https://picsum.photos/725/350?random=" + Math.floor(Math.random() * 5000);
     export var link = "";
     export var tags = [];
     export var grayscale = false;
     export var extradark = false;
-    export var width = 0;
-    export var height = 0;
+    export var width;
+    export var height;
+    export var name;
     function handle(e) {
         if(!link) {
             e.preventDefault();
@@ -14,10 +16,10 @@
     }
 </script>
 
-<a href={link || "#"} target="_blank" rel="noreferrer noopener" class="full" on:click={handle}>
+<a href={link || "#"} target="_blank" rel="noopener" data-goatcounter-click="project-{name}" class="full" on:click={handle} use:goatCounter>
     <div class="project">
         <div class="imgcon">
-            <img src={image} alt="Project" draggable={false} class:grayscale {width} {height}>
+            <img src={image} alt={name} draggable={false} class:grayscale {width} {height}>
             {#if $$slots.desc}
                 <div class="desc" class:extradark>
                     <div class="content">

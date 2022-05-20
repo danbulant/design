@@ -74,7 +74,7 @@
 
     {#each filteredPosts as post (post.title)}
         <div animate:flip={{ duration: 250 }}>
-            <Post {...post} bind:currentHover />    
+            <Post {...post} bind:currentHover />
         </div>
     {/each}
 

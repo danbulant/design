@@ -37,7 +37,7 @@
 </h1>
 
 <!-- HTML Entity encoded email -->
-<p class="text-center">I'm sorry for that. If this is a repeated problem, try contacting me (&#x64;&#x61;&#x6E;&#x62;&#x75;&#x6C;&#x61;&#x6E;&#x74;&#x40;&#x64;&#x61;&#x6E;&#x62;&#x75;&#x6C;&#x61;&#x6E;&#x74;&#x2E;&#x65;&#x75;)</p>
+<p class="text-center">I'm sorry for that. If this is a repeated problem, try contacting me (me@danbulant.eu)</p>
 
 <div class="flex justify-center">
     <Button href="/">Go to my home page</Button>

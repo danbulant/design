@@ -1,10 +1,15 @@
 <script>
     import { goatCounter } from "$lib/goatcounter";
+    import { goto } from '$app/navigation';
     export var image; // "https://picsum.photos/725/350?random=" + Math.floor(Math.random() * 5000);
     export var link = "";
-    export var tags = [];
     export var grayscale = false;
     export var extradark = false;
+    export var clickable = false;
+    export var crossfadesend = null;
+    export var crossfadereceive = null;
+    export var crossfadekey = null;
+    export var target="_blank";
     export var width;
     export var height;
     export var name;
@@ -12,14 +17,21 @@
         if(!link) {
             e.preventDefault();
             alert("No link available");
+        } else if(link.startsWith("/")) {
+            e.preventDefault();
+            goto(link);
         }
     }
 </script>
 
-<a href={link || "#"} target="_blank" rel="noopener" data-goatcounter-click="project-{name}" class="full" on:click={handle} use:goatCounter>
+<a href={link || "#"} {target} rel="noopener" data-goatcounter-click="project-{name}" class="full" on:click={handle} use:goatCounter>
     <div class="project">
         <div class="imgcon">
-            <img src={image} alt={name} draggable={false} class:grayscale {width} {height}>
+            {#if crossfadesend}
+                <img out:crossfadesend={{ key: crossfadekey }} in:crossfadereceive={{ key: crossfadekey }} src={image} alt={name} draggable={false} class:grayscale {width} {height}>
+            {:else}
+                <img src={image} alt={name} draggable={false} class:grayscale {width} {height}>
+            {/if}
             {#if $$slots.desc}
                 <div class="desc" class:extradark>
                     <div class="content">
@@ -29,26 +41,17 @@
             {/if}
         </div>
         <h3><slot /></h3>
-        <div class="tags">
-            {#each tags as tag, i}
-                <span>{tag}</span>{#if i !== tags.length - 1}<span>&middot;&ZeroWidthSpace;</span>{/if}
-            {/each}
-        </div>
+        {#if clickable}
+            <div class="clickable">
+                Click to view details
+            </div>
+        {/if}
     </div>
 </a>
 
 <style>
     a.full:hover {
         text-decoration: none;
-    }
-    .tags {
-        margin: 5px 0;
-        margin-left: -3px;
-        max-width: 100%;
-        overflow-wrap: normal;
-    }
-    .tags span {
-        padding: 0 3px;
     }
     .project {
         width: 100%;

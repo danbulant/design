@@ -11,3 +11,9 @@
         <slot />
     </div>
 {/key}
+
+<style>
+    div {
+        position: absolute;
+    }
+</style>

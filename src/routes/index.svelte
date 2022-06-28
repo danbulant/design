@@ -21,6 +21,7 @@
 	import Project from "$lib/components/project.svelte";
 	import TechnologyDetails from "$lib/components/technologyDetails.svelte";
 	import darkmode from "$lib/stores/darkmode";
+import { heaventakerReceiveTransition, heaventakerSendTransition } from "$lib/stores/transitions";
 
 	var technologySelected = null;
 	var technologyHover = false;
@@ -72,13 +73,17 @@
 				I helped many projects come to life. Here are some examples:
 			</h2>
 			<Project
-				link="https://danbulant.itch.io/heaventaker"
-				tags={["Website", "Application", "Phaser", "Svelte"]}
+				link="/projects/heaventaker"
 				image="/screenshots/heaventaker.webp"
 				grayscale={appTypeHover && appTypeHover === "bots"}
 				width={2050}
 				height={1080}
                 name="Heaventaker"
+                clickable
+                target="_self"
+                crossfadesend={heaventakerSendTransition}
+                crossfadereceive={heaventakerReceiveTransition}
+                crossfadekey="heaventaker"
 			>
 				<b>Heaventaker</b> - Helltaker fan game
 				<svelte:fragment slot="desc">
@@ -91,7 +96,6 @@
 				</svelte:fragment>
 			</Project>
 			<Project
-				tags={["Backend", "Website", "Svelte", "React", "Typescript"]}
 				image="/screenshots/animasher.webp"
 				grayscale={appTypeHover && appTypeHover !== "websites"}
 				extradark
@@ -114,7 +118,6 @@
 			<div class="pad"></div>
 			<Project
 				link="https://manga.danbulant.eu"
-				tags={["Website", "Svelte"]}
 				image="/screenshots/mangadex.webp"
 				grayscale={appTypeHover && appTypeHover !== "websites"}
 				width={803}
@@ -133,7 +136,6 @@
 			</Project>
 			<Project
 				link="https://top.gg/bot/739864286775738399"
-				tags={["Discord bot", "Backend", "Discord.js", "Typescript"]}
 				image="/screenshots/ignibg.webp"
 				grayscale={appTypeHover && appTypeHover === "applications"}
 				width={1080}
@@ -160,7 +162,7 @@
 		<h2 class="text-center">I also worked with the following:</h2>
 		<noscript class="text-center text-white">Clicking won't work if javascript is not enabled.</noscript>
 		<span class="text-center" class:text-gray={!technologyHover} class:text-white={technologyHover}>{typeof window !== "undefined" && window.matchMedia("(hover: none) and (pointer: coarse)").matches ? "Touch" : "Click"} each technology for more details about why I'm using it.</span>
-		<div class="split" on:mouseenter={() => technologyHover = true} on:mouseleave={() => technologyHover = false}>
+		<div class="split" class:text-gray={technologyHover} on:mouseenter={() => technologyHover = true} on:mouseleave={() => technologyHover = false}>
 			<ul>
 				<li on:click={() => technologySelected = "typescript"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="" draggable={false} />
@@ -351,10 +353,13 @@
 		align-items: center;
 		justify-content: left;
 		cursor: pointer;
-		transition: transform .3s;
+		transition: transform .3s, color .2s;
 	}
-	.also li::active {
-		transform: scale(0.8);
+    .also li:hover {
+        color: white;
+    }
+	.also li:active {
+		transform: scale(0.95);
 	}
 	.also li::before {
 		content: "";

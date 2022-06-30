@@ -72,7 +72,7 @@
 			</h2>
 			<Project
 				link="/projects/heaventaker"
-				image="/screenshots/heaventaker.webp"
+				image="/screenshots/heaventaker/heaventaker.webp"
 				grayscale={appTypeHover && appTypeHover === "bots"}
 				width={2050}
 				height={1080}

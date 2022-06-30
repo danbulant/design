@@ -88,9 +88,7 @@
         padding: 0 20px;
     }
     .tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
+        @apply flex flex-wrap gap-2 mt-2 mb-3;
     }
     .dark .tag {
         background: rgb(77, 77, 77);
@@ -109,8 +107,7 @@
         background: rgb(0, 162, 255);
     }
     h1 {
-        margin: 0;
-        padding: 0;
+        @apply m-0 mb-1 p-0 font-bold text-3xl;
     }
     hr {
         height: 1px;

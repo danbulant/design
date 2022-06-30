@@ -120,12 +120,25 @@
     :global(body .post-layout details summary) {
         user-select: none;
     }
+    :global(body .post-layout h2) {
+        @apply text-3xl font-bold my-0.8em;
+    }
+    :global(body .post-layout h3) {
+        @apply text-2xl font-bold my-0.6em;
+    }
+    :global(body .post-layout h4) {
+        @apply text-xl font-bold my-0.4em;
+    }
+    :global(body .post-layout p) {
+        @apply my-1em;
+    }
 	main {
         margin: 0 auto;
         max-width: 800px;
         padding: 0 20px 20px;
 	}
     h1 {
+        @apply text-4xl font-bold;
         padding: 0 0 15px;
     }
     span {

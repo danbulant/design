@@ -16,12 +16,10 @@
 	import Button from "$lib/components/button.svelte";
 	import Contact from "$lib/components/contact.svelte";
 	import Hero from "$lib/components/hero.svelte";
-	import Navbar from "$lib/components/navbar.svelte";
 	import Posts from "$lib/components/posts.svelte";
 	import Project from "$lib/components/project.svelte";
 	import TechnologyDetails from "$lib/components/technologyDetails.svelte";
 	import darkmode from "$lib/stores/darkmode";
-import { heaventakerReceiveTransition, heaventakerSendTransition } from "$lib/stores/transitions";
 
 	var technologySelected = null;
 	var technologyHover = false;
@@ -51,7 +49,7 @@ import { heaventakerReceiveTransition, heaventakerSendTransition } from "$lib/st
 
 <main class:dark={$darkmode}>
 	<Hero {appTypeHover}>
-		<h1>I'm a young developer making <u on:mouseenter={() => appTypeHover = "websites"} on:mouseleave={() => appTypeHover == "websites" && (appTypeHover = null)}>websites</u>,
+		<h1 class="font-bold">I'm a young developer making <u on:mouseenter={() => appTypeHover = "websites"} on:mouseleave={() => appTypeHover == "websites" && (appTypeHover = null)}>websites</u>,
 			<u on:mouseenter={() => appTypeHover = "applications"} on:mouseleave={() => appTypeHover == "applications" && (appTypeHover = null)}>applications</u> and
 			<u on:mouseenter={() => appTypeHover = "bots"} on:mouseleave={() => appTypeHover == "bots" && (appTypeHover = null)}>discord bots</u>.</h1>
 		<!-- <h3>To be used later</h3> -->
@@ -81,9 +79,6 @@ import { heaventakerReceiveTransition, heaventakerSendTransition } from "$lib/st
                 name="Heaventaker"
                 clickable
                 target="_self"
-                crossfadesend={heaventakerSendTransition}
-                crossfadereceive={heaventakerReceiveTransition}
-                crossfadekey="heaventaker"
 			>
 				<b>Heaventaker</b> - Helltaker fan game
 				<svelte:fragment slot="desc">
@@ -155,11 +150,11 @@ import { heaventakerReceiveTransition, heaventakerSendTransition } from "$lib/st
 		</div>
 	</div>
 	<div class="center">
-		In addition, this website is open-source and available on <img class="white" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" style="height: 1em; width: 1em;" alt=""> <a href="https://github.com/danbulant/design" style="color: rgb(255, 102, 128)">GitHub</a>
+		In addition, this website is open-source and available on <img class="white inline" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" style="height: 1em; width: 1em;" alt=""> <a href="https://github.com/danbulant/design" style="color: rgb(255, 102, 128)">GitHub</a>
 	</div>
 	<div class="also relative">
 		<TechnologyDetails bind:selected={technologySelected} />
-		<h2 class="text-center">I also worked with the following:</h2>
+		<h2 class="text-center font-semibold text-2xl">I also worked with the following:</h2>
 		<noscript class="text-center text-white">Clicking won't work if javascript is not enabled.</noscript>
 		<span class="text-center" class:text-gray={!technologyHover} class:text-white={technologyHover}>{typeof window !== "undefined" && window.matchMedia("(hover: none) and (pointer: coarse)").matches ? "Touch" : "Click"} each technology for more details about why I'm using it.</span>
 		<div class="split" class:text-gray={technologyHover} on:mouseenter={() => technologyHover = true} on:mouseleave={() => technologyHover = false}>
@@ -202,7 +197,7 @@ import { heaventakerReceiveTransition, heaventakerSendTransition } from "$lib/st
 				</li>
 				<li on:click={() => technologySelected = "discord"}>
 					<img src="/tech/discord.png" alt="" draggable={false}>
-					Discord
+					Discord bots
 				</li>
 			</ul>
 			<ul>

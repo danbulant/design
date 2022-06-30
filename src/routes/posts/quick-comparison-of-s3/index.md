@@ -116,8 +116,6 @@ Base plan is 5$/month.
 
 ## Storj.io
 
-***4$/TB/month***
-
 | Category | Free | Paid |
 | -------- | ---- | ---- |
 | Storage | 150GB | $4/TB/month |

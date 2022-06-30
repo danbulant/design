@@ -1,5 +1,6 @@
 <script>
     import { DateTime } from "luxon";
+    import { scale } from "svelte/transition";
 
     export var bigThumbnail;
     // export var categories = [];

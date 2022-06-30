@@ -1,13 +1,15 @@
-<script>
-import { heaventakerReceiveTransition, heaventakerSendTransition } from "$lib/stores/transitions";
-</script>
+<div>
+    <img
+        class="banner"
+        src="/screenshots/heaventaker.webp" alt="">
 
-<img class="banner" in:heaventakerReceiveTransition={{ key: "heaventaker" }} out:heaventakerSendTransition={{ key: "heaventaker" }} src="/screenshots/heaventaker.webp" alt="">
-
+    <h1 class="text-center">Heaventaker</h1>
+</div>
+    
 <style>
     .banner {
         width: 100vw;
-        height: auto;
+        height: calc(100vw * 0.5625);
         object-fit: cover;
     }
 </style>

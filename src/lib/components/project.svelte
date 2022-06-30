@@ -64,25 +64,18 @@
         width: 100%;
         border-radius: 10px;
         position: relative;
+        overflow: hidden;
     }
     .project:hover .desc {
         opacity: 1;
         user-select: auto;
     }
+    .project:hover img {
+        filter: blur(35px);
+    }
     .desc {
-        position: absolute;
-        top: 0;
-        left: 0;
+        @apply absolute top-0 left-0 w-full h-full rounded-10px opacity-0 select-none flex flex-col py-10px px-15px;
         transition: background-color .3s, opacity .3s;
-        width: calc(100% - 30px);
-        height: calc(100% - 27px);
-        border-radius: 10px;
-        opacity: 0;
-        user-select: none;
-        backdrop-filter: blur(35px);
-        display: flex;
-        flex-direction: column;
-        padding: 10px 15px;
         background-color: rgba(0,0,0,0.2);
         color: rgb(214, 214, 214);
     }
@@ -102,12 +95,13 @@
         height: auto;
         border-radius: 10px;
         transition: filter .3s;
+        filter: blur(0px) grayscale(0);
     }
     img.grayscale {
         filter: grayscale(100%);
     }
     h3 {
-        font-weight: 400;
+        @apply font-normal text-xl;
     }
     .bottom {
         color: gray;

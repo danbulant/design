@@ -9,7 +9,7 @@
     }
 </script>
 
-<div class="bar" class:dark={$darkmode}>
+<div class="bar fixed top-0 left-0 z-99 w-100vw max-w-1920px mx-auto mb-30px backdrop-blur" class:dark={$darkmode}>
 	<Bar>
 		<a href="/"><h3>Daniel Bulant</h3></a>
 		<Split />
@@ -19,6 +19,8 @@
 	</Bar>
 </div>
 
+<div class="h-19"></div>
+
 <style>
 	@media (max-width: 570px) {
 		.bar .big {
@@ -27,14 +29,6 @@
 	}
     
 	.bar {
-		position: -webkit-sticky; /* Safari */
-		position: sticky;
-		top: 0;
-		left: 0;
-		z-index: 99;
-		/*width: calc(100vw - 15px);*/
-		max-width: 1920px;
-		margin: 0 auto 30px auto;
 		background: rgba(255,255,255, 0.2);
 		backdrop-filter: blur(10px);
 	}
@@ -52,7 +46,7 @@
 		}
 	}
 	.dark.bar {
-		background: rgba(28, 28, 33, 0.2);
+		background: rgba(28, 28, 33, 0.8);
 	}
 	.bar h3 {
 		font-size: 18px;

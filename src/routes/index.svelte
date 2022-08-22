@@ -340,6 +340,7 @@
 	.split ul {
 		min-width: 340px;
 		margin: 0;
+        list-style-type: none;
 	}
 	.also li {
 		height: 32px;

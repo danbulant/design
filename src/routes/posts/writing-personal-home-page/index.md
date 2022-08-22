@@ -134,7 +134,7 @@ After a while (*oh wait it's already a year*) I wanted to write some blog posts.
 
 The design from Carl was only a single page, but it did include some list of posts there (see the home page, also reused in the posts page), and I felt confident enough that I could code at least a text-first website without a design.
 
-To more easily write blog posts without writing HTML, I decided to use <img src="/tech/markdown.png" alt="" aria-hidden="true"  height="20px"> [Markdown](https://www.markdownguide.org/basic-syntax/).  
+To more easily write blog posts without writing HTML, I decided to use <img src="/tech/markdown.png" alt="" aria-hidden="true"  style="height: 20px"> [Markdown](https://www.markdownguide.org/basic-syntax/).  
 To add more to that, I found [mdsvex](https://mdsvex.pngwn.io/), which allows one to use markdown from svelte, and use svelte from markdown.  
 Their website only specifies how to use it on classic Svelte (via rollup or webpack), but Svelte Kit hides this configuration (in addition to using vite in dev mode).
 
@@ -256,7 +256,7 @@ First iteration of this new design wasn't actually Svelte Kit, but only ``plain'
 
 This meant that the page was only client side, and the server only pre-compiled JS and sent only minimal HTML markup (which mostly just linked JS which did everything else). This meant the page didn't work without JS and took a bit to load.
 
-To fix that, I later moved it into Svelte Kit page (Svelte does support SSR, but it's easier to use Svelte Kit) and used the `static` adapter which meant that all the pages are now prerendered and work without JS. This also means it's fast to load (especially when using CDN, such as <img src="/tech/cloudflare.png" alt="" aria-hidden="true" height="20px"> [Cloudflare](https://cloudflare.com), which this website does use. Not affiliated with them).
+To fix that, I later moved it into Svelte Kit page (Svelte does support SSR, but it's easier to use Svelte Kit) and used the `static` adapter which meant that all the pages are now prerendered and work without JS. This also means it's fast to load (especially when using CDN, such as <img src="/tech/cloudflare.png" alt="" aria-hidden="true" style="height: 20px"> [Cloudflare](https://cloudflare.com), which this website does use. Not affiliated with them).
 
 If you use the `adapter-auto`, deploying to Cloudflare pages should work nearly as is, you just need to set `NODE_VERSION` environment variable to `14` or `16`, as it's by default set to `12` which is too old for Svelte kit to work.
 

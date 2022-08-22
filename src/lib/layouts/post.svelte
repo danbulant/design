@@ -132,6 +132,9 @@
     :global(body .post-layout p) {
         @apply my-1em;
     }
+    :global(body .post-layout p img) {
+        @apply inline;
+    }
 	main {
         margin: 0 auto;
         max-width: 800px;

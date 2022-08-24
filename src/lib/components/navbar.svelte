@@ -14,8 +14,10 @@
 		<a href="/"><h3>Daniel Bulant</h3></a>
 		<Split />
 		<Button text on:click={toggle}>{$darkmode ? "Light" : "Dark"} mode</Button>
-		<a href="/#contact" class="big">Contact</a>
-		<a href="/posts" class="big">Blog</a>
+        <div class="big">
+            <Button text href="/#contact" class="big">Contact</Button>
+            <Button text href="/posts" class="big">Blog</Button>
+        </div>
 	</Bar>
 </div>
 

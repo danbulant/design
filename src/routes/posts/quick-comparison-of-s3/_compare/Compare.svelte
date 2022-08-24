@@ -13,35 +13,35 @@
         {
             name: "Cloudflare R2",
             nameShort: "R2",
-            price: ({ storage, egress, fileCount, dataRetention }) => 10 * storage + Math.max(0, fileCount-10e6)*0.36/1e6,
+            price: ({ storage, egress, fileCount, dataRetention, cloudflareProxy }) => 10 * storage + Math.max(0, fileCount-10e6)*0.36/1e6,
             priceString: "10 * storage + Math.max(0, fileCount-10e6)*0.36/1e6",
             color: "orange",
             link: "cloudflare-r2"
         }, {
             name: "Wasabi",
             nameShort: "Wasabi",
-            price: ({ storage, egress, fileCount, dataRetention }) => 5 * storage * (90/dataRetention),
+            price: ({ storage, egress, fileCount, dataRetention, cloudflareProxy }) => 5 * storage * (90/dataRetention),
             priceString: "5 * storage * (90/dataRetention)",
             color: "green",
             link: "wasabi"
         }, {
             name: "Backblaze B2",
             nameShort: "B2",
-            price: ({ storage, egress, fileCount, dataRetention }) => 4 * storage + 10 * egress + Math.max(0, fileCount - 2500)*4/10e6,
-            priceString: "4 * storage + 10 * egress + Math.max(0, fileCount - 2500)*4/10e6",
+            price: ({ storage, egress, fileCount, dataRetention, cloudflareProxy }) => 4 * storage + (10 * egress * (cloudflareProxy ? 0 : 1)) + Math.max(0, fileCount - 2500)*4/10e6,
+            priceString: "4 * storage + (10 * egress * (cloudflareProxy ? 0 : 1)) + Math.max(0, fileCount - 2500)*4/10e6",
             color: "red",
             link: "backblaze-b2"
         }, {
             name: "DO Spaces",
             nameShort: "Spaces",
-            price: ({ storage, egress, fileCount, dataRetention }) => 20 * storage + 10 * egress,
+            price: ({ storage, egress, fileCount, dataRetention, cloudflareProxy }) => 20 * storage + 10 * egress,
             priceString: "20 * storage + 10 * egress",
             color: "blue",
             link: "digitalocean-spaces"
         }, {
             name: "Storj.io",
             nameShort: "Storj",
-            price: ({ storage, egress, fileCount, dataRetention }) => 4 * storage + 7 * egress,
+            price: ({ storage, egress, fileCount, dataRetention, cloudflareProxy }) => 4 * storage + 7 * egress,
             priceString: "4 * storage + 7 * egress",
             color: "rgb(0,120,180)",
             link: "storjio"
@@ -62,9 +62,9 @@
 	}
 	const m = spring();
 	$: size = w < 640 ? 'small' : 'large';
-    $: $m = data.map((d, i) => ({ x: i, y: d.price({ storage, egress, fileCount, dataRetention }) }));
+    $: $m = data.map((d, i) => ({ x: i, y: d.price({ storage, egress, fileCount, dataRetention, cloudflareProxy }) }));
 	let max = spring();
-    $: $max = Math.max(50, ...data.map(d => d.price({ storage, egress, fileCount, dataRetention }) + d.price({ storage, egress, fileCount, dataRetention }) * 0.2));
+    $: $max = Math.max(50, ...data.map(d => d.price({ storage, egress, fileCount, dataRetention, cloudflareProxy }) + d.price({ storage, egress, fileCount, dataRetention, cloudflareProxy }) * 0.2));
 	onMount(() => {
         w = el.clientWidth;
     });
@@ -75,6 +75,7 @@
     $: if(egress < 1) egress = 1;
     let dataRetention = 90;
     $: if(dataRetention < 1) dataRetention = 1;
+    let cloudflareProxy = false;
 </script>
 
 <label for="storage">Storage used</label>
@@ -91,6 +92,11 @@
     <div class="input-tb">
         <input name="egress" id="egress" type="number" min="1" max="1000" step="1" bind:value={egress}>
     </div>
+</div>
+
+<div class="flex">
+    <input type="checkbox" id="cloudflareProxy" name="cloudflareProxy" bind:checked={cloudflareProxy}>
+    <label for="cloudflareProxy">Uses cloudflare proxy</label>
 </div>
 
 <div class="chart {size}" bind:this={el} bind:clientWidth={w}>
@@ -142,6 +148,10 @@
             <input name="days" id="days" type="number" min="1" max="90" step="1" bind:value={dataRetention}>
         </div>
     </div>
+
+    <span>Cloudflare proxy</span>
+    <small>Means that all traffic is via Cloudflare's network. This only affects Backblaze B2. It's as simple as having a CNAME for your B2 subdomain on your own domain on cloudflare. Don't forget to read Cloudflare's TOS, as they do require free plans (or possibly paid one's as well) to have majority of traffic for website files, not for images or other files.</small>
+    <br>
 
     <table>
         <thead>

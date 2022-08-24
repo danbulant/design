@@ -1,68 +1,94 @@
 <script>
-    import darkmode from "../stores/darkmode";
+    import { DateTime } from "luxon";
+    import { onMount } from "svelte";
+    import Location from "./icons/location.svelte";
+
+    let time = DateTime.now();
+    onMount(() => {
+        let i = setInterval(() => {
+            time = DateTime.now();
+        }, 1000);
+        return () => clearInterval(i);
+    });
 </script>
 
-<div class="contact" class:dark={$darkmode}>
-    <div class="address">Prague, Czech Republic</div>
+<div class="rounded-lg bg-dark-800 text-gray-300 max-w-100 m-auto mb-5 mt-15 p-5">
+    <a href="https://goo.gl/maps/pM3bGyx9u5uBuqqv5" class="flex items-center justify-center w-full p-5" rel="noreferrer noopener" target="_blank">
+        <div class="text-gray-400 h-7 w-7">
+            <Location />
+        </div>
+        Prague, Czech Republic
+    </a>
     <div class="profiles">
         <a href="https://github.com/danbulant" rel="noreferrer noopener" target="_blank">
-            <div class="github" title="GitHub">
-                <img src="/tech/github.png" alt="Github Icon" draggable={false}>
-                <span>danbulant</span>
+            <span class="platform">GitHub</span>
+            <div class="main">
+                <img src="/tech/github.png" alt="" draggable={false}>
+                <span class="name">danbulant</span>
+            </div>
+        </a>
+        <a href="https://www.linkedin.com/in/danbulant/" rel="noreferrer noopener" target="_blank">
+            <span class="platform">LinkedIn</span>
+            <div class="main">
+                <img src="/tech/linkedin.png" class="rounded-1" alt="" draggable={false}>
+                <span class="name">danbulant</span>
             </div>
         </a>
         <a href="https://discord.gg/XKPbz5xRuK" rel="noreferrer noopener" target="_blank">
-            <div class="discord" title="Discord">
-                <img src="/tech/discord.png" alt="Discord Icon" draggable={false}>
-                <span>TechmandanCZ#3372</span>
+            <span class="platform">Discord</span>
+            <div class="main">
+                <img src="/tech/discord.png" alt="" draggable={false}>
+                <span class="name">TechmandanCZ#3372</span>
             </div>
         </a>
+        <a href="https://twitter.com/danbulant" rel="noreferrer noopener" target="_blank">
+            <span class="platform">Twitter</span>
+            <div class="main">
+                <img src="/tech/twitter.png" alt="" draggable={false}>
+                <span class="name">danbulant</span>
+            </div>
+        </a>
+        <a href="mailto:me@danbulant.eu">
+            <span class="platform">Email</span>
+            <div class="main">
+                <img src="/tech/mail.svg" alt="" draggable={false}>
+                <span class="name">me@danbulant.eu</span>
+            </div>
+        </a>
+        <div>
+            <div class="platform">Time</div>
+            <div class="main">
+                <img src="/tech/clock.svg" alt="" draggable={false}>
+                <div class="name">GMT+1 - {time.setZone("Europe/Prague", { keepLocalTime: true }).toFormat("HH:mm:ss")}</div>
+            </div>
+        </div>
     </div>
 </div>
 
 <style>
-    .contact {
-        text-align: center;
-        margin: 120px 0;
+    .platform {
+        @apply text-gray-400;
     }
-    .address {
-        color: #202020d5;
-        margin-bottom: 15px;
-    }
-    .dark .address {
-        color: rgba(191, 191, 191, 0.835);
+    .main {
+        @apply flex gap-3 pt-1;
     }
     .profiles {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 2em;
+        @apply max-w-80 m-auto flex flex-col;
     }
-    .profiles a {
-        height: 100%;
+    a:active, a:hover {
+        @apply no-underline;
     }
-    .profiles a div {
-        height: 100%;
-        display: flex;
-        align-items: center;
+    a:active .main, a:hover .main {
+        @apply underline;
     }
-    .profiles a div span {
-        padding: 0 5px;
+    .profiles > * {
+        @apply py-1.5;
     }
-    .profiles a:hover {
-        text-decoration: none;
+    .profiles > div {
+        @apply m-0 p-0;
     }
     img {
         height: 2em;
         width: 2em;
-    }
-    .github {
-        color: #333333;
-    }
-    .dark .github {
-        color: rgb(191, 191, 191);
-    }
-    .discord {
-        color: #7289DA;
     }
 </style>

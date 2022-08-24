@@ -15,7 +15,14 @@ description: So I added blog to my personal home page.
     import ExampleWrapper from "$lib/components/posts/exampleWrapper.svelte";
     import SimpleExample from "./_comp/simpleExample.svelte";
     import BidiExample from "./_comp/bidiExample.svelte";
+    import Callout from "$lib/components/posts/callout.svelte";
+    import Date from "$lib/components/Date.svelte";
 </script>
+
+<Callout color="#139ab4">
+    <span slot="title">Update <Date value="2022-08-24" /></span>
+    Sveltekit's routing was changed, the article was updated to accomodate that.
+</Callout>
 
 I'm mainly a web developer, yet for quite a while, my personal site looked like this:
 
@@ -119,14 +126,15 @@ Essentially:
 
 *For full description, see [Svelte Kit's documentation](https://kit.svelte.dev/docs/routing)*
 
-Essentially, **each file in `src/routes` creates a new route**.
+Essentially, **each folder in `src/routes` creates a new route**.  
+All special files in sveltekit start with a `+` - `+page.svelte` is the page visible to user
 
-`/index.svelte` is the root page  
-`/something.svelte` will be accessible as `/something`
+`/+page.svelte` is the root page  
+`/something/+page.svelte` will be accessible as `/something`
 
 `js` files are used to create API endpoints, which are run server side. Those can do some action (like user login/registration), or retrieve some data (like a list of blog posts, as I'll demonstrate later).
 
-`md` files are compiled/transpiled into `svelte` files internally, and behave nearly identical.
+`md` files are compiled/transpiled into `svelte` files internally, and behave nearly identical. Note this only works when you set up mdsvex with sveltekit (sveltekit doesn't do it on it's own).
 
 ## Writing blog posts
 
@@ -208,17 +216,17 @@ Hello there, **markdown**
 You can then write YAML metadata (YAML is basically simplified JSON. If you're unsure, any JSON is valid YAML, so you can write it in JSON as well). For example, this page stores it's title, description and thumbnail links there.
 
 When you import the file elsewhere, you can use that metadata to for example show a preview of the post (as is the case here).  
-A simple API route can be used to get a list of posts along with their metadata, for example if all the posts are in `/posts` route, you can use this as `/api/posts.json.js`:
+A simple API route can be used to get a list of posts along with their metadata, for example if all the posts are in `/posts` route, you can use this as `/api/posts.json/+server.js`:
 
 ```js
-export async function get() {
-    const allPostFiles = import.meta.glob('../posts/**/*.md');
+export async function GET() {
+    const allPostFiles = import.meta.glob('../../posts/**/*.md');
 
     const allPosts = await Promise.all(
         Object.entries(allPostFiles).map(async ([path, resolver]) => {
             const { metadata } = await resolver();
             let postPath = path.slice(2, -3);
-            if(postPath.endsWith('/index')) postPath = postPath.slice(0, -6);
+            if(postPath.endsWith('/+page')) postPath = postPath.slice(0, -6);
             return {
                 ...metadata,
                 path: postPath,
@@ -244,7 +252,7 @@ this will get all the metadata about posts and return it as a JSON response, ord
 [{
     "title": "An example blog post",
     "date": "2020-03-05",
-    "path": "/posts/example.md"
+    "path": "/posts/example"
 }]
 ```
 

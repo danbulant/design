@@ -7,20 +7,13 @@ import remarkTwemoji from 'remark-twemoji';
 import remarkGfm from 'remark-gfm';
 import remarkExtendedTable from 'remark-extended-table';
 import rehypeKatexSvelte from "rehype-katex-svelte";
-import WindiCSS from 'vite-plugin-windicss';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
 		adapter: adapter({
 			precompress: true
-		}),
-		vite: {
-			clearScreen: false,
-            plugins: [
-                WindiCSS()
-            ]
-		}
+		})
 	},
 	extensions: ['.svelte', '.md'],
 

@@ -1,38 +1,28 @@
-<script context="module">
-    /** @type {import('@sveltejs/kit').Load} */
-    export async function load({ error, status }) {
-		let response;
-        try {
-            response = await fetch("/api/posts.json");
-        } catch(e) {}
-        return {
-            props: {
-                status,
-                error,
-				posts: response && response.ok && (await response.json())
-            },
-        };
-    }
-</script>
-
 <script>
+    import { page } from '$app/stores';
+    import { dev } from '$app/env';
     import Button from "$lib/components/button.svelte";
     import HeroPost from "$lib/components/heroPost.svelte";
     import Post from "$lib/components/post.svelte";
 
-    export let status;
-    export let error;
-    export let posts;
     let currentHover;
 
-    console.error(error);
+    console.error($page.error);
+
+    function loadPosts() {
+        let posts = fetch("/api/posts.json").then(t => t.json()).catch(t => []);
+        return posts;
+    }
 </script>
 
 <h1 class="text-center">
-    {#if status == 404}
+    {#if $page.status == 404}
         404 - Page Not Found
     {:else}
-        {status} - {error.message}
+        {$page.status} - {$page.error.message}
+        {#if dev}
+            <pre><code>{$page.error.stack}</code></pre>
+        {/if}
     {/if}
 </h1>
 
@@ -43,6 +33,8 @@
     <Button href="/">Go to my home page</Button>
 </div>
 
+{#await loadPosts()}
+{:then posts}
 {#if posts && posts.length > 0}
     <div class="my-4 separator text-big">OR</div>
 
@@ -59,6 +51,9 @@
         {/each}
     </main>
 {/if}
+{:catch error}
+<!-- Couldn't load -->
+{/await}
 
 <style>
     .flex {

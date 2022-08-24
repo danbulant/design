@@ -6,7 +6,7 @@
 
 <h1>Hello {funny[name] || name}</h1>
 
-<input type=text bind:value={name}>
+<input type=text class="text-black" bind:value={name}>
 
 <style>
     h1 {

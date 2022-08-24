@@ -1,16 +1,3 @@
-<script context="module">
-	/** @type {import('./index').Load} */
-	export async function load({ params, fetch, session, stuff }) {
-		const response = await fetch("/api/posts.json");
-	
-		return {
-			props: {
-				posts: response.ok && (await response.json())
-			}
-		};
-	}
-</script>
-
 <script>
 	import Bottombar from "$lib/components/bottombar.svelte";
 	import Button from "$lib/components/button.svelte";
@@ -26,7 +13,9 @@
 	/** @type {null | "websites" | "applications" | "bots"} */
 	var appTypeHover = null;
 
-	export var posts;
+	export var data;
+    var posts = data.posts;
+    $: posts = data.posts;
 	$: if(typeof window !== "undefined") console.log(posts);
 
 	var selectedPost = posts && posts.find(t => !t.categories.includes("experiment"));

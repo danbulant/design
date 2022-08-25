@@ -1,14 +1,14 @@
 /**
  * @type {import("@sveltejs/kit").RequestHandler}
  */
-export async function get(req) {
-    const allPostFiles = import.meta.glob('../posts/**/*.md');
+export async function GET(req) {
+    const allPostFiles = import.meta.glob('../**/*.md');
 
     const allPosts = await Promise.all(
         Object.entries(allPostFiles).map(async ([path, resolver]) => {
             const { metadata } = await resolver();
             let postPath = path.slice(2, -3);
-            if(postPath.endsWith('/index')) postPath = postPath.slice(0, -6);
+            if(postPath.endsWith('/+page')) postPath = postPath.slice(0, -6);
             return {
                 ...metadata,
                 path: postPath,
@@ -20,8 +20,7 @@ export async function get(req) {
         return new Date(b.date) - new Date(a.date)
     });
 
-    return {
-        body: `<?xml version="1.0" encoding="UTF-8" ?>
+    return new Response(`<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
 <channel>
     <title>Blog - Daniel Bulant</title>
@@ -35,12 +34,15 @@ export async function get(req) {
     <item>
         <title>${t.title}</title>
         <description>${t.description}</description>
-        <link>https://danbulant.eu${t.path}</link>
+        <link>https://danbulant.eu/posts${t.path}</link>
         <pubDate>${new Date(t.date).toUTCString()}</pubDate>
         <guid>${t.path}</guid>
     </item>`).join("\n")}
 
 </channel>
-</rss>`
-    };
+</rss>`, {
+        headers: {
+            'Content-Type': 'application/rss+xml'
+        },
+});
 }

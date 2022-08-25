@@ -1,4 +1,5 @@
 <script>
+    import { goatCounter } from "$lib/goatcounter";
     import { DateTime } from "luxon";
     import { onMount } from "svelte";
     import Location from "./icons/location.svelte";
@@ -20,35 +21,35 @@
         Prague, Czech Republic
     </a>
     <div class="profiles">
-        <a href="https://github.com/danbulant" rel="noreferrer noopener" target="_blank">
+        <a href="https://github.com/danbulant" use:goatCounter data-goatcounter-click="contact-github" rel="noreferrer noopener" target="_blank">
             <span class="platform">GitHub</span>
             <div class="main">
                 <img src="/tech/github.png" alt="" draggable={false}>
                 <span class="name">danbulant</span>
             </div>
         </a>
-        <a href="https://www.linkedin.com/in/danbulant/" rel="noreferrer noopener" target="_blank">
+        <a href="https://www.linkedin.com/in/danbulant/" use:goatCounter data-goatcounter-click="contact-linkedin" rel="noreferrer noopener" target="_blank">
             <span class="platform">LinkedIn</span>
             <div class="main">
                 <img src="/tech/linkedin.png" class="rounded-1" alt="" draggable={false}>
                 <span class="name">danbulant</span>
             </div>
         </a>
-        <a href="https://discord.gg/XKPbz5xRuK" rel="noreferrer noopener" target="_blank">
+        <a href="https://discord.gg/XKPbz5xRuK" use:goatCounter data-goatcounter-click="contact-discord" rel="noreferrer noopener" target="_blank">
             <span class="platform">Discord</span>
             <div class="main">
                 <img src="/tech/discord.png" alt="" draggable={false}>
                 <span class="name">TechmandanCZ#3372</span>
             </div>
         </a>
-        <a href="https://twitter.com/danbulant" rel="noreferrer noopener" target="_blank">
+        <a href="https://twitter.com/danbulant" use:goatCounter data-goatcounter-click="contact-twitter" rel="noreferrer noopener" target="_blank">
             <span class="platform">Twitter</span>
             <div class="main">
                 <img src="/tech/twitter.png" alt="" draggable={false}>
                 <span class="name">danbulant</span>
             </div>
         </a>
-        <a href="mailto:me@danbulant.eu">
+        <a href="mailto:me@danbulant.eu" use:goatCounter data-goatcounter-click="contact-email">
             <span class="platform">Email</span>
             <div class="main">
                 <img src="/tech/mail.svg" alt="" draggable={false}>

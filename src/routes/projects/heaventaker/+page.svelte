@@ -8,6 +8,11 @@
     }
 </script>
 
+<svelte:head>
+    <title>Heaventaker - Daniel Bulant</title>
+    <meta name="description" content="A short game about solving puzzles in heaven and about pleasing your favorite angels. Playable online or on Android.">
+</svelte:head>
+
 <svelte:window on:scroll={scroll} />
 
 <div class="relative">

@@ -238,9 +238,11 @@ export async function GET() {
         return new Date(b.date) - new Date(a.date)
     });
 
-    return {
-        body: allPosts
-    };
+    return new Response(JSON.stringify(allPosts.filter(t => new Date(t.date) < Date.now())), {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
 }
 ```
 

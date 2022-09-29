@@ -53,7 +53,6 @@
 			<Button href="/posts">blog</Button>
 		</div>
 	</div>
-	<p class="center firefox-notice">Firefox (and it's 3.4% users) doesn't support background blur. This website is better viewed on a more modern browser.</p>
 	<div class="projects" id="projects">
 		<div>
 			<h2>
@@ -243,14 +242,6 @@
 <Bottombar />
 
 <style>
-	.firefox-notice {
-		display: none;
-	}
-	@supports (-moz-appearance:none) {
-		.firefox-notice {
-			display: block !important;
-		}
-	}
 	img.white {
 		background: white;
 		border-radius: 50%;

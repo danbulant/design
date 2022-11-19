@@ -33,15 +33,16 @@
 	.bar {
 		background: rgba(255,255,255, 0.2);
 		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
 	}
-	@supports (-moz-appearance:none) {
+	/* @supports (-moz-appearance:none) {
 		.bar {
 			background: rgba(255,255,255,0.9) !important;
 		}
 		.dark.bar {
 			background: rgba(28, 28, 33, 0.9) !important;
 		}
-	}
+	} */
 	@media (max-width: 400px) {
 		.bar {
 			width: 100vw;

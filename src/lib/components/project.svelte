@@ -75,15 +75,15 @@
     }
     .desc {
         @apply absolute top-0 left-0 w-full h-full rounded-10px opacity-0 select-none flex flex-col py-10px px-15px;
-        transition: background-color .3s, opacity .3s;
-        background-color: rgba(0,0,0,0.2);
+        transition: background-color 0.3s, opacity 0.3s;
+        background-color: rgba(0, 0, 0, 0.2);
         color: rgb(214, 214, 214);
     }
-	@supports (-moz-appearance:none) {
+    /* @supports (-moz-appearance:none) {
 		.desc {
 			background: rgba(0,0,0,0.9) !important;
 		}
-	}
+	} */
     .desc.extradark {
         background-color: rgba(0,0,0,0.4);
     }

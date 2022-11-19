@@ -169,7 +169,7 @@
 				</li>
 				<li on:click={() => technologySelected = "docker"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain.svg" alt="" draggable={false} />
-					Docker + Docker compose + Docker desktop
+					Docker + Docker compose
 				</li>
 				<li on:click={() => technologySelected = "react"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="" draggable={false} />
@@ -319,7 +319,8 @@
 	}
 	.split ul {
 		min-width: 340px;
-		margin: 0;
+		margin: 0 auto;
+        padding-left: 20px;
         list-style-type: none;
 	}
 	.also li {

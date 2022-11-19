@@ -26,7 +26,7 @@
     $: dt = DateTime.fromISO(date);
 </script>
 
-<a href={path} class:dark={$darkmode} class="post" class:grayscale on:mouseenter={mouseenter} on:mouseleave={mouseleave}>
+<a href={path} class:dark={$darkmode} class="post transition duration-300 block transform active:scale-95" class:grayscale on:mouseenter={mouseenter} on:mouseleave={mouseleave}>
     {#if thumbnail}
         <img src={thumbnail} alt="Thumbnail" class="thumbnail" draggable={false}>
     {:else}
@@ -58,7 +58,6 @@
         text-decoration: none;
     }
     .post {
-        transition: filter .3s;
         cursor: pointer;
         user-select: none;
         width: 100%;

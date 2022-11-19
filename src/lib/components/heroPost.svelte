@@ -15,7 +15,7 @@
     $: dt = DateTime.fromISO(date);
 </script>
 
-<a href={path} class="post">
+<a href={path} class="post select-none cursor-pointer hover:no-underline transform transition duration-300 active:scale-95 block">
     {#if bigThumbnail}
         <img src={bigThumbnail} styles="width: 800px; height: 400px;" alt="Thumbnail" class="thumbnail" draggable={false}>
     {/if}
@@ -38,13 +38,6 @@
 </a>
 
 <style>
-    .post {
-        cursor: pointer;
-        user-select: none;
-    }
-    a.post:hover {
-        text-decoration: none;
-    }
     .thumbnail {
         border-radius: 5px;
         width: 100%;

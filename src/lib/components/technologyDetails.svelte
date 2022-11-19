@@ -91,7 +91,7 @@
             <h2>Node.js</h2>
             <p>Node.js is a javascript runtime for servers and desktop applications (via <span class="a" on:click={() => selected="electron"}>Electron</span>).</p>
             <p>I use Node.js in nearly all of my projects. In case of websites, as a build platform, and in case of backend servers or desktop applications, as the primary runtime.</p>
-            <p>I used Node.js from simply rollup scripts (like used in <a href="http://github.com/danbulant/design" target="_blank" rel="noopener noreferrer">this website</a>), to backend servers and APIs (like in case of Learner and igni website), to <a href="https://github.com/danbulant/test-x" target="_blank" rel="noopener noreferrer">Linux Window Manager</a> and <a href="https://github.com/danbulant/ssps-bot" target="_blank" rel="noopener noreferrer">Discord Bots</a>.</p>
+            <p>I used Node.js from simply rollup scripts (like used in <a href="http://github.com/danbulant/design" target="_blank" rel="noopener noreferrer">this website</a>), to backend servers and APIs (like in case of Animasher and igni website), to <a href="https://github.com/danbulant/test-x" target="_blank" rel="noopener noreferrer">Linux Window Manager</a> and <a href="https://github.com/danbulant/ssps-bot" target="_blank" rel="noopener noreferrer">Discord Bots</a>.</p>
         {:else if selected === "deno"}
             <h2>Deno</h2>
             <p>Deno is an alternative to <span class="a" on:click={() => selected="node"}>Node.js</span> by the same authors, written in <span class="a" on:click={() => selected="rust"}>Rust</span>.</p>
@@ -129,6 +129,7 @@
         transform: scale(0.8);
         pointer-events: none;
         backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
         padding: 8px 16px;
         margin: 0;
         top: 0;
@@ -142,14 +143,14 @@
         background: rgba(255,255,255,0.1);
         box-shadow: 0.6px 1.3px 1.3px hsl(0deg 0% 0% / 0.48);
     }
-	@supports (-moz-appearance:none) {
+	/* @supports (-moz-appearance:none) {
 		.dialog {
 			background: rgba(255,255,255,0.9) !important;
 		}
         .dark.dialog {
             background: rgba(70,70,70,0.97) !important;
         }
-	}
+	} */
     h2 {
         margin-top: 0;
         margin-block-start: 0;

@@ -9,9 +9,9 @@
 
     if (browser && !dev) {
         Sentry.init({
-            dsn: process.env.SENTRY_DSN,
-            environment: process.env.SENTRY_ENVIRONMENT,
-            release: process.env.SENTRY_RELEASE,
+            dsn:  import.meta.env.VITE_SENTRY_DSN,
+            environment: import.meta.env.VITE_SENTRY_ENVIRONMENT,
+            release: import.meta.env.VITE_SENTRY_RELEASE,
         });
     }
 </script>

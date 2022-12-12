@@ -16,6 +16,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@sentry/browser": "^7.24.2",
     "@sveltejs/pancake": "^0.0.18",
     "katex": "0.15.2",
     "luxon": "2.3.1",

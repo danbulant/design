@@ -8,14 +8,26 @@
     "preview": "svelte-kit preview"
   },
   "devDependencies": {
+    "@dimforge/rapier3d-compat": "^0.10.0",
     "@sveltejs/adapter-static": "1.0.0-next.39",
     "@sveltejs/kit": "1.0.0-next.431",
+    "@theatre/core": "^0.5.1",
+    "@theatre/studio": "^0.5.1",
+    "@threlte/core": "^5.0.8",
+    "@threlte/extras": "^4.9.3",
+    "@threlte/preprocess": "^0.0.2",
+    "@threlte/rapier": "^0.5.0",
+    "@threlte/theatre": "^0.0.2",
+    "@types/three": "^0.147.1",
     "mdsvex": "0.10.5",
     "svelte": "3.46.4",
+    "svelte-sequential-preprocessor": "^0.0.7",
+    "three": "^0.148.0",
     "vite-plugin-windicss": "^1.8.7"
   },
   "type": "module",
   "dependencies": {
+    "@elastic/apm-rum": "^5.12.0",
     "@sentry/browser": "^7.24.2",
     "@sveltejs/pancake": "^0.0.18",
     "katex": "0.15.2",

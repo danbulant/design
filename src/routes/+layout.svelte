@@ -4,7 +4,11 @@
     import "virtual:windi.css";
     import { browser, dev } from "$app/env";
     import * as Sentry from '@sentry/browser';
+    import { apm } from "$lib/apm";
+    import { page } from "$app/stores";
+
     if (browser && dev) import("virtual:windi-devtools");
+    
     export let data;
 
     if (browser && !dev) {
@@ -13,6 +17,9 @@
             environment: import.meta.env.VITE_SENTRY_ENVIRONMENT,
             release: import.meta.env.VITE_SENTRY_RELEASE,
         });
+    }
+    if(browser) {
+        apm.setInitialPageLoadName($page.route.id);
     }
 </script>
 

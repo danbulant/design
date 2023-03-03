@@ -1,4 +1,4 @@
-<nav class="bar-component">
+<nav class="bar-component backdrop-blur">
     <slot />
 </nav>
 
@@ -14,8 +14,5 @@
     }
     :global(.dark nav.bar-component) {
 		background: rgba(28, 28, 33, 0.2);
-    }
-    :global(nav.bar-component > *) {
-        margin: 5px 10px;
     }
 </style>

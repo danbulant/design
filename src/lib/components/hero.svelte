@@ -34,12 +34,10 @@
         position: relative;
         padding: 40px 120px;
         padding: 40px min(120px, 10vw);
-        margin: 0 20px;
+        margin: 2rem 1.5rem;
         /* min-height: calc(100vh - 129px - 80px + 5px); */
         max-height: 1080px;
         max-width: 1500px;
-        
-        margin-bottom: 30px;
     }
     .bg {
         position: absolute;

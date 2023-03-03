@@ -3,19 +3,21 @@
 
     export var href = "";
     export var text = false;
+
+    let className;
+    export { className as class };
 </script>
 
 {#if href}
-    <a href={href} tabindex="0" class="button" class:text class:dark={$darkmode}><slot /></a>
+    <a href={href} tabindex="0" class="button {className}" class:text class:dark={$darkmode}><slot /></a>
 {:else}
-    <button class="button" on:click class:text class:dark={$darkmode}><slot /></button>
+    <button class="button {className}" on:click class:text class:dark={$darkmode}><slot /></button>
 {/if}
 
 <style>
 
     .button {
-        background: #006db3;
-        border-radius: 5px;
+        @apply backdrop-blur bg-black/50 rounded;
         padding: 10px 15px;
         color: white;
         cursor: pointer;

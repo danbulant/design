@@ -9,7 +9,7 @@
 		<h3>Daniel Bulant</h3>
 		<Split />
 		<h3>
-			Design by Carl Hansen
+			2020-2023
 		</h3>
 	</Bar>
 </div>
@@ -19,6 +19,10 @@
 		margin: 30px auto 30px auto;
 		width: calc(100% - min(100px, 10%));
 	}
+    
+    h3 {
+        margin: 5px 10px;
+    }
 	@media (max-width: 520px) {
 		.bottombar {
 			margin: 30px 0 0 0;

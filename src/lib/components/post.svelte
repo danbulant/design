@@ -70,8 +70,8 @@
         flex-grow: 1;
     }
     @media (max-width: 768px) {
-        .post {
-            flex-wrap: wrap;
+        img.thumbnail {
+            width: 20vw;
         }
     }
     h4 {

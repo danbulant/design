@@ -9,14 +9,16 @@
     }
 </script>
 
-<div class="bar fixed top-0 left-0 z-99 w-100vw max-w-1920px mx-auto mb-30px backdrop-blur" class:dark={$darkmode}>
+<div class="bar fixed top-0 left-0 z-99 w-100vw mx-auto mb-30px" class:dark={$darkmode}>
 	<Bar>
-		<a href="/"><h3>Daniel Bulant</h3></a>
-		<Split />
-		<Button text on:click={toggle}>{$darkmode ? "Light" : "Dark"} mode</Button>
-        <div class="big">
-            <Button text href="/#contact" class="big">Contact</Button>
-            <Button text href="/posts" class="big">Blog</Button>
+        <div class="subbar w-full flex items-center justify-between max-w-8xl m-auto">
+            <a href="/"><h3>Daniel Bulant</h3></a>
+            <Split />
+            <Button text on:click={toggle}>{$darkmode ? "Light" : "Dark"} mode</Button>
+            <div class="big">
+                <Button text href="/#contact" class="big">Contact</Button>
+                <Button text href="/posts" class="big">Blog</Button>
+            </div>
         </div>
 	</Bar>
 </div>
@@ -35,14 +37,9 @@
 		backdrop-filter: blur(10px);
 		-webkit-backdrop-filter: blur(10px);
 	}
-	/* @supports (-moz-appearance:none) {
-		.bar {
-			background: rgba(255,255,255,0.9) !important;
-		}
-		.dark.bar {
-			background: rgba(28, 28, 33, 0.9) !important;
-		}
-	} */
+    .bar .subbar > * {
+        margin: 5px 10px;
+    }
 	@media (max-width: 400px) {
 		.bar {
 			width: 100vw;

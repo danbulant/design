@@ -77,8 +77,8 @@
         margin-bottom: 30px;
     }
     .imgcon {
+        @apply rounded-lg mb-4;
         width: 100%;
-        border-radius: 10px;
         position: relative;
         overflow: hidden;
     }
@@ -90,7 +90,7 @@
         filter: blur(35px);
     }
     .desc {
-        @apply absolute top-0 left-0 w-full h-full rounded-10px opacity-0 select-none flex flex-col py-10px px-15px;
+        @apply absolute top-0 left-0 w-full h-full rounded-lg opacity-0 select-none flex flex-col py-10px px-15px;
         transition: background-color 0.3s, opacity 0.3s;
         background-color: rgba(0, 0, 0, 0.2);
         color: rgb(214, 214, 214);
@@ -107,9 +107,9 @@
         flex-grow: 1;
     }
     img {
+        @apply rounded-lg;
         width: 100%;
         height: auto;
-        border-radius: 10px;
         transition: filter 0.3s;
         filter: blur(0px) grayscale(0);
     }

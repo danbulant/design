@@ -42,17 +42,22 @@
 			<b on:mouseenter={() => appTypeHover = "applications"} on:mouseleave={() => appTypeHover == "applications" && (appTypeHover = null)}>applications</b> and
 			<b on:mouseenter={() => appTypeHover = "bots"} on:mouseleave={() => appTypeHover == "bots" && (appTypeHover = null)}>discord bots</b>.</h1>
 		<!-- <h3>To be used later</h3> -->
-		<Button href="#projects">Check out my work</Button>
+        <div class="flex gap-4">
+            <Button class="!p-4" href="#projects">Check out my work</Button>
+            <div class="blog-preview flex backdrop-blur bg-black/40 items-center rounded">
+                <Button class="!p-4 h-full !flex items-center !rounded-r-0 !bg-transparent !backdrop-none" href="/posts">
+                    <span>
+                        Blog
+                    </span>
+                </Button>
+                <div class="right p-4 border-l-2 border-l-white/20">
+                    {#if selectedPost}
+                        <a href={selectedPost.path}><b>{selectedPost.title}</b></a>
+                    {/if}
+                </div>
+            </div>
+        </div>
 	</Hero>
-	<div class="blog">
-		I recently started my own blog.<br>
-		{#if selectedPost}
-			You can checkout &ldquo;<a href={selectedPost.path}><b>{selectedPost.title}</b></a>&rdquo; and other recent blog posts:<br>
-		{/if}
-		<div style="text-align: center; margin-top: 5px;">
-			<Button href="/posts">blog</Button>
-		</div>
-	</div>
 	<div class="projects" id="projects">
 		<div>
 			<h2>
@@ -84,6 +89,7 @@
 				extradark
 				width={1920}
 				height={940}
+				link="https://animasher.net"
                 name="Animasher"
 			>
 				<b>Animasher</b> - Platform for creating and sharing animations
@@ -245,19 +251,6 @@
 	img.white {
 		background: white;
 		border-radius: 50%;
-	}
-	.blog {
-		margin: auto;
-		margin-top: 20px;
-		max-width: max-content;
-		padding: 15px;
-		border-radius: 5px;
-		background: #282B29;
-		color: white;
-	}
-	.dark .blog {
-		background: white;
-		color: #282B29;
 	}
 	/* :global(body) {
 		background-image: linear-gradient(to top, rgb(242,210,223), transparent min(180vh, 1080px));

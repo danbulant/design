@@ -1,6 +1,6 @@
 <script>
     import { page } from '$app/stores';
-    import { dev } from '$app/env';
+    import { dev } from '$app/environment';
     import Button from "$lib/components/button.svelte";
     import HeroPost from "$lib/components/heroPost.svelte";
     import Post from "$lib/components/post.svelte";

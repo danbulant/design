@@ -2,7 +2,7 @@
     import Navbar from "$lib/components/navbar.svelte";
     import PageTransition from "$lib/components/pageTransition.svelte";
     import "virtual:windi.css";
-    import { browser, dev } from "$app/env";
+    import { browser, dev } from "$app/environment";
     import * as Sentry from '@sentry/browser';
     import { apm } from "$lib/apm";
     import { page } from "$app/stores";

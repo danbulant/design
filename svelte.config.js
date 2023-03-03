@@ -15,7 +15,7 @@ const config = {
 			precompress: true
 		}),
         prerender: {
-            default: true
+            origin: "https://danbulant.eu"
         }
 	},
 	extensions: ['.svelte', '.md'],

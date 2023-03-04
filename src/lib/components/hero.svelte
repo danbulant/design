@@ -41,7 +41,7 @@
         position: relative;
         padding: 40px 120px;
         padding: 40px min(120px, 10vw);
-        margin: 2rem 1.5rem;
+        margin: 2rem auto;
         /* min-height: calc(100vh - 129px - 80px + 5px); */
         max-height: 1080px;
         max-width: 1500px;
@@ -71,7 +71,7 @@
         position: absolute;
         top: -4rem;
         left: -4rem;
-        width: calc(100% + 8rem);
+        width: min((100% + 8rem), 100vw - 4px);
         height: calc(100% + 8rem);
         backdrop-filter: blur(20px);
     }
@@ -87,11 +87,6 @@
     @media (prefers-reduced-motion) {
         .bg img {
             transition: none;
-        }
-    }
-    @media (min-width: 1760px) {
-        .hero {
-            margin: 0 auto;
         }
     }
 	@media (max-width: 1100px) {

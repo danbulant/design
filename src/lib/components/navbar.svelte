@@ -34,8 +34,6 @@
     
 	.bar {
 		background: rgba(255,255,255, 0.2);
-		backdrop-filter: blur(10px);
-		-webkit-backdrop-filter: blur(10px);
 	}
     .bar .subbar > * {
         margin: 5px 10px;

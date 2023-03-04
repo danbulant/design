@@ -50,7 +50,7 @@
                         Blog
                     </span>
                 </Button>
-                <div class="right p-4 border-l-2 border-l-white/20">
+                <div class="right md:inline-block hidden p-4 border-l-2 border-l-white/20">
                     {#if selectedPost}
                         <a href={selectedPost.path}><b>{selectedPost.title}</b></a>
                     {/if}

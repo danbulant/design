@@ -55,7 +55,7 @@
                 <div class="main">
                     <img src="/tech/mastodon.png" alt="" draggable={false}>
                     <div class="flex flex-col">
-                        <a rel="me" use:goatCounter data-goatcounter-click="contact-mastodon" href="https://mastodon.social/danbulant" class="name !hover:underline">@danbulant@mastodon.social</a>
+                        <!-- <a rel="me" use:goatCounter data-goatcounter-click="contact-mastodon" href="https://mastodon.social/danbulant" class="name !hover:underline">@danbulant@mastodon.social</a> -->
                         <a rel="me" use:goatCounter data-goatcounter-click="contact-layer8" href="https://layer8.space/@techmandan" class="name !hover:underline">@techmandan@layer8.space</a>
                     </div>
                 </div>

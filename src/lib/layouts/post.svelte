@@ -1,3 +1,10 @@
+<script context="module">
+    import span from "../components/posts/span.svelte";
+    import code from "../components/posts/code.svelte";
+    import a from "../components/posts/a.svelte";
+    export { span, code, a };
+</script>
+
 <script>
     import darkmode from "$lib/stores/darkmode";
     import { DateTime } from "luxon";
@@ -69,7 +76,11 @@
         color: rgb(2, 218, 218);
     }
     :global(body .post-layout table) {
+        @apply rounded;
         border-spacing: 0;
+    }
+    :global(body .post-layout table thead, body .post-layout table thead tr) {
+        @apply rounded;
     }
     :global(body .post-layout table thead tr th:first-child) {
         border-top-left-radius: 5px;
@@ -139,7 +150,13 @@
         @apply inline;
     }
     :global(body .post-layout pre) {
-        @apply rounded-lg bg-dark-400;
+        @apply rounded-lg bg-dark-400 p-4 my-4 max-w-full overflow-auto;
+    }
+    :global(.dark .post-layout code) {
+        @apply rounded-lg bg-dark-400 p-1;
+    }
+    :global(body .post-layout code) {
+        @apply rounded-lg bg-dark-400/03 p-1 transition-colors duration-300;
     }
     :global(body .post-layout ul) {
         @apply list-disc list-inside;

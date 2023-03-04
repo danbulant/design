@@ -70,7 +70,7 @@ Has a policy that egress shouldn't be higher than the stored amount. Consider us
 | Class B ops | 2500/day | $4 / 10 million |
 | Class C ops | 2500/day | $4 / 1 million |
 
-Free egress when using one of the '[Bandwidth alliance](https://www.cloudflare.com/bandwidth-alliance/)' services - for example when using free Cloudflare proxy (which is free even for small businesses, unless you're moving tens/hundreds of terabytes of data each day).
+Free egress when using one of the `[Bandwidth alliance](https://www.cloudflare.com/bandwidth-alliance/)' services - for example when using free Cloudflare proxy (which is free even for small businesses, unless you're moving tens/hundreds of terabytes of data each day).
 
 <details>
     <summary>Details</summary>
@@ -88,7 +88,7 @@ Free egress when using one of the '[Bandwidth alliance](https://www.cloudflare.c
     Copy, Create bucket, CORS bucket management, bucket information, listing.
 </details>
 
-[Home page](https://backblaze.com) | [Pricing page](https://www.backblaze.com/b2/cloud-storage-pricing.html)
+[Home page](https://backblaze.com "favicon=https://backblaze.com/favicon.ico") | [Pricing page](https://www.backblaze.com/b2/cloud-storage-pricing.html "favicon=https://backblaze.com/favicon.ico")
 
 ## DigitalOcean Spaces
 

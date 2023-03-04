@@ -7,6 +7,8 @@ import remarkTwemoji from 'remark-twemoji';
 import remarkGfm from 'remark-gfm';
 import remarkExtendedTable from 'remark-extended-table';
 import rehypeKatexSvelte from "rehype-katex-svelte";
+import { prettyCode } from './remark/code.js';
+import { rehypeEscapeHighlight, remarkEscapeInlineCode, remarkUnescapeHighlight } from './remark/unescapehighlight.js';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -30,16 +32,21 @@ const config = {
 				quotes: false,
 				backticks: "all"
 			},
+            highlight: false,
 			rehypePlugins: [
 				rehypeSlug,
 				rehypeAutolinkHeadings,
-				rehypeKatexSvelte
+				rehypeKatexSvelte,
+                rehypeEscapeHighlight
 			],
 			remarkPlugins: [
 				remarkGfm,
 				remarkMath,
 				remarkTwemoji,
-				remarkExtendedTable
+				remarkExtendedTable,
+                remarkUnescapeHighlight,
+                prettyCode,
+                remarkEscapeInlineCode
 			]
 		})
 	]

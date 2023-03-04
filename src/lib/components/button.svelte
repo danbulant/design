@@ -3,27 +3,31 @@
 
     export var href = "";
     export var text = false;
+    export var blur = false;
 
     let className;
     export { className as class };
 </script>
 
 {#if href}
-    <a href={href} tabindex="0" class="button {className}" class:text class:dark={$darkmode}><slot /></a>
+    <a href={href} class:blur tabindex="0" class="button {className}" class:text class:dark={$darkmode}><slot /></a>
 {:else}
-    <button class="button {className}" on:click class:text class:dark={$darkmode}><slot /></button>
+    <button class="button {className}" class:blur on:click class:text class:dark={$darkmode}><slot /></button>
 {/if}
 
 <style>
 
     .button {
-        @apply backdrop-blur bg-black/50 rounded;
+        @apply bg-black/50 rounded;
         padding: 10px 15px;
         color: white;
         cursor: pointer;
         position: relative;
         border: 1px solid transparent;
         transition: border-color .2s;
+    }
+    .blur {
+        @apply backdrop-blur;
     }
 
     .text {

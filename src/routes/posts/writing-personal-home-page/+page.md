@@ -45,7 +45,18 @@ I created a new project simply by using
 ```bash
 pnpm init svelte@next
 ```
-*(side note: I'm using [pnpm](https://pnpm.io) as it's a faster alternative to npm which also saves disk space)*
+
+<Callout color="#139ab4" closed minimal>
+    <span slot="title">
+
+    *(side note: I'm using [pnpm](https://pnpm.io) as it's a faster alternative to npm which also saves disk space)*
+    
+    </span>
+
+    [pnpm](https://pnpm.io) uses [symlinks](https://en.wikipedia.org/wiki/Symbolic_link) to store each dependency exactly once on disk
+    (symlinks, symbolic links, are a sort of alias to files), which makes it use less storage. In addition, it's faster and has better
+    monorepo support.
+</Callout>
 
 This creates a new [Svelte Kit](https://kit.svelte.dev) project, by first asking for configuration (i.e. if you want typescript, ESLint and/or prettifier) and then initalizing from a template.
 
@@ -77,6 +88,8 @@ An example component:
 
 <h1>Hello {name}</h1>
 <input type=text bind:value={name}>
+
+<!-- Styles hidden for readability -->
 ```
 
 <ExampleWrapper title="Interactive example">
@@ -142,7 +155,7 @@ After a while (*oh wait it's already a year*) I wanted to write some blog posts.
 
 The design from Carl was only a single page, but it did include some list of posts there (see the home page, also reused in the posts page), and I felt confident enough that I could code at least a text-first website without a design.
 
-To more easily write blog posts without writing HTML, I decided to use <img src="/tech/markdown.png" alt="" aria-hidden="true"  style="height: 20px"> [Markdown](https://www.markdownguide.org/basic-syntax/).  
+To more easily write blog posts without writing HTML, I decided to use [Markdown](https://www.markdownguide.org/basic-syntax/).  
 To add more to that, I found [mdsvex](https://mdsvex.pngwn.io/), which allows one to use markdown from svelte, and use svelte from markdown.  
 Their website only specifies how to use it on classic Svelte (via rollup or webpack), but Svelte Kit hides this configuration (in addition to using vite in dev mode).
 
@@ -266,12 +279,10 @@ First iteration of this new design wasn't actually Svelte Kit, but only ``plain'
 
 This meant that the page was only client side, and the server only pre-compiled JS and sent only minimal HTML markup (which mostly just linked JS which did everything else). This meant the page didn't work without JS and took a bit to load.
 
-To fix that, I later moved it into Svelte Kit page (Svelte does support SSR, but it's easier to use Svelte Kit) and used the `static` adapter which meant that all the pages are now prerendered and work without JS. This also means it's fast to load (especially when using CDN, such as <img src="/tech/cloudflare.png" alt="" aria-hidden="true" style="height: 20px"> [Cloudflare](https://cloudflare.com), which this website does use. Not affiliated with them).
+To fix that, I later moved it into Svelte Kit page (Svelte does support SSR, but it's easier to use Svelte Kit) and used the `static` adapter which meant that all the pages are now prerendered and work without JS. This also means it's fast to load (especially when using CDN, such as [Cloudflare](https://cloudflare.com), which this website does use. Not affiliated with them).
 
 If you use the `adapter-auto`, deploying to Cloudflare pages should work nearly as is, you just need to set `NODE_VERSION` environment variable to `14` or `16`, as it's by default set to `12` which is too old for Svelte kit to work.
 
 ## Wrapping up
 
-Thanks for reading, hope you learnt something new - as I did when I wrote this blog post, after spending an hour to update the website with new styles and functionality.
-
-If you did enjoy reading this, consider sharing a link here on any social media you use.
+Thanks for reading, hope you learnt something new - as I did when I wrote this blog post, after spending an hour to update this site with new styles and functionality.

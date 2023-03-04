@@ -18,11 +18,18 @@
 </script>
 
 <div class="hero">
-    <div class="bg">
+    <div class="bg z-0">
         <img class="bg1" style="right: {(current - 3) * 100}%;" src="/screenshots/heaventaker/heaventaker.webp" alt="">
         <img class="bg2" style="right: {(current - 2) * 100}%;" src="/screenshots/animasher.webp" alt="">
         <img class="bg3" style="right: {(current - 1) * 100}%;" src="/screenshots/ignibg.webp" alt="">
-        <img class="bg4" style="right: {(current - 0) * 100}%;" src="/screenshots/mangadex.webp" alt="">
+        <img class="bg4" style="right: {(current - 0) * 100}%;" src="/screenshots/mangadex.png" alt="">
+    </div>
+    <div class="blur z-1"></div>
+    <div class="bg z-2">
+        <img class="bg1" style="right: {(current - 3) * 100}%;" src="/screenshots/heaventaker/heaventaker.webp" alt="">
+        <img class="bg2" style="right: {(current - 2) * 100}%;" src="/screenshots/animasher.webp" alt="">
+        <img class="bg3" style="right: {(current - 1) * 100}%;" src="/screenshots/ignibg.webp" alt="">
+        <img class="bg4" style="right: {(current - 0) * 100}%;" src="/screenshots/mangadex.png" alt="">
     </div>
     <slot />
 </div>
@@ -59,6 +66,23 @@
         object-fit: cover;
         border-radius: 5px;
         transition: right .4s;
+    }
+    .blur {
+        position: absolute;
+        top: -4rem;
+        left: -4rem;
+        width: calc(100% + 8rem);
+        height: calc(100% + 8rem);
+        backdrop-filter: blur(20px);
+    }
+    .z-0 {
+        z-index: -3;
+    }
+    .z-1 {
+        z-index: -2;
+    }
+    .z-2 {
+        z-index: -1;
     }
     @media (prefers-reduced-motion) {
         .bg img {

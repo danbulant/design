@@ -39,11 +39,10 @@
         margin: 50px auto 30px;
     }
     .hero {
-        width: calc(60% - 5px);
-        margin-right: 5px;
+        @apply mr-2 mb-4;
+        width: calc(60% - 0.5rem);
         min-width: 620px;
         flex-shrink: 0;
-        margin-bottom: 15px;
     }
     .posts {
         width: calc(40% - 5px);

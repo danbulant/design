@@ -90,7 +90,7 @@
         filter: blur(35px);
     }
     .desc {
-        @apply absolute top-0 left-0 w-full h-full rounded-lg opacity-0 select-none flex flex-col py-10px px-15px;
+        @apply absolute top-0 left-0 w-full h-full rounded-lg opacity-0 select-none flex flex-col py-2rem px-2rem;
         transition: background-color 0.3s, opacity 0.3s;
         background-color: rgba(0, 0, 0, 0.2);
         color: rgb(214, 214, 214);
@@ -114,7 +114,7 @@
         filter: blur(0px) grayscale(0);
     }
     img.grayscale {
-        filter: grayscale(100%);
+        filter: blur(0px) grayscale(100%);
     }
     h3 {
         @apply font-normal text-xl;

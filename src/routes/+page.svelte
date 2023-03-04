@@ -43,9 +43,9 @@
 			<b on:mouseenter={() => appTypeHover = "bots"} on:mouseleave={() => appTypeHover == "bots" && (appTypeHover = null)}>discord bots</b>.</h1>
 		<!-- <h3>To be used later</h3> -->
         <div class="flex gap-4">
-            <Button class="!p-4" href="#projects">Check out my work</Button>
+            <Button blur class="!p-4" href="#projects">Check out my work</Button>
             <div class="blog-preview flex backdrop-blur bg-black/40 items-center rounded">
-                <Button class="!p-4 h-full !flex items-center !rounded-r-0 !bg-transparent !backdrop-none" href="/posts">
+                <Button blur class="!p-4 h-full !flex items-center !rounded-r-0 !bg-transparent !backdrop-none" href="/posts">
                     <span>
                         Blog
                     </span>
@@ -76,7 +76,7 @@
 				<b>Heaventaker</b> - Helltaker fan game
 				<svelte:fragment slot="desc">
 					<p>
-						<img src="/azrael.gif" alt="" style="height: 24px; width: 24px;"> Heaventaker is a helltaker fan-game visual novel and puzzle game.
+						<img src="/azrael.gif" alt="" style="height: 24px; width: 24px; display: inline"> Heaventaker is a helltaker fan-game visual novel and puzzle game.
 					</p>
 					<p>
 						Heaventaker currently has 3 different puzzles and 4 angels to collect. Playable online on the website, or on Android devices (application installable from Google Play Store)
@@ -107,7 +107,7 @@
 			<div class="pad"></div>
 			<Project
 				link="https://manga.danbulant.eu"
-				image="/screenshots/mangadex.webp"
+				image="/screenshots/mangadex.png"
 				grayscale={appTypeHover && appTypeHover !== "websites"}
 				width={803}
 				height={382}
@@ -273,6 +273,10 @@
 	.text-gray { 
 		color: rgb(150, 150, 150);
 	}
+    .text-gray img {
+        filter: grayscale(70%);
+        transition: filter .3s;
+    }
 	.text-white {
 		color: black;
 	}
@@ -327,6 +331,9 @@
 	}
     .also li:hover {
         color: black;
+    }
+    .also li:hover img {
+        filter: grayscale(0%);
     }
     .dark .also li:hover {
         color: white;

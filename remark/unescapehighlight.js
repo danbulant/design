@@ -2,7 +2,6 @@ import { visit } from "unist-util-visit"
 
 export function remarkUnescapeHighlight() {
     return (tree, file) => {
-        console.log(1, file.filename, tree);
         visit(tree, ["code"], (node) => {
             node.value = node.value
                 .replace(/&#123;/g, "{")
@@ -22,7 +21,6 @@ export function remarkUnescapeHighlight() {
 
 export function remarkEscapeInlineCode() {
     return (tree, file) => {
-        console.log(2, file.filename, tree);
         visit(tree, ["inlineCode"], (node) => {
             node.value = node.value
                 .replace(/{/g, "&#123;")
@@ -61,7 +59,6 @@ export function rehypeEscapeHighlight() {
     }
 
     return (tree, file) => {
-        console.log(3, file.filename, tree);
         visit(tree);
     }
 }

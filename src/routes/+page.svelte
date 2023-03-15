@@ -39,7 +39,7 @@
 <main class:dark={$darkmode}>
 	<Hero {appTypeHover}>
 		<h1 class="font-bold">I'm making <b on:mouseenter={() => appTypeHover = "websites"} on:mouseleave={() => appTypeHover == "websites" && (appTypeHover = null)}>websites</b>,
-			<b on:mouseenter={() => appTypeHover = "applications"} on:mouseleave={() => appTypeHover == "applications" && (appTypeHover = null)}>applications</b> and
+			<b on:mouseenter={() => appTypeHover = "applications"} on:mouseleave={() => appTypeHover == "applications" && (appTypeHover = null)}>mobile applications</b> and
 			<b on:mouseenter={() => appTypeHover = "bots"} on:mouseleave={() => appTypeHover == "bots" && (appTypeHover = null)}>discord bots</b>.</h1>
 		<!-- <h3>To be used later</h3> -->
         <div class="flex gap-4">

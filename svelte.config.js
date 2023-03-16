@@ -17,7 +17,8 @@ const config = {
 			precompress: true
 		}),
         prerender: {
-            origin: "https://danbulant.eu"
+            origin: "https://danbulant.eu",
+            handleMissingId: "warn"
         }
 	},
 	extensions: ['.svelte', '.md'],

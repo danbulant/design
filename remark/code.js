@@ -16,10 +16,6 @@ export const prettyCode = createRemarkPlugin({
         node.innerHTML = node.innerHTML
             .replace(/{/g, "&#123;")
             .replace(/}/g, "&#125;");
-        // console.log(node.innerHTML);
-        // console.log(node.innerHTML
-        //     .replace(/{/g, "&#123;")
-        //     .replace(/}/g, "&#125;"));
         Object.assign(node.style, {
             margin: "0 -1.5rem",
             padding: "0 1.5rem",

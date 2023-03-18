@@ -33,8 +33,7 @@
     <Button href="/">Go to my home page</Button>
 </div>
 
-{#await loadPosts()}
-{:then posts}
+{#await loadPosts() then posts}
 {#if posts && posts.length > 0}
     <div class="my-4 separator text-big">OR</div>
 

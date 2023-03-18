@@ -26,7 +26,6 @@
             }
             newtitle = options.get("title") || "";
             favicon = options.get("favicon") || defaultfavicon;
-            console.log(options);
         } else {
             newtitle = title;
             favicon = defaultfavicon;

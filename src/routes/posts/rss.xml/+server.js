@@ -46,3 +46,5 @@ export async function GET(req) {
         },
 });
 }
+
+export const prerender = true;

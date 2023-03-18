@@ -46,7 +46,7 @@
     {#if tags}
         <div class="tags md:flex-col">
             {#each tags as tag}
-                <div class="tag" class:selected={selectedTags.includes(tag)} on:click={() => toggle(tag)}>
+                <div class="tag" class:selected={selectedTags.includes(tag)} on:click={() => toggle(tag)} on:keydown={() => toggle(tag)}>
                     {tag}
                 </div>
             {/each}
@@ -77,7 +77,7 @@
     </div>
 </div>
 
-<style>
+<style lang="postcss">
     .parent {
         @apply pt-10 w-max m-auto px-5 gap-5;
     }

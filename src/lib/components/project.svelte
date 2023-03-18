@@ -71,7 +71,7 @@
     </div>
 </a>
 
-<style>
+<style lang="postcss">
     .project {
         width: 100%;
         margin-bottom: 30px;
@@ -118,8 +118,5 @@
     }
     h3 {
         @apply font-normal text-xl;
-    }
-    .bottom {
-        color: gray;
     }
 </style>

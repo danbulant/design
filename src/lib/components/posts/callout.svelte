@@ -16,8 +16,6 @@
     let brightness = 0;
     $: brightness = brightnessByColor(mix(color, $darkmode ? "#000" : "#fff", 0.5));
 
-    $: console.log(brightness, color);
-
     let isDark = false;
     $: isDark = brightness < 0.5;
 </script>
@@ -34,7 +32,7 @@
     </div>
 </div>
 
-<style>
+<style lang="postcss">
     .color-shadow {
         box-shadow: 0 0 1rem 0.25rem var(--shadow-color), -4px 0 1rem 0.25rem var(--shadow-color);
     }
@@ -55,8 +53,5 @@
     }
     .header.dark-bg {
         @apply text-white;
-    }
-    .dark .content {
-        @apply bg-dark-300/40;
     }
 </style>

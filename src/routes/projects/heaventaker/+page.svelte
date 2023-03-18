@@ -64,7 +64,7 @@
     <div class="bg-img image-michael"></div>
 </div>
 
-<style>
+<style lang="postcss">
     .bg-img {
         @apply p-0 m-0 w-full bg-no-repeat bg-fixed;
     }
@@ -93,14 +93,5 @@
     }
     p {
         @apply my-2;
-    }
-    .button {
-        @apply p-3 m-2 rounded border border-dark-400;
-    }
-    .button.github {
-        background: #333333;
-    }
-    .button.play {
-        background: #006db3;
     }
 </style>

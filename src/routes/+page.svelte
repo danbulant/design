@@ -16,7 +16,6 @@
 	export var data;
     var posts = data.posts;
     $: posts = data.posts;
-	$: if(typeof window !== "undefined") console.log(posts);
 
 	var selectedPost = posts && posts.find(t => !t.categories.includes("experiment"));
 </script>
@@ -153,85 +152,85 @@
 		<span class="text-center" class:text-gray={!technologyHover} class:text-white={technologyHover}>{typeof window !== "undefined" && window.matchMedia("(hover: none) and (pointer: coarse)").matches ? "Touch" : "Click"} each technology for more details about why I'm using it.</span>
 		<div class="split" class:text-gray={technologyHover} on:mouseenter={() => technologyHover = true} on:mouseleave={() => technologyHover = false}>
 			<ul>
-				<li on:click={() => technologySelected = "typescript"}>
+				<li on:click={() => technologySelected = "typescript"} on:keydown={() => technologySelected = "typescript"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="" draggable={false} />
 					Typescript
 				</li>
-				<li on:click={() => technologySelected = "rust"}>
+				<li on:click={() => technologySelected = "rust"} on:keydown={() => technologySelected = "rust"}>
 					<img class="white" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg" alt="" draggable={false} />
 					Rust
 				</li>
-				<li on:click={() => technologySelected = "x11"}>
+				<li on:click={() => technologySelected = "x11"} on:keydown={() => technologySelected = "x11"}>
 					<img src="/tech/x11.png" alt="" draggable={false} />
 					X11
 				</li>
-				<li on:click={() => technologySelected = "cs"}>
+				<li on:click={() => technologySelected = "cs"} on:keydown={() => technologySelected = "cs"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-plain.svg" alt="" draggable={false} />
 					C#
 				</li>
-				<li on:click={() => technologySelected = "git"}>
+				<li on:click={() => technologySelected = "git"} on:keydown={() => technologySelected = "git"}>
 					<img class="white" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" draggable={false} />
 					Git + GitHub
 				</li>
-				<li on:click={() => technologySelected = "docker"}>
+				<li on:click={() => technologySelected = "docker"} on:keydown={() => technologySelected = "docker"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain.svg" alt="" draggable={false} />
 					Docker + Docker compose
 				</li>
-				<li on:click={() => technologySelected = "react"}>
+				<li on:click={() => technologySelected = "react"} on:keydown={() => technologySelected = "react"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="" draggable={false} />
 					React
 				</li>
-				<li on:click={() => technologySelected = "nomad"}>
+				<li on:click={() => technologySelected = "nomad"} on:keydown={() => technologySelected = "nomad"}>
 					<img src="/tech/nomad.svg" alt="" draggable={false} />
 					Nomad
 				</li>
-				<li on:click={() => technologySelected = "consul"}>
+				<li on:click={() => technologySelected = "consul"} on:keydown={() => technologySelected = "consul"}>
 					<img src="/tech/consul.svg" alt="" draggable={false} />
 					Consul
 				</li>
-				<li on:click={() => technologySelected = "discord"}>
+				<li on:click={() => technologySelected = "discord"} on:keydown={() => technologySelected = "discord"}>
 					<img src="/tech/discord.png" alt="" draggable={false}>
 					Discord bots
 				</li>
 			</ul>
 			<ul>
-				<li on:click={() => technologySelected = "electron"}>
+				<li on:click={() => technologySelected = "electron"} on:keydown={() => technologySelected = "electron"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/electron/electron-original.svg" alt="" draggable={false} />
 					Electron
 				</li>
-				<li on:click={() => technologySelected = "svelte"}>
+				<li on:click={() => technologySelected = "svelte"} on:keydown={() => technologySelected = "svelte"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original.svg" alt="" draggable={false} />
 					Svelte + SvelteKit
 				</li>
-				<li on:click={() => technologySelected = "mysql"}>
+				<li on:click={() => technologySelected = "mysql"} on:keydown={() => technologySelected = "mysql"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="" draggable={false} />
 					MySQL/MariaDB
 				</li>
-				<li on:click={() => technologySelected = "mongodb"}>
+				<li on:click={() => technologySelected = "mongodb"} on:keydown={() => technologySelected = "mongodb"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-plain.svg" alt="" draggable={false} />
 					MongoDB
 				</li>
-				<li on:click={() => technologySelected = "postgresql"}>
+				<li on:click={() => technologySelected = "postgresql"} on:keydown={() => technologySelected = "postgresql"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain.svg" alt="" draggable={false} />
 					PostgreSQL
 				</li>
-				<li on:click={() => technologySelected = "node"}>
+				<li on:click={() => technologySelected = "node"} on:keydown={() => technologySelected = "node"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="" draggable={false} />
 					Node.js
 				</li>
-				<li on:click={() => technologySelected = "deno"}>
+				<li on:click={() => technologySelected = "deno"} on:keydown={() => technologySelected = "deno"}>
 					<img class="white" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/denojs/denojs-original.svg" alt="" draggable={false} />
 					Deno
 				</li>
-				<li on:click={() => technologySelected = "linux"}>
+				<li on:click={() => technologySelected = "linux"} on:keydown={() => technologySelected = "linux"}>
 					<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="" draggable={false} />
 					Linux
 				</li>
-				<li on:click={() => technologySelected = "nginx"}>
+				<li on:click={() => technologySelected = "nginx"} on:keydown={() => technologySelected = "nginx"}>
 					<img src="/tech/nginx.svg" alt="" draggable={false} />
 					Nginx
 				</li>
-				<li on:click={() => technologySelected = "cloudflare"}>
+				<li on:click={() => technologySelected = "cloudflare"} on:keydown={() => technologySelected = "cloudflare"}>
 					<img src="/tech/cloudflare.png" alt="" draggable={false} />
 					Cloudflare
 				</li>
@@ -252,12 +251,6 @@
 		background: white;
 		border-radius: 50%;
 	}
-	/* :global(body) {
-		background-image: linear-gradient(to top, rgb(242,210,223), transparent min(180vh, 1080px));
-	}
-	:global(body.dark) {
-		background-image: linear-gradient(to top, rgba(94, 61, 74, 0.685), transparent min(180vh, 1080px));
-	} */
 	.center {
 		text-align: center;
 	}

@@ -5,7 +5,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "package": "svelte-kit package",
-    "preview": "svelte-kit preview"
+    "preview": "vite preview"
   },
   "devDependencies": {
     "@dimforge/rapier3d-compat": "^0.10.0",

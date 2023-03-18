@@ -5,7 +5,9 @@
     import { browser, dev } from "$app/environment";
     import * as Sentry from '@sentry/browser';
     import { apm } from "$lib/apm";
-    import { page } from "$app/stores";
+    import { navigating, page } from "$app/stores";
+    import Spinner from "$lib/components/icons/spinner.svelte";
+    import { fly } from "svelte/transition";
 
     if (browser && dev) import("virtual:windi-devtools");
     
@@ -24,6 +26,12 @@
 </script>
 
 <Navbar />
+
+{#if $navigating}
+    <div transition:fly={{ duration: 200, opacity: 0, y: -20 }} class="fixed bg-hex-1f1f1f top-20 left-1/2 transform -translate-x-1/2 rounded-full w-14 h-14 p-2 z-99">
+        <Spinner />
+    </div>
+{/if}
 
 <div class="overflow-x-hidden w-100vw">
     <PageTransition url={data.url}>

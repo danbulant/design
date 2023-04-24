@@ -9,10 +9,10 @@
 
     console.error($page.error);
 
-    function loadPosts() {
-        let posts = fetch("/api/posts.json").then(t => t.json()).catch(t => []);
-        return posts;
-    }
+    // function loadPosts() {
+    //     let posts = fetch("/api/posts.json").then(t => t.json()).catch(t => []);
+    //     return posts;
+    // }
 </script>
 
 <h1 class="text-center">
@@ -33,7 +33,7 @@
     <Button href="/">Go to my home page</Button>
 </div>
 
-{#await loadPosts() then posts}
+<!-- {#await loadPosts() then posts}
 {#if posts && posts.length > 0}
     <div class="my-4 separator text-big">OR</div>
 
@@ -51,8 +51,8 @@
     </main>
 {/if}
 {:catch error}
-<!-- Couldn't load -->
-{/await}
+<!-- Couldn't load ->
+{/await} -->
 
 <style>
     .flex {

@@ -1,11 +1,20 @@
 <script>
-    import Button from "$lib/components/projects/heaventaker/button.svelte";
+    import { browser } from "$app/environment";
+    import HeaventakerButton from "$lib/components/projects/heaventaker/heaventakerButton.svelte";
 
     let top = 76;
+    let remSize = 16;
+
+    $: if(browser) remSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
 
     function scroll() {
-        top = 76 - document.scrollingElement.scrollTop * (0.35 * window.innerWidth / 1456);
+        const imageHeight = window.innerWidth*1080/2050-10*remSize;
+        const offset = 76;
+        // parallax scroll so that the image has only the center of it visible at the end
+        top = offset - Math.max(0, Math.min(imageHeight-offset, window.scrollY*0.4));
     }
+
+    $: if(browser) scroll();
 </script>
 
 <svelte:head>
@@ -21,9 +30,9 @@
 
     <section class="px-4 m-auto mb-5 max-w-200">
         <div class="flex justify-between items-center flex-wrap">
-            <Button href="https://heaventaker.danbulant.eu">Play online</Button>
-            <Button href="https://play.google.com/store/apps/details?id=eu.danbulant.heaventaker">Google Play</Button>
-            <Button href="https://github.com/danbulant/heaventaker">GitHub</Button>
+            <HeaventakerButton href="https://heaventaker.danbulant.eu">Play online</HeaventakerButton>
+            <HeaventakerButton href="https://play.google.com/store/apps/details?id=eu.danbulant.heaventaker">Google Play</HeaventakerButton>
+            <HeaventakerButton href="https://github.com/danbulant/heaventaker">GitHub</HeaventakerButton>
         </div>
         <div class="flex items-center justify-center flex-wrap flex-row-reverse">
             <div class="flex-grow" style="width: 300px;">
@@ -45,20 +54,23 @@
         </div>
     </section>
 
-    <div class="bg-img secondary-image flex items-center justify-center">
-    </div>
+    <div class="bg-img image-uriel"></div>
 
-    <section class="px-4 m-auto mb-5 max-w-200">
+    <div class="bg-img secondary-image"></div>
 
-        <h2 class="text-2xl font-bold">Licensing</h2>
-
-        <p>
-            The game is licensed under AGPLv3. This means it's free software, but you must give credit to the author and share your changes under the same license. Read full license <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">here</a>.
-        </p>
-
-        <p>
-            Images are licensed under CC-BY-SA. This means you must give credit to the author and share your changes under the same license.
-        </p>
+    <section class="licensing">
+        <div class="infobox">
+            <h2 class="text-2xl font-bold">Licensing</h2>
+    
+            <p>
+                The game is licensed under AGPLv3. This means it's free software, but you must give credit to the author and share your changes under the same license. Read full license <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">here</a>.
+            </p>
+    
+            <p>
+                Images are licensed under CC-BY-SA. This means you must give credit to the author and share your changes under the same license.
+            </p>
+        </div>
+        <img src="/screenshots/heaventaker/characters.png" width="640" height="381" alt="">
     </section>
 
     <div class="bg-img image-michael"></div>
@@ -70,8 +82,10 @@
     }
     .main-image {
         background-image: url("/screenshots/heaventaker/heaventaker2.webp");
-        background-size: calc(100vw - 10rem * 2050 / 1080) calc(100vw*1080/2050 - 10rem);
-        height: calc(100vw*1080/2050 - 10rem);
+        --width: min(1800px, 100vw);
+        --height: calc(var(--width)*1080/2050);
+        background-size: var(--width) var(--height);
+        height: var(--height);
     }
     .secondary-image {
         background-image: url("/screenshots/heaventaker/lucifer.png");
@@ -79,7 +93,7 @@
         background-repeat: no-repeat;
         background-position: 50% 50%;
         background-color: #7F4953;
-        height: calc(100vw*0.509375);
+        height: 90vh;
     }
     .image-michael {
         background-image: url("/screenshots/heaventaker/michael.webp");
@@ -88,8 +102,35 @@
         height: calc(100vw*0.4312611012);
         background-position: 100% 100%;
     }
+    .image-uriel {
+        background-image: url("/screenshots/heaventaker/uriel.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 90vh;
+        background-position: 50% 100%;
+    }
+
+    .licensing {
+        @apply px-4 py-8 m-auto mb-5 max-w-300 gap-5 flex items-center justify-center flex-wrap flex-row-reverse;
+    }
+    .licensing .infobox {
+        @apply fleg-grow max-w-60;
+    }
+    .licensing img {
+        @apply rounded w-full h-auto;
+        max-width: calc(600px - 15rem);
+    }
+    @media (max-width: 670px) {
+        .licensing .infobox {
+            @apply max-w-full;
+        }
+        .licensing img {
+            @apply max-w-full;
+        }
+    }
+
     section {
-        margin-bottom: 0;
+        @apply mb-0;
     }
     p {
         @apply my-2;

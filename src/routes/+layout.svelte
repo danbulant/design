@@ -13,13 +13,6 @@
     
     export let data;
 
-    if (browser && !dev) {
-        Sentry.init({
-            dsn:  import.meta.env.VITE_SENTRY_DSN,
-            environment: import.meta.env.VITE_SENTRY_ENVIRONMENT,
-            release: import.meta.env.VITE_SENTRY_RELEASE,
-        });
-    }
     if(browser) {
         apm.setInitialPageLoadName($page.route.id);
     }

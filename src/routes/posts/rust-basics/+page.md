@@ -213,7 +213,7 @@ Stack:
 
 Primitives and basic [`struct{:rust}`](#declaring-structs)s are stored on the stack. To get values onto heap, you can use [`Box<T>{:rust}`](#boxlttgt). [`Vec<T>{:rust}`](#veclttgt) also puts it's values onto heap.
 
-You may need to use heap if you're using a bit more RAM or if you need to use [`enum{:rust}`](#enums)s with values in structs (basically, if rust complains that a size is unknown at compile time, easiest option is to somehow put it onto heap).  
+You may need to use heap if you're using a bit more RAM or if you need to use [`enum{:rust}`](#declaring-enums)s with values in structs (basically, if rust complains that a size is unknown at compile time, easiest option is to somehow put it onto heap).  
 If you see a stackoverflow, you're using too much stack memory. Try [`box{:rust}`](#boxlttgt)ing some bigger (and perhaps rarely used) values. Note that while heap is slower, it's still plenty fast (as for example almost all JS values are stored on heap, it will always be faster with rust).
 
 #### Common primitives
@@ -281,7 +281,7 @@ Javascript arrays behave sort of like `Vec{:rust}` - they have a set limit, and 
 
 ##### Box&amp;lt;T&amp;gt;
 
-Stores `T` on heap. Useful for using [`enum`s](#enums) in structs, or to free up stack space.
+Stores `T` on heap. Useful for using [`enum`s](#declaring-enums) in structs, or to free up stack space.
 
 See also [heap vs stack](#heap-vs-stack).
 
@@ -311,7 +311,7 @@ struct Something {
 struct Something = u8; // a single value
 ```
 
-As stated earlier, `struct` **sizes are static**. This means you cannot use [`enum{:rust}`s](#enums) with self-referencing (recursive) values directly in `struct{:rust}`s.  
+As stated earlier, `struct` **sizes are static**. This means you cannot use [`enum{:rust}`s](#declaring-enums) with self-referencing (recursive) values directly in `struct{:rust}`s.  
 One of possible ``workarounds'' is to use the [heap](#heap-vs-stack) for actually storing the values, for example by using [Box&amp;lt;T&amp;gt;](#boxlttgt).
 
 ```rust

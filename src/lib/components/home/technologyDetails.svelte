@@ -78,12 +78,12 @@
             <h2>Electron</h2>
             <p>Electron is a framework for building cross-platform desktop applications using <span class="a" on:click={() => selected = "nodejs"} on:keydown={() => selected = "nodejs"}>Node.JS</span>.</p>
             <!-- svelte-ignore security-anchor-rel-noreferrer -->
-            <p>I use Electron whenever I want to create a desktop application easily, for example when I made my simply <a href="https://github.com/danbulant/osuVisualizer" target="_blank" rel="noopener">osu!visualizer</a>, or when I ported <a href="https://github.com/danbulant/svedexui" target="_blank" rel="noopener">eDEX-UI to Svelte</a>.</p>
+            <p>I use Electron whenever I want to create a desktop application easily, for example when I made my simple <a href="https://github.com/danbulant/osuVisualizer" target="_blank" rel="noopener">osu!visualizer</a>, or when I ported <a href="https://github.com/danbulant/svedexui" target="_blank" rel="noopener">eDEX-UI to Svelte</a>.</p>
         {:else if selected === "svelte"}
             <h2>Svelte + SvelteKit</h2>
             <p><a href="http://svelte.dev" target="_blank" rel="noopener noreferrer">Svelte</a> is a web framework for building interactive websites easily with smaller size.</p>
             <!-- svelte-ignore security-anchor-rel-noreferrer -->
-            <p>I use Svelte for nearly all my new websites, including <a href="http://github.com/danbulant/design" target="_blank" rel="noopener">this one</a>, <a href="https://github.com/danbulant/osuVisualizer" target="_blank" rel="noopener noreferrer">osu!visualizer</a>, <a href="https://github.com/danbulant/Mangades" target="_blank" rel="noopener">Mangades</a> and more.</p>
+            <p>I use Svelte for nearly all my new websites, including <a href="http://github.com/danbulant/design" target="_blank" rel="noopener">this one</a>, <a href="https://animasher.net" target="_blank" rel="noopener noreferrer">Animasher</a>, <a href="https://github.com/danbulant/Mangades" target="_blank" rel="noopener">Mangades</a> and more.</p>
             <p>I also use SvelteKit or Routify for sites that require multiple pages.</p>
         {:else if selected === "mysql"}
             <h2>MySQL/MariaDB</h2>

@@ -3,7 +3,7 @@ title: Writing my personal home page
 date: 2022-03-11
 author: Daniel Bulant
 authorIcon: /logo.png
-thumbnail: /posts/writing-personal-home-page/2020-website-square.png
+thumbnail: /posts/writing-personal-home-page/2020-website-square.webp
 bigThumbnail: /posts/writing-personal-home-page/2020-website.png
 categories: [programming, svelte]
 description: So I added blog to my personal home page.

@@ -54,7 +54,7 @@
         <div class="pad"></div>
         <Project
             link="https://manga.danbulant.eu"
-            image="/screenshots/mangadex.png"
+            image="/screenshots/mangadex.webp"
             grayscale={appTypeHover && appTypeHover !== "websites"}
             width={803}
             height={382}

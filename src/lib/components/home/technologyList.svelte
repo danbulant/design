@@ -21,7 +21,7 @@
                 Rust
             </li>
             <li on:click={() => technologySelected = "x11"} on:keydown={() => technologySelected = "x11"}>
-                <img src="/tech/x11.png" alt="" draggable={false} />
+                <img src="/tech/x11.webp" alt="" draggable={false} />
                 X11
             </li>
             <li on:click={() => technologySelected = "cs"} on:keydown={() => technologySelected = "cs"}>

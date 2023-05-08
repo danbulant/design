@@ -3,8 +3,8 @@ title: Rust basics, from the perspective of a high level programmer
 date: 2022-03-17
 author: Daniel Bulant
 authorIcon: /logo.png
-thumbnail: /posts/rust-basics/ferris.jpg
-bigThumbnail: /posts/rust-basics/ferris.jpg
+thumbnail: /posts/rust-basics/ferris.webp
+bigThumbnail: /posts/rust-basics/ferris.webp
 categories: [programming, rust]
 description: Rust is a fast memory-safe low level programming language. And here's how I got started with it.
 ---

@@ -24,7 +24,7 @@
                 <img class="bg1" style="right: {(current - 3) * 100}%;" src="/screenshots/heaventaker/heaventaker.webp" alt="">
                 <img class="bg2" style="right: {(current - 2) * 100}%;" src="/screenshots/animasher.webp" alt="">
                 <img class="bg3" style="right: {(current - 1) * 100}%;" src="/screenshots/tictactoe.png" alt="">
-                <img class="bg4" style="right: {(current - 0) * 100}%;" src="/screenshots/mangadex.png" alt="">
+                <img class="bg4" style="right: {(current - 0) * 100}%;" src="/screenshots/mangadex.webp" alt="">
             {/if}
         </div>
     {/each}

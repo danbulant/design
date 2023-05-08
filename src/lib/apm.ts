@@ -5,16 +5,11 @@ var apm_: ApmBase;
 
 if(browser) {
     apm_ = initApm({
-        // Set required service name (allowed characters: a-z, A-Z, 0-9, -, _, and space)
+        // allowed characters: a-z, A-Z, 0-9, -, _, and space
         serviceName: 'homepage',
-    
-        // Set custom APM Server URL (default: http://localhost:8200)
         serverUrl: 'https://apm.elasticsearch.danbulant.cloud',
-    
-        // Set the service version (required for source map feature)
+        // for source maps, but those are not implemented in this project
         serviceVersion: import.meta.env.VITE_SENTRY_RELEASE,
-    
-        // Set the service environment
         environment: import.meta.env.VITE_SENTRY_ENVIRONMENT || 'production'
     });
 }

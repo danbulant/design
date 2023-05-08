@@ -1,10 +1,9 @@
 <script>
-    import darkmode from "$lib/stores/darkmode";
     import Bar from "./bar.svelte";
     import Split from "./split.svelte";
 </script>
 
-<div class="bottombar" class:dark={$darkmode}>
+<div class="bottombar">
 	<Bar>
 		<h3>Daniel Bulant</h3>
 		<Split />
@@ -29,7 +28,7 @@
 			width: 100%;
 			background: white;
 		}
-		.dark.bottombar {
+		:global(.dark) .bottombar {
 			background: rgb(28, 28, 33);
 		}
 	}
@@ -41,7 +40,7 @@
 		font-weight: bold;
 		margin: 0;
 	}
-	.dark h3 {
+	:global(.dark) h3 {
 		color: rgb(191, 191, 191);
 	}
 	h3 {

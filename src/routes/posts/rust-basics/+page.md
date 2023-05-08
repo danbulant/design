@@ -11,15 +11,18 @@ description: Rust is a fast memory-safe low level programming language. And here
 
 <script>
     import Callout from "$lib/components/posts/callout.svelte";
+    import { browser } from "$app/environment";
 
     var story = true;
 </script>
 
-*I seem to like storytelling a bit too much.*
-<div style="display: flex; align-items: center;">
-    <label for="enable_story" style="padding-right: 10px">Enable story</label>
-    <input type="checkbox" style="padding: 0; margin: 0;" bind:checked={story} id="enable_story">
-</div>
+{#if browser}
+    *I seem to like storytelling a bit too much.*
+    <div style="display: flex; align-items: center;">
+        <label for="enable_story" style="padding-right: 10px">Enable story</label>
+        <input type="checkbox" style="padding: 0; margin: 0;" bind:checked={story} id="enable_story">
+    </div>
+{/if}
 
 > I really do enjoy reading blog posts like these, so I figured I'd try writing few of my own as well. I hope you'll enjoy it, if so, leave a comment below.
 

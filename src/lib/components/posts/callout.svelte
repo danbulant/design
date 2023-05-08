@@ -23,9 +23,12 @@
 <!-- A simple callout with header and slot body. Header background colored according to color, and the whole callout has a left border colored as well. -->
 <div class:minimal class:closed class:closable class="w-full rounded border-l border-l-4 my-6 color-shadow" style:border-left-color={color} style:--shadow-color="{color}0D">
     <div on:click={toggle} on:keydown={toggle} class="header rounded-tr-lg" style:background-color="{color}40" class:dark-bg={isDark}>
-        <h1 class="text-big p-0 m-0">
+        <h1>
             <slot name="title"/>
         </h1>
+        {#if closable}
+            <span class="toggle">{closed ? "Click to view more" : "Click to dismiss"}</span>
+        {/if}
     </div>
     <div class="content rounded-br-lg p-4 backdrop-blur -mt-1 pt-5">
         <slot />
@@ -49,9 +52,18 @@
         @apply p-0.5 pl-4;
     }
     .header {
-        @apply text-black p-4;
+        @apply text-black p-4 flex;
+    }
+    h1 {
+        @apply text-big p-0 m-0 flex-grow;
     }
     .header.dark-bg {
         @apply text-white;
+    }
+    .header .toggle {
+        @apply text-black/50;
+    }
+    .header.dark-bg .toggle {
+        @apply text-white/50;
     }
 </style>

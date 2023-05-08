@@ -1,7 +1,7 @@
 <script>
     import { goatCounter } from "$lib/goatcounter";
     import { goto } from "$app/navigation";
-    export var image; // "https://picsum.photos/725/350?random=" + Math.floor(Math.random() * 5000);
+    export var image;
     export var link = "";
     export var grayscale = false;
     export var extradark = false;

@@ -1,4 +1,9 @@
 <script>
+    /**
+     * Taken from the Heaventaker project.
+     * Licensed under GPLv3 (same license as this project).
+     */
+
     export var href;
 </script>
 
@@ -58,8 +63,5 @@
         margin-top: 15px;
         margin-bottom: 15px;
         transform: scale(1.2);
-    }
-    .button.button:last-child {
-        margin-bottom: 0;
     }
 </style>

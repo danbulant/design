@@ -1,15 +1,14 @@
 <script>
-    import darkmode from "$lib/stores/darkmode";
     var name = "world";
 </script>
 
-<input class:dark={$darkmode} type=text bind:value={name} class="text-black">
+<input type=text bind:value={name} class="text-black">
 
 &lt;=>
 
-<input class:dark={$darkmode} type=text bind:value={name} class="text-black">
+<input type=text bind:value={name} class="text-black">
 
-<style>
+<style lang="postcss">
     input {
         @apply p-2 bg-transparent backdrop-blur my-2 transition-colors duration-150;
         border: none;
@@ -18,10 +17,10 @@
     input:focus {
         @apply outline-none border-b-black/70;
     }
-    input.dark {
+    :global(.dark) input {
         @apply border-b-white/30 text-white;
     }
-    input.dark:focus {
+    :global(.dark) input:focus {
         @apply border-b-white/70;
     }
 </style>

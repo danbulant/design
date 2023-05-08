@@ -1,13 +1,11 @@
 <script>
     import { DateTime } from "luxon";
-    import { scale } from "svelte/transition";
+
+    // this component used to support authors and categories, removed because I didn't use them.
 
     export var bigThumbnail;
-    // export var categories = [];
-    // export var author;
     export var date;
     export var title;
-    // export var authorIcon;
     export var description;
     export var path;
 
@@ -20,18 +18,9 @@
         <img src={bigThumbnail} styles="width: 800px; height: 400px;" alt="Thumbnail" class="thumbnail" draggable={false}>
     {/if}
     <div class="data">
-        <!-- <div class="categories">
-            {#each categories as category}
-                <span>{category}</span>
-            {/each}
-        </div> -->
         <h3>{title}</h3>
         <p>{description}</p>
         <div class="author">
-            <!-- <img src={authorIcon} alt="Avatar of author" draggable={false}>
-            <span class="spacer">—</span>
-            <span class="author">{author}</span>
-            <span class="spacer">—</span> -->
             <span class="date">{dt.toRelativeCalendar()} ({dt.toLocaleString(DateTime.DATE_FULL)})</span>
         </div>
     </div>

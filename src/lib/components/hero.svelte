@@ -18,19 +18,16 @@
 </script>
 
 <div class="hero">
-    <div class="bg z-0">
-        <img class="bg1" style="right: {(current - 3) * 100}%;" src="/screenshots/heaventaker/heaventaker.webp" alt="">
-        <img class="bg2" style="right: {(current - 2) * 100}%;" src="/screenshots/animasher.webp" alt="">
-        <img class="bg3" style="right: {(current - 1) * 100}%;" src="/screenshots/ignibg.webp" alt="">
-        <img class="bg4" style="right: {(current - 0) * 100}%;" src="/screenshots/mangadex.png" alt="">
-    </div>
-    <div class="blur z-1"></div>
-    <div class="bg z-2">
-        <img class="bg1" style="right: {(current - 3) * 100}%;" src="/screenshots/heaventaker/heaventaker.webp" alt="">
-        <img class="bg2" style="right: {(current - 2) * 100}%;" src="/screenshots/animasher.webp" alt="">
-        <img class="bg3" style="right: {(current - 1) * 100}%;" src="/screenshots/ignibg.webp" alt="">
-        <img class="bg4" style="right: {(current - 0) * 100}%;" src="/screenshots/mangadex.png" alt="">
-    </div>
+    {#each [0, 1, 2] as i}
+        <div class="{i !== 1 ? "bg" : "blur"} z-{i}">
+            {#if i !== 1}
+                <img class="bg1" style="right: {(current - 3) * 100}%;" src="/screenshots/heaventaker/heaventaker.webp" alt="">
+                <img class="bg2" style="right: {(current - 2) * 100}%;" src="/screenshots/animasher.webp" alt="">
+                <img class="bg3" style="right: {(current - 1) * 100}%;" src="/screenshots/tictactoe.png" alt="">
+                <img class="bg4" style="right: {(current - 0) * 100}%;" src="/screenshots/mangadex.png" alt="">
+            {/if}
+        </div>
+    {/each}
     <slot />
 </div>
 
@@ -42,7 +39,6 @@
         padding: 40px 120px;
         padding: 40px min(120px, 10vw);
         margin: 2rem auto;
-        /* min-height: calc(100vh - 129px - 80px + 5px); */
         max-height: 1080px;
         max-width: 1500px;
     }

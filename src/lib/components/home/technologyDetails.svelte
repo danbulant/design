@@ -1,5 +1,5 @@
 <script>
-    import darkmode from "$lib/stores/darkmode";
+    import { scale } from "svelte/transition";
 
     export var selected = true;
 
@@ -13,7 +13,8 @@
     }
 </script>
 
-<div class="dialog" class:dark={$darkmode} class:selected on:mousedown={() => shouldClose = true} on:mousemove={() => shouldClose = false} on:mouseup={close}>
+{#if selected}
+<div class="dialog" transition:scale={{ duration: 300, start: 0.8, opacity: 0 }} on:mousedown={() => shouldClose = true} on:mousemove={() => shouldClose = false} on:mouseup={close}>
     <div class="main">
         {#if selected === "typescript"}
             <h2>Typescript</h2>
@@ -41,14 +42,14 @@
             <p>I'm learning C# at my school, in addition to learning Unity and looking into the osu!framework.</p>
             <p>Currently, I don't have any project worth sharing.</p>
         {:else if selected === "git"}
-            <h2>Git + GitHub</h2>
+            <h2>Git & GitHub</h2>
             <p>I use Git version control system for all of my projects, even if I don't upload them to GitHub. Most of my projects can be found on GitHub.</p>
             <!-- svelte-ignore security-anchor-rel-noreferrer -->
             <p>My GitHub profile is @<a href="https://github.com/danbulant" target="_blank" rel="noopener">danbulant</a>.</p>
             <!-- svelte-ignore security-anchor-rel-noreferrer -->
             <p>The source code of this website is available <a href="https://github.com/danbulant/design" target="_blank" rel="noopener">here</a></p>
         {:else if selected === "docker"}
-            <h2>Docker + Docker compose + Docker desktop</h2>
+            <h2>Docker, Docker compose & Docker desktop</h2>
             <p><a href="https://www.docker.com" rel="noopener noreferrer" target="_blank">Docker</a> is the most widely used container runtime. <a href="https://docs.docker.com/compose/" target="_blank" rel="noopener noreferrer">Docker compose</a> makes it easy to orchestrate multiple containers, and finally, <a href="https://docs.docker.com/desktop/" target="_blank" rel="noopener noreferrer">Docker desktop</a> is the easiest way to get Docker on Windows.</p>
             <p>Most of my projects that I run on a server run in Docker, to make it easy to replicate environment, as well as make deployments easier via Nomad.</p>
         {:else if selected === "react"}
@@ -102,7 +103,7 @@
             <p>Node.js is a javascript runtime for servers and desktop applications (via <span class="a" on:click={() => selected="electron"} on:keydown={() => selected="electron"}>Electron</span>).</p>
             <p>I use Node.js in nearly all of my projects. In case of websites, as a build platform, and in case of backend servers or desktop applications, as the primary runtime.</p>
             <!-- svelte-ignore security-anchor-rel-noreferrer -->
-            <p>I used Node.js from simply rollup scripts (used in <a href="http://github.com/danbulant/design" target="_blank" rel="noopener">this website</a>), to backend servers and APIs (in case of Animasher and igni website), to <a href="https://github.com/danbulant/test-x" target="_blank" rel="noopener">Linux Window Manager</a> and <a href="https://github.com/danbulant/ssps-bot" target="_blank" rel="noopener">Discord Bots</a>.</p>
+            <p>I used Node.js from backend servers and APIs (in case of Animasher and igni website), to <a href="https://github.com/danbulant/test-x" target="_blank" rel="noopener">Linux Window Manager</a> and <a href="https://github.com/danbulant/ssps-bot" target="_blank" rel="noopener">Discord Bots</a>.</p>
         {:else if selected === "deno"}
             <h2>Deno</h2>
             <p>Deno is an alternative to <span class="a" on:click={() => selected="node"} on:keydown={() => selected="node"}>Node.js</span> by the same authors, written in <span class="a" on:click={() => selected="rust"} on:keydown={() => selected="rust"}>Rust</span>.</p>
@@ -131,16 +132,13 @@
         Click to close.
     </div>
 </div>
+{/if}
 
-<style>
+<style lang="postcss">
     .dialog {
         position: absolute;
         display: flex;
         flex-direction: column;
-        transition: opacity .3s, transform .3s;
-        opacity: 0;
-        transform: scale(0.8);
-        pointer-events: none;
         backdrop-filter: blur(25px);
         -webkit-backdrop-filter: blur(25px);
         padding: 8px 16px;
@@ -156,17 +154,8 @@
         background: rgba(255,255,255,0.1);
         box-shadow: 0.6px 1.3px 1.3px hsl(0deg 0% 0% / 0.48);
     }
-	/* @supports (-moz-appearance:none) {
-		.dialog {
-			background: rgba(255,255,255,0.9) !important;
-		}
-        .dark.dialog {
-            background: rgba(70,70,70,0.97) !important;
-        }
-	} */
     h2 {
-        margin-top: 0;
-        margin-block-start: 0;
+        @apply m-0 text-2xl mb-2;
     }
     .main {
         flex-grow: 1;
@@ -183,12 +172,7 @@
     .a:hover {
         text-decoration: underline;
     }
-    .dark.dialog {
-        background: rgba(255,255,255,0.2);
-    }
-    .dialog.selected {
-        pointer-events: all;
-        opacity: 1;
-        transform: scale(1);
+    :global(.dark) .dialog {
+        background: rgba(0, 0, 0, 0.2);
     }
 </style>

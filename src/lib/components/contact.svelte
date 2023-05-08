@@ -54,16 +54,13 @@
                     <span class="name">@danbulant</span>
                 </div>
             </a>
-            <div>
+            <a use:goatCounter data-goatcounter-click="contact-layer8" href="https://layer8.space/@techmandan">
                 <span class="platform">Mastodon</span>
                 <div class="main">
                     <img src="/tech/mastodon.png" alt="" draggable={false}>
-                    <div class="flex flex-col">
-                        <!-- <a rel="me" use:goatCounter data-goatcounter-click="contact-mastodon" href="https://mastodon.social/danbulant" class="name !hover:underline">@danbulant@mastodon.social</a> -->
-                        <a rel="me" use:goatCounter data-goatcounter-click="contact-layer8" href="https://layer8.space/@techmandan" class="name !hover:underline">@techmandan@layer8.space</a>
-                    </div>
+                    <a rel="me" use:goatCounter data-goatcounter-click="contact-layer8" href="https://layer8.space/@techmandan" class="name !hover:underline">@techmandan@layer8.space</a>
                 </div>
-            </div>
+            </a>
             <a href="mailto:me@danbulant.eu" use:goatCounter data-goatcounter-click="contact-email">
                 <span class="platform">Email</span>
                 <div class="main">
@@ -72,7 +69,14 @@
                 </div>
             </a>
             <div>
-                <div class="platform">Time</div>
+                <span class="platform">Matrix</span>
+                <div class="main">
+                    <span class="logo">[]</span>
+                    <span class="name">@/:danbulant.cz</span>
+                </div>
+            </div>
+            <div>
+                <div class="platform">Local Time</div>
                 <div class="main">
                     <img src="/tech/clock.svg" alt="" draggable={false}>
                     <div class="name">GMT+1 - {time.setZone("Europe/Prague", { keepLocalTime: true }).toFormat("HH:mm:ss")}</div>
@@ -104,8 +108,10 @@
     .profiles > div {
         @apply m-0 p-0;
     }
-    img {
+    img, .logo {
         height: 2em;
         width: 2em;
+        text-align: center;
+        user-select: none;
     }
 </style>

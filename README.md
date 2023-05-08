@@ -6,6 +6,7 @@ The home page, hosted on cloudflare pages. Made with Svelte, SvelteKit and mdsve
 
 The code for the website and it's styles is licensed under AGPLv3 (see LICENSE file).  
 Files in `static` are subject to their own copyright terms:
+
 - `posts` folder is available under the same terms as the post in which they appear, or if they have their own LICENSE file in the same location (named `image.LICENSE` where `image` is the filename of the image)
 - `prism` files have their own copyright on top of the file and are available under MIT license
 - `screenshots` are under CC-BY-SA, except for `igni.png` and `mangadex.jfif` which are both copyrighted to their respective owners.
@@ -21,4 +22,4 @@ Files in `static` are subject to their own copyright terms:
 ## Attributions
 
 - Heaventaker (`static/screenshots/heaventaker.png`) - CC-BY-SA u/hohodo, Daniel Bulant (part of the Heaventaker project)
-- design by Carl Hansen
+- Original design by Carl Hansen, heavily edited.

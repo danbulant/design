@@ -23,7 +23,7 @@
     {/if}
 </div>
 
-<style>
+<style lang="postcss">
     .main {
         display: flex;
         flex-wrap: wrap;

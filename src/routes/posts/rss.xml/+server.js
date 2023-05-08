@@ -20,13 +20,14 @@ export async function GET(req) {
         return new Date(b.date) - new Date(a.date)
     });
 
+    // the best XML library ever
     return new Response(`<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
 <channel>
     <title>Blog - Daniel Bulant</title>
     <description>My personal blog about work, programming and fun stuff.</description>
     <link>https://danbulant.eu/posts</link>
-    <copyright>2022 Daniel Bulant</copyright>
+    <copyright>2023 Daniel Bulant</copyright>
     <pubDate>${new Date().toUTCString()}</pubDate>
     <ttl>180</ttl>
 

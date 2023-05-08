@@ -1,6 +1,4 @@
 <script>
-	import darkmode from "../stores/darkmode";
-
     export var href = "";
     export var text = false;
     export var blur = false;
@@ -10,12 +8,12 @@
 </script>
 
 {#if href}
-    <a href={href} class:blur tabindex="0" class="button {className}" class:text class:dark={$darkmode}><slot /></a>
+    <a href={href} class:blur tabindex="0" class="button {className}" class:text><slot /></a>
 {:else}
-    <button class="button {className}" class:blur on:click class:text class:dark={$darkmode}><slot /></button>
+    <button class="button {className}" class:blur on:click class:text><slot /></button>
 {/if}
 
-<style>
+<style lang="postcss">
 
     .button {
         @apply bg-black/50 rounded;
@@ -34,14 +32,14 @@
         background: transparent;
         color: black;
     }
-    .dark.text {
+    :global(.dark) .text {
         color: white;
     }
     .button:hover, .button:focus {
         text-decoration: none;
         border-color: black;
     }
-    .button.dark:hover, .button.dark:focus {
+    :global(.dark) .button:hover, :global(.dark) .button:focus {
         border-color: white;
     }
     .button {

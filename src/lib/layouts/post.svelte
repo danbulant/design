@@ -1,4 +1,6 @@
 <script context="module">
+    // module context is used for when something else imports this file.
+    // Here, it's used to have custom components for certain elements in blog posts.
     import span from "../components/posts/span.svelte";
     import code from "../components/posts/code.svelte";
     import a from "../components/posts/a.svelte";
@@ -43,7 +45,7 @@
     {/if}
 </svelte:head>
 
-<main class:dark={$darkmode} class="post-layout">
+<main class="post-layout">
     <span><a href="/posts">Posts</a> /</span>
     <h1>{title}</h1>
     <div class="flex justify-between flex-wrap">
@@ -51,7 +53,7 @@
         <span>{categories.join(", ")}</span>
     </div>
     <slot />
-    <noscript>Although the page mostly works without Javascript, you won't be able to comment. Also, I acknowledge the privacy flaws, but Javascript is a fundamental part of modern web, and shouldn't be disabled. Maybe use an adblock instead of disabling it for everything?</noscript>
+    <noscript><hr>Although the page mostly works without Javascript, you won't be able to comment. Also, I acknowledge the privacy flaws, but Javascript is a fundamental part of modern web, and shouldn't be disabled. Maybe use an adblock instead of disabling it for everything?</noscript>
     <script src="https://utteranc.es/client.js"
         repo="danbulant/design"
         issue-term="pathname"
@@ -62,13 +64,13 @@
     </script>
 </main>
 
-<hr class:dark={$darkmode}>
+<hr>
 
 <footer>
     Daniel Bulant - Blog&nbsp;posts CC-BY-SA (unless&nbsp;otherwise&nbsp;specified)
 </footer>
 
-<style>
+<style lang="postcss">
     :global(body .post-layout a) {
         color: rgb(4, 192, 192);
     }
@@ -179,7 +181,7 @@
         text-align: center;
         padding: 20px 0 40px;
     }
-    hr.dark {
+    :global(.dark) hr {
         border-color: #999;
     }
 </style>

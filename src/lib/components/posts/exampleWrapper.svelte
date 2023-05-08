@@ -19,7 +19,7 @@
     </div>
 </Callout>
 
-<style>
+<style lang="postcss">
     .inner {
         @apply p-2;
     }

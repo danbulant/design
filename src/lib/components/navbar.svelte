@@ -3,6 +3,7 @@
     import { onMount } from "svelte";
     import Button from "./button.svelte";
     import Split from "./split.svelte";
+    import { browser } from "$app/environment";
 
     function toggle() {
         $darkmode = !$darkmode;
@@ -16,15 +17,17 @@
         };
         document.addEventListener("scroll", handleScroll);
 
+        handleScroll();
+
         return () => {
             document.removeEventListener("scroll", handleScroll);
         };
     });
 
-    $: progress = typeof window === "undefined" ? 1 : Math.min(1, scrollTop / 40);
+    $: progress = !browser ? 1 : Math.min(1, scrollTop / 40);
 </script>
 
-<nav class="bar fixed top-0 left-0 z-99 w-100vw mx-auto mb-30px" class:dark={$darkmode}
+<nav class="bar fixed top-0 left-0 z-99 w-100vw mx-auto mb-30px"
     style:background="rgba({$darkmode ? "28,28,33" : "255,255,255"}, {progress * 0.2})"
     style:backdrop-filter="blur({progress*20}px)">
     <div class="subbar w-full flex items-center justify-between max-w-8xl m-auto">
@@ -51,7 +54,7 @@
         @apply w-full flex flex-between items-center p-2;
 		background: rgba(255,255,255, 0.2);
 	}
-	.dark.bar {
+	:global(.dark) .bar {
 		background: rgba(28, 28, 33, 0.8);
 	}
     .bar .subbar > * {
@@ -68,13 +71,13 @@
 		color: black;
 		margin: 0;
 	}
-	.dark.bar h3 {
+	:global(.dark) .bar h3 {
 		color: white;
 	}
 	.bar a {
 		color: #202020b2;
 	}
-	.dark.bar a {
+	:global(.dark) .bar a {
 		color: rgba(191, 191, 191, 0.698);
 	}
 </style>

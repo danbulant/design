@@ -1,7 +1,6 @@
 <script>
     import HeroPost from "$lib/components/heroPost.svelte";
     import Post from "$lib/components/post.svelte";
-    import darkmode from "$lib/stores/darkmode";
 	import { flip } from 'svelte/animate';
 
     var currentHover = null;
@@ -40,7 +39,7 @@
 </svelte:head>
 
 
-<div class="parent md:flex max-w-screen" class:dark={$darkmode}>
+<div class="parent md:flex max-w-screen">
     <h1 class="md:hidden">Posts</h1>
 
     {#if tags}
@@ -92,7 +91,7 @@
     .tags {
         @apply flex flex-wrap gap-2 mt-2 mb-3;
     }
-    .dark .tag {
+    :global(.dark) .tag {
         background: rgb(77, 77, 77);
     }
     .tag {
@@ -100,7 +99,7 @@
         background: rgb(173, 173, 173);
         text-transform: capitalize;
     }
-    .dark .tag.selected {
+    :global(.dark) .tag.selected {
         background: rgb(0, 108, 170);
     }
     .tag.selected {
@@ -114,7 +113,7 @@
         border: none;
         background: black;
     }
-    .dark hr {
+    :global(.dark) hr {
         background: white;
     }
     small {

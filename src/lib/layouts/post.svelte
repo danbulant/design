@@ -78,10 +78,9 @@
         color: rgb(2, 218, 218);
     }
     :global(body .post-layout table) {
-        @apply rounded;
         border-spacing: 0;
     }
-    :global(body .post-layout table thead, body .post-layout table thead tr) {
+    :global(body .post-layout table, body .post-layout table thead, body .post-layout table thead tr) {
         @apply rounded;
     }
     :global(body .post-layout table thead tr th:first-child) {
@@ -105,7 +104,6 @@
     }
     :global(.dark .post-layout table td) {
         border: 1px solid rgb(146, 146, 146);
-        padding: 4px;
     }
     :global(body .post-layout table tr:hover) {
         background: rgb(196, 196, 196);
@@ -170,8 +168,7 @@
         @apply m-auto max-w-3xl p-4 py-6;
 	}
     h1 {
-        @apply text-4xl font-bold;
-        padding: 0 0 15px;
+        @apply text-4xl font-bold p-0 pb-0.25;
     }
     span {
         color: gray;

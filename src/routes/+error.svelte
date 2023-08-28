@@ -91,7 +91,7 @@
         max-width: 100px;
         border-bottom: 1px solid #000;
     }
-    :global(.dark .separator::before, .dark .separator::after) {
+    :global(.dark) .separator::before, :dark(.dark) .separator::after {
         border-bottom-color: white;
     }
 

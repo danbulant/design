@@ -27,8 +27,8 @@
         }, {
             name: "Backblaze B2",
             nameShort: "B2",
-            price: ({ storage, egress, fileCount, dataRetention, cloudflareProxy }) => 4 * storage + (10 * egress * (cloudflareProxy ? 0 : 1)) + Math.max(0, fileCount - 2500)*4/10e6,
-            priceString: "4 * storage + (10 * egress * (cloudflareProxy ? 0 : 1)) + Math.max(0, fileCount - 2500)*4/10e6",
+            price: ({ storage, egress, fileCount, dataRetention, cloudflareProxy }) => 6 * storage + (10 * egress * (cloudflareProxy ? 0 : 1)) + Math.max(0, fileCount - 2500)*4/10e6,
+            priceString: "6 * storage + (10 * egress * (cloudflareProxy ? 0 : 1)) + Math.max(0, fileCount - 2500)*4/10e6",
             color: "red",
             link: "backblaze-b2"
         }, {

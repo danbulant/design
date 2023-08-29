@@ -64,7 +64,7 @@ Has a policy that egress shouldn't be higher than the stored amount. Consider us
 
 | Category | Free | Paid |
 | -------- | ---- | ---- |
-| Storage | 10GB | $5/TB/month |
+| Storage | 10GB | $6/TB/month |
 | Egress | 1GB/day | $10/TB/month |
 | Class A ops | $\infty$ | - |
 | Class B ops | 2500/day | $4 / 10 million |

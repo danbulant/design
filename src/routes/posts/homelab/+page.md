@@ -155,7 +155,7 @@ And their [tech blog](https://tailscale.com/blog/) and [documentation](https://t
 
 ## DNSMasq
 
-
+My DNS server of choice. It runs locally, and manages routing DNS requests - either to consul (if it ends with .consul), tailscale (if ts.net) or to the main recursive DNS, in my case Cloudflare DNS ([1.1.1.1](http://1.1.1.1)).
 
 ## Consul
 

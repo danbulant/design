@@ -519,9 +519,9 @@ You can read more about them in the rust book - for a JS dev, the following is e
 
 | js | rust |
 | -- | ---- |
-| `() => {}{:js}` | `|| {}{:rust}` |
-| `() => 1{:js}` | `|| 1{:rust}` |
-| `a => a{:js}` | `|a| a{:rust}`|
+| `() => {}{:js}` | `\|\| {}{:rust}` |
+| `() => 1{:js}` | `\|\| 1{:rust}` |
+| `a => a{:js}` | `\|a\| a{:rust}`|
 
 Please not that I don't recommend using this syntax as it's kinda confusing. Use `loop{:rust}` with `if{:rust}` instead.
 

@@ -8,7 +8,7 @@
 		<h3>Daniel Bulant</h3>
 		<Split />
 		<h3>
-			2020-2023
+			2020-2024
 		</h3>
 	</Bar>
 </div>

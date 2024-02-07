@@ -43,7 +43,7 @@
                 <span class="platform">Discord</span>
                 <div class="main">
                     <img src="/tech/discord.png" alt="" draggable={false}>
-                    <span class="name">TechmandanCZ#3372</span>
+                    <span class="name">@techmandancz</span>
                 </div>
             </a>
             <!-- svelte-ignore security-anchor-rel-noreferrer -->

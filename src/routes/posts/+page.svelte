@@ -41,23 +41,17 @@
 
 <div class="parent md:flex max-w-screen">
     <h1 class="md:hidden">Posts</h1>
-
-    {#if tags}
-        <div class="tags md:flex-col">
-            {#each tags as tag}
-                <div class="tag" class:selected={selectedTags.includes(tag)} on:click={() => toggle(tag)} on:keydown={() => toggle(tag)}>
-                    {tag}
-                </div>
-            {/each}
-            <a href="/posts/rss.xml" class="rss hidden flex items-center w-full md:block">
-                <img src="/rss-icon.svg" alt="RSS icon" class="w-6 h-6 inline" />
-                RSS
-            </a>
-        </div>
-    {/if}
     
     <div class="posts">
-        <h1 class="hidden md:block">Posts</h1>
+        <h1 class="hidden md:block">
+            Posts
+            <small>
+                <a href="/posts/rss.xml" class="rss">
+                    <img src="/rss-icon.svg" alt="RSS icon" />
+                    RSS
+                </a>
+            </small>
+        </h1>
     
         {#if !selectedTags.length || selectedTags.find(tag => posts[0].categories.includes(tag))}
             <HeroPost {...posts[0]} />
@@ -71,8 +65,6 @@
                 <Post {...post} bind:currentHover />
             </div>
         {/each}
-    
-        <small class="md:hidden block">There's also RSS feed available <a href="/posts/rss.xml">here</a>.</small>
     </div>
 </div>
 
@@ -87,23 +79,6 @@
         .posts {
             @apply w-2xl;
         }
-    }
-    .tags {
-        @apply flex flex-wrap gap-2 mt-2 mb-3;
-    }
-    :global(.dark) .tag {
-        background: rgb(77, 77, 77);
-    }
-    .tag {
-        @apply rounded-full cursor-pointer select-none px-4 py-2;
-        background: rgb(173, 173, 173);
-        text-transform: capitalize;
-    }
-    :global(.dark) .tag.selected {
-        background: rgb(0, 108, 170);
-    }
-    .tag.selected {
-        background: rgb(0, 162, 255);
     }
     h1 {
         @apply m-0 mb-1 p-0 font-bold text-3xl;
@@ -125,6 +100,9 @@
         color: rgb(4, 192, 192)
     }
     .rss {
-        @apply pl-4;
+        @apply pl-4 text-sm;
+    }
+    .rss img {
+        @apply inline mr-1 w-4 h-4;
     }
 </style>

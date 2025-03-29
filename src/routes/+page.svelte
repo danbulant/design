@@ -39,7 +39,7 @@
 			<b on:mouseenter={() => appTypeHover = "websites"} on:mouseleave={() => appTypeHover === "website" && (appTypeHover = null)}>online games</b>.</h1>
 		<!-- <h3>To be used later</h3> -->
         <div class="flex gap-4">
-            <Button blur class="!p-4" href="#projects">Check out my work</Button>
+            <Button blur class="!p-4" href="#contact">Send me a message</Button>
             <div class="blog-preview flex backdrop-blur bg-black/40 items-center rounded">
                 <Button blur class="!p-4 h-full !flex items-center !rounded-r-0 !bg-transparent !backdrop-none" href="/posts">
                     <span>
@@ -55,10 +55,10 @@
         </div>
 	</Hero>
 	<Projects {appTypeHover} />
-	<div class="text-center">
+	<!-- <div class="text-center">
 		In addition, this website is open-source and available on <img class="white inline w-1em h-1em" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt=""> <a href="https://github.com/danbulant/design" style="color: rgb(255, 102, 128)">GitHub</a>
-	</div>
-    <TechnologyList />
+	</div> -->
+    <!-- <TechnologyList /> -->
 	{#if posts}
 		<Posts {posts} />
 	{/if}

@@ -13,9 +13,8 @@
 
     let newtitle = "";
     let options = new Map;
-
-    // Faviconkit, a free service that provides favicons for any domain
-    $: defaultfavicon = `https://filthy-cyan-otter.faviconkit.com/${domain}/32`;
+    // https://github.com/twentyhq/favicon
+    $: defaultfavicon = `https://twenty-icons.com/${domain}/32`;
     let favicon = defaultfavicon;
 
     $: {

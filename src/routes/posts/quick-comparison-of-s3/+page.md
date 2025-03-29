@@ -88,7 +88,9 @@ Free egress when using one of the `[Bandwidth alliance](https://www.cloudflare.c
     Copy, Create bucket, CORS bucket management, bucket information, listing.
 </details>
 
-[Home page](https://backblaze.com "favicon=https://backblaze.com/favicon.ico") | [Pricing page](https://www.backblaze.com/b2/cloud-storage-pricing.html "favicon=https://backblaze.com/favicon.ico")
+Update 2025: This is the one I'm using for the last 3 years. Works fine, fast upload, download, is cheap.
+
+[Home page](https://backblaze.com) | [Pricing page](https://www.backblaze.com/b2/cloud-storage-pricing.html)
 
 ## DigitalOcean Spaces
 

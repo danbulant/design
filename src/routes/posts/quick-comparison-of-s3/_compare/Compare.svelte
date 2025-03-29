@@ -13,15 +13,15 @@
         {
             name: "Cloudflare R2",
             nameShort: "R2",
-            price: ({ storage, egress, fileCount, dataRetention, cloudflareProxy }) => 10 * storage + Math.max(0, fileCount-10e6)*0.36/1e6,
-            priceString: "10 * storage + Math.max(0, fileCount-10e6)*0.36/1e6",
+            price: ({ storage, egress, fileCount, dataRetention, cloudflareProxy }) => 15 * storage + Math.max(0, fileCount-10e6)*0.36/1e6,
+            priceString: "15 * storage + Math.max(0, fileCount-10e6)*0.36/1e6",
             color: "orange",
             link: "cloudflare-r2"
         }, {
             name: "Wasabi",
             nameShort: "Wasabi",
-            price: ({ storage, egress, fileCount, dataRetention, cloudflareProxy }) => 5 * storage * (90/dataRetention),
-            priceString: "5 * storage * (90/dataRetention)",
+            price: ({ storage, egress, fileCount, dataRetention, cloudflareProxy }) => 7 * storage * (90/dataRetention),
+            priceString: "7 * storage * (90/dataRetention)",
             color: "green",
             link: "wasabi"
         }, {

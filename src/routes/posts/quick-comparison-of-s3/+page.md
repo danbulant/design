@@ -1,6 +1,7 @@
 ---
 title: Quick comparison of pricing of Simple Storage Services
 date: 2022-05-16
+dateUpdated: 2025-03-29
 author: Daniel Bulant
 authorIcon: /logo.png
 categories: [programming, storage, comparison, s3]
@@ -48,8 +49,7 @@ Delete operations are free (`DeleteObject`, `DeleteBucket`, `DeleteMultipartUplo
 
 ## Wasabi
 
-EU/NA: ***$5.99/TB/month***
-APAC: ***$6.99/TB/month***
+***$6.99/TB/month***
 
 No API charge/egress. Minimum fee of 1TB storage.
 

@@ -13,6 +13,7 @@
 
     export let title;
     export let date;
+    export let dateUpdated;
     export let description;
     export let categories;
     export let bigThumbnail;
@@ -20,6 +21,9 @@
 
     let dt = DateTime.fromISO(date);
     $: dt = DateTime.fromISO(date);
+
+    let dtu = dateUpdated && DateTime.fromISO(dateUpdated);
+    $: dtu = dateUpdated && DateTime.fromISO(dateUpdated);
 </script>
 
 <svelte:head>
@@ -50,7 +54,10 @@
     <h1>{title}</h1>
     <div class="flex justify-between flex-wrap">
         <span>Written {dt.toRelativeCalendar()} ({dt.toLocaleString(DateTime.DATE_FULL)})</span>
-        <span>{categories.join(", ")}</span>
+        {#if dtu}
+            <span>Updated {dtu.toRelativeCalendar()} ({dtu.toLocaleString(DateTime.DATE_FULL)})</span>
+        {/if}
+        <!-- <span>{categories.join(", ")}</span> -->
     </div>
     <slot />
     <noscript><hr>Although the page mostly works without Javascript, you won't be able to comment. Also, I acknowledge the privacy flaws, but Javascript is a fundamental part of modern web, and shouldn't be disabled. Maybe use an adblock instead of disabling it for everything?</noscript>

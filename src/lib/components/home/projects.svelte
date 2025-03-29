@@ -7,9 +7,25 @@
 
 <div class="projects" id="projects">
     <div>
-        <h2>
-            I helped many projects come to life. Here are some examples:
-        </h2>
+        <Project
+            image="/screenshots/animasher.webp"
+            grayscale={appTypeHover && appTypeHover !== "websites"}
+            extradark
+            width={1920}
+            height={940}
+            link="https://animasher.net"
+            name="Animasher"
+        >
+            <b>Animasher</b> - Platform for creating and sharing animations
+            <svelte:fragment slot="desc">
+                <p>
+                    Animasher is a work in progress platform for creating and sharing animations online.
+                </p>
+                <p>
+                    It allows people to easily create animations inside the website, and then share it with the world, as well as communicate with other creators to improve themselves.
+                </p>
+            </svelte:fragment>
+        </Project>
         <Project
             link="/projects/heaventaker"
             image="/screenshots/heaventaker/heaventaker.webp"
@@ -27,25 +43,6 @@
                 </p>
                 <p>
                     Heaventaker currently has 3 different puzzles and 4 angels to collect. Playable online on the website, or on Android devices (application installable from Google Play Store)
-                </p>
-            </svelte:fragment>
-        </Project>
-        <Project
-            image="/screenshots/animasher.webp"
-            grayscale={appTypeHover && appTypeHover !== "websites"}
-            extradark
-            width={1920}
-            height={940}
-            link="https://animasher.net"
-            name="Animasher"
-        >
-            <b>Animasher</b> - Platform for creating and sharing animations
-            <svelte:fragment slot="desc">
-                <p>
-                    Animasher is a work in progress platform for creating and sharing animations online.
-                </p>
-                <p>
-                    It allows people to easily create animations inside the website, and then share it with the world, as well as communicate with other creators to improve themselves.
                 </p>
             </svelte:fragment>
         </Project>
@@ -108,7 +105,7 @@
 		width: calc(50% - 40px);
 	}
 	.projects .pad {
-		margin-top: 110px;
+		margin-top: 4rem;
 	}
 	@media (max-width: 860px) {
 		.projects > div {

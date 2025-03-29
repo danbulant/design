@@ -5,6 +5,7 @@ author: Daniel Bulant
 authorIcon: /logo.png
 categories: [programming, homelab]
 description: I had setuped my homelab quite a while ago, but I never wrote about it. So here it is.
+draft: true
 ---
 
 I had setuped my homelab quite a while ago, but I never wrote about it.

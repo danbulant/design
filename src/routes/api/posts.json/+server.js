@@ -4,7 +4,7 @@
 export async function GET(req) {
     const allPostFiles = import.meta.glob('../../posts/**/*.md');
 
-    const allPosts = await Promise.all(
+    const allPosts = (await Promise.all(
         Object.entries(allPostFiles).map(async ([path, resolver]) => {
             const { metadata } = await resolver();
             let postPath = path.slice(2, -3);
@@ -14,7 +14,7 @@ export async function GET(req) {
                 path: postPath,
             };
         })
-    );
+    )).filter(t => !t.draft);
 
     allPosts.sort((a, b) => {
         return new Date(b.date) - new Date(a.date)

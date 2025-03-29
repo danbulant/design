@@ -33,7 +33,7 @@
     <div class="subbar w-full flex items-center justify-between max-w-8xl m-auto">
         <a href="/"><h3>Daniel Bulant</h3></a>
         <Split />
-        <Button text on:click={toggle}>{$darkmode ? "Light" : "Dark"} mode</Button>
+        <!-- <Button text on:click={toggle}>{$darkmode ? "Light" : "Dark"} mode</Button> -->
         <div class="big">
             <Button text href="/#contact" class="big">Contact</Button>
             <Button text href="/posts" class="big">Blog</Button>

@@ -3,7 +3,7 @@
     import PageTransition from "$lib/components/pageTransition.svelte";
     import "virtual:windi.css";
     import { browser, dev } from "$app/environment";
-    import { apm } from "$lib/apm";
+    // import { apm } from "$lib/apm";
     import { navigating, page } from "$app/stores";
     import Spinner from "$lib/components/icons/spinner.svelte";
     import { fly } from "svelte/transition";
@@ -12,9 +12,9 @@
     
     export let data;
 
-    if(browser) {
-        apm.setInitialPageLoadName($page.route.id);
-    }
+    // if(browser) {
+    //     apm.setInitialPageLoadName($page.route.id);
+    // }
 </script>
 
 <Navbar />

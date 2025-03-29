@@ -47,9 +47,12 @@
                     </span>
                 </Button>
                 <div class="right md:inline-block hidden p-4 border-l-2 border-l-white/20">
-                    {#if selectedPost}
+                    <!-- {#if selectedPost}
                         <a href={selectedPost.path}><b>{selectedPost.title}</b></a>
-                    {/if}
+                    {/if} -->
+                    <a href="/notes">
+                        <b>New 'notes' section.</b>
+                    </a>
                 </div>
             </div>
         </div>

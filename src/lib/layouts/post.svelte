@@ -18,6 +18,11 @@
     export let categories;
     export let bigThumbnail;
     export let thumbnail;
+    
+    export let data;
+
+    let isPost = data.url.includes("/posts/");
+    $: isPost = data.url.includes("/posts/");
 
     let dt = DateTime.fromISO(date);
     $: dt = DateTime.fromISO(date);
@@ -50,14 +55,19 @@
 </svelte:head>
 
 <main class="post-layout">
-    <span><a href="/posts">Posts</a> /</span>
+    {#if isPost}
+        <span><a href="/posts">Posts</a> /</span>
+    {:else}
+        <span><a href="/notes">Notes</a> /</span>
+    {/if}
     <h1>{title}</h1>
-    <div class="flex justify-between flex-wrap">
-        <span>Written {dt.toRelativeCalendar()} ({dt.toLocaleString(DateTime.DATE_FULL)})</span>
+    <div class="flex justify-between flex-wrap pt-2">
+        {#if date}
+            <span>Written {dt.toRelativeCalendar()} ({dt.toLocaleString(DateTime.DATE_FULL)})</span>
+        {/if}
         {#if dtu}
             <span>Updated {dtu.toRelativeCalendar()} ({dtu.toLocaleString(DateTime.DATE_FULL)})</span>
         {/if}
-        <!-- <span>{categories.join(", ")}</span> -->
     </div>
     <slot />
     <noscript><hr>Although the page mostly works without Javascript, you won't be able to comment. Also, I acknowledge the privacy flaws, but Javascript is a fundamental part of modern web, and shouldn't be disabled. Maybe use an adblock instead of disabling it for everything?</noscript>
@@ -65,7 +75,7 @@
         repo="danbulant/design"
         issue-term="pathname"
         label="comment"
-        theme="github-{$darkmode ? "dark" : "light"}"
+        theme="github-dark"
         crossorigin="anonymous"
         async>
     </script>
@@ -166,7 +176,7 @@
         @apply rounded-lg bg-dark-400/03 p-1 transition-colors duration-300;
     }
     :global(body .post-layout ul) {
-        @apply list-disc list-inside;
+        @apply list-disc mx-4;
     }
     :global(body .post-layout ul li) {
         @apply my-0.5;

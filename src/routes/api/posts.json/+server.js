@@ -1,11 +1,8 @@
-/**
- * @type {import("@sveltejs/kit").RequestHandler}
- */
-export async function GET(req) {
-    const allPostFiles = import.meta.glob('../../posts/**/*.md');
+import { json } from "@sveltejs/kit";
 
-    const allPosts = (await Promise.all(
-        Object.entries(allPostFiles).map(async ([path, resolver]) => {
+function loadAll(files) {
+    return Promise.all(
+        Object.entries(files).map(async ([path, resolver]) => {
             const { metadata } = await resolver();
             let postPath = path.slice(2, -3);
             if(postPath.endsWith('/+page')) postPath = postPath.slice(0, -6);
@@ -14,17 +11,27 @@ export async function GET(req) {
                 path: postPath,
             };
         })
-    )).filter(t => !t.draft);
+    )
+}
+
+/**
+ * @type {import("@sveltejs/kit").RequestHandler}
+ */
+export async function GET(req) {
+    const allPostFiles = import.meta.glob('../../posts/**/*.md');
+    const allNotesFiles = import.meta.glob('../../notes/**/*.md');
+
+    const allPosts = (await loadAll(allPostFiles)).filter(t => !t.draft);
+    const allNotes = (await loadAll(allNotesFiles));
 
     allPosts.sort((a, b) => {
         return new Date(b.date) - new Date(a.date)
     });
 
-    return new Response(JSON.stringify(allPosts.filter(t => new Date(t.date) < Date.now())), {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+    return json({
+        posts: allPosts.filter(t => new Date(t.date) < Date.now()),
+        notes: allNotes
+    })
 }
 
 export const prerender = true;

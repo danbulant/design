@@ -29,7 +29,7 @@
 <!-- HTML Entity encoded email -->
 <p class="text-center">I'm sorry for that. If this is a repeated problem, try contacting me (me@danbulant.eu)</p>
 
-<div class="flex justify-center">
+<div class="flex justify-center mt-4">
     <Button href="/">Go to my home page</Button>
 </div>
 

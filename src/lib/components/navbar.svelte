@@ -36,6 +36,7 @@
         <!-- <Button text on:click={toggle}>{$darkmode ? "Light" : "Dark"} mode</Button> -->
         <div class="big">
             <Button text href="/#contact" class="big">Contact</Button>
+            <Button text href="/notes" class="big">Notes</Button>
             <Button text href="/posts" class="big">Blog</Button>
         </div>
     </div>

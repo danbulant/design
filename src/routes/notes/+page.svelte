@@ -1,5 +1,5 @@
 <script>
-    import Posts from "./posts.svelte";
+    import Posts from "../posts/posts.svelte";
 
     export var data;
     var posts = data.posts;
@@ -8,4 +8,4 @@
     $: notes = data.notes;
 </script>
 
-<Posts {posts} {notes} postsActive />
+<Posts {posts} {notes} postsActive={false} />

@@ -22,3 +22,11 @@ Substition box. Used in diagrams for more advanced ciphers, used for mixing up d
 ## 3DES
 
 Trides, encrypts, decrypts and encrypts again. If a single key is provided, try it for all 3 (becomes just slower DES).
+
+## RSA
+
+Key sizes of 128b or less are not enough and are factorable in small time.
+
+`e` must be constant or otherwise not changeable by the attacker, can be forced to make a collision if it can be changed (for example when validating via user provided public key). Usually just set to 65537.
+
+When generating prime numbers, both must be random - if the primes are close enough (for example, generating one random and then the other one by adding +2 until it's a prime again), they can be factored via fermat's theorem.

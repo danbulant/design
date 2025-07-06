@@ -4,6 +4,8 @@ tags: [security, javascript]
 date: 2025-03-29
 ---
 
+*note that this might have changed silently, though there is still an [open issue](https://github.com/sidorares/node-mysql2/issues/1247) referencing this*
+
 TLDR object serialization via [sqlstring](https://www.npmjs.com/package/sqlstring), vulnerable if user input is not primitive (e.g. unchecked object).
 
 ```js

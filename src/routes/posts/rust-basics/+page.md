@@ -12,48 +12,29 @@ description: Rust is a fast memory-safe low level programming language. And here
 <script>
     import Callout from "$lib/components/posts/callout.svelte";
     import { browser } from "$app/environment";
-
-    var story = true;
 </script>
-
-{#if browser}
-    *I seem to like storytelling a bit too much.*
-    <div style="display: flex; align-items: center;">
-        <label for="enable_story" style="padding-right: 10px">Enable story</label>
-        <input type="checkbox" style="padding: 0; margin: 0;" bind:checked={story} id="enable_story">
-    </div>
-{/if}
 
 > I really do enjoy reading blog posts like these, so I figured I'd try writing few of my own as well. I hope you'll enjoy it, if so, leave a comment below.
 
-{#if story}
-    I first started programming with PHP. Some of it's syntax felt clunky and unnatural, sometimes plainly annoying (why do I have to prefix each variable with `$` when it understands constants without `$` just fine?). I don't really like the language now after learning other languages, but I do like some parts of it, like how it's easy to loop over an array or that it has multiple programming paradigms, from functional to OOP to traits (which I learnt about much later after I stopped using PHP).
+I first started programming with PHP. Some of it's syntax felt clunky and unnatural, sometimes plainly annoying (why do I have to prefix each variable with `$` when it understands constants without `$` just fine?). I don't really like the language now after learning other languages, but I do like some parts of it, like how it's easy to loop over an array or that it has multiple programming paradigms, from functional to OOP to traits (which I learnt about much later after I stopped using PHP).
 
-    I later moved to JS which looked a lot like C, which I saw everywhere.
+I later moved to JS which looked a lot like C, which I saw everywhere.
 
-    I also did few projects with Java and C#, but I always returned to JS afterwards.
+I also did few projects with Java and C#, but I always returned to JS afterwards.
 
-    I also tried learning C (and C++), and although I did have a certificate about both of them on Sololearn (I no longer have the C++ one as they added new lessons), I never really used them outside, as everything seemed way to complicated.
+I also tried learning C (and C++), and although I did have a certificate about both of them on Sololearn (I no longer have the C++ one as they added new lessons), I never really used them outside, as everything seemed way to complicated.
 
-    Fast RAM access is cool and all, but why do I have to use `free`? Why can't it know that if I go outside the scope it should free the memory?
+Fast RAM access is cool and all, but why do I have to use `free{:c}`? Why can't it know that if I go outside the scope it should free the memory?
 
-    So I always went just back to programming in JS where I didn't have to think about memory. And IO-bound stuff isn't really slowed down by V8 now anyway.
-
-{/if}
+So I always went just back to programming in JS where I didn't have to think about memory. And IO-bound stuff isn't really slowed down by V8 now anyway.
 
 ## Actually learning Rust
 
-{#if story}
-    Then I heard about this small language developed by Mozilla, which won StackOverflow's most loved language for multiple years, even surpassing Typescript which I loved for it's type-safety (`Hello undefined! Goodbye null`). So I figured I'd give it a try.
-
-{/if}
+Then I heard about this small language developed by Mozilla, which won StackOverflow's most loved language for multiple years, even surpassing Typescript which I loved for it's type-safety (`Hello undefined! Goodbye null`). So I figured I'd give it a try.
 
 ### Resources
 
-{#if story}
-    One of the things I had problems with was finding good resources that are easy to understand and short. I don't like youtube videos, I'd much rather read a content I can quickly skim, or read on my way without eating up my limited data plan.
-
-{/if}
+One of the things I had problems with was finding good resources that are easy to understand and short. I don't like youtube videos, I'd much rather read a content I can quickly skim, or read on my way without eating up my limited data plan.
 
 Here's a list of resources I found useful:
 - [rust book](https://doc.rust-lang.org/book/) - an online book with short chapters about common things people want to do with Rust
@@ -245,14 +226,14 @@ An interesting quirk is that you can use `(){:rust}` (empty tuple) to return "vo
 
 #### Common structs
 
-##### Option&amp;lt;T&amp;gt;
+##### Option&lt;T>
 
 Is an enum (we'll get to how `enum{:rust}`s work later. They're kind of different from other languages) with either **`Some(T){:rust}` or `None{:rust}`** values.  
 To get the value, you can use **[`match{:rust}`](#match)** like with other enums, or use **`.unwrap(){:rust}`** (which will panic if it's `None{:rust}`).
 
 See also [Declaring enums](#declaring-enums).
 
-##### Result&amp;lt;T, E&amp;gt;
+##### Result&lt;T, E>
 
 Similar to `Option{:rust}`, but used to handle errors (commonly returned by <abbr title="Input Output">IO</abbr> methods).  
 It's values are either `Ok(T){:rust}` or `Err(E){:rust}`.  
@@ -269,7 +250,7 @@ fn example() -> Result<(), Error> { // An Error type. For simplicity, you can us
 
 If a function can error out, use `Result{:rust}` instead of `panic{:rust}`s - `panic{:rust}` cannot be easily handled and should only be used for catastrophic irrecoverable errors (or when your too lazy to implement proper error handling using `Result{:rust}` for pet projects).
 
-##### Vec&amp;lt;T&amp;gt;
+##### Vec&lt;T&gt;
 
 `Vec{:rust}`tors are growable arrays whose values are stored on the heap.
 
@@ -279,7 +260,7 @@ Javascript arrays behave sort of like `Vec{:rust}` - they have a set limit, and 
 
 `Vec` stores it's current size, it's reserved size, and an array of pointers to `Box{:rust}`ed values. Meaning, there's no need (and in fact hurts performance) to do `Vec<Box<T>>{:rust}`.
 
-##### Box&amp;lt;T&amp;gt;
+##### Box&lt;T&gt;
 
 Stores `T` on heap. Useful for using [`enum`s](#declaring-enums) in structs, or to free up stack space.
 
@@ -312,7 +293,7 @@ struct Something = u8; // a single value
 ```
 
 As stated earlier, `struct` **sizes are static**. This means you cannot use [`enum{:rust}`s](#declaring-enums) with self-referencing (recursive) values directly in `struct{:rust}`s.  
-One of possible ``workarounds'' is to use the [heap](#heap-vs-stack) for actually storing the values, for example by using [Box&amp;lt;T&amp;gt;](#boxlttgt).
+One of possible ``workarounds'' is to use the [heap](#heap-vs-stack) for actually storing the values, for example by using [Box&lt;T&gt;](#boxlttgt).
 
 ```rust
 struct Something {
@@ -331,10 +312,7 @@ struct MaybeRecursive {
 }
 ```
 
-{#if story}
-    This is something I hit when trying to create an abstract syntax tree for my shell.
-
-{/if}
+This is something I hit when trying to create an abstract syntax tree for my shell.
 
 To instantiate the struct, use the following notation (kind of similar to defining arrays in <abbr title="See sharp">C#</abbr>):
 
@@ -782,6 +760,6 @@ let var = "something";
 
 ---
 
-Thanks for reading this {story ? "little story (with some documentation)" : "post"}. Hope that you learned something (which I did, even during writing of this post).
+Thanks for reading this post. Hope that you learned something (which I did, even during writing of this post).
 
 *no crabs were harmed in the making of this post. I'm not affiliated with any of the mentioned products or companies.*

@@ -33,7 +33,7 @@
     on:click={handle}
     use:goatCounter
 >
-    <div class="project">
+    <div class="project bg-bg-code rounded-lg">
         <div class="imgcon">
             {#if crossfadesend}
                 <img
@@ -43,6 +43,7 @@
                     alt={name}
                     draggable={false}
                     class:grayscale
+                    class:extradark
                     {width}
                     {height}
                 />
@@ -52,6 +53,7 @@
                     alt={name}
                     draggable={false}
                     class:grayscale
+                    class:extradark
                     {width}
                     {height}
                 />
@@ -64,9 +66,9 @@
                 </div>
             {/if}
         </div>
-        <h3><slot /></h3>
+        <h3 class="text-xl font-normal px-4 pb-4"><slot /></h3>
         {#if clickable}
-            <div class="clickable">Click to view details</div>
+            <div class="clickable px-4 pb-4">Click to view details</div>
         {/if}
     </div>
 </a>
@@ -88,6 +90,9 @@
     }
     .project:hover img {
         filter: blur(35px);
+    }
+    .project:hover img.extradark {
+        filter: blur(35px) brightness(0.8);
     }
     .desc {
         @apply absolute top-0 left-0 w-full h-full rounded-lg opacity-0 select-none flex flex-col py-2rem px-2rem;
@@ -113,10 +118,10 @@
         transition: filter 0.3s;
         filter: blur(0px) grayscale(0);
     }
+    img.extradark {
+        filter: blur(0px) grayscale(0) brightness(0.8);
+    }
     img.grayscale {
         filter: blur(0px) grayscale(100%);
-    }
-    h3 {
-        @apply font-normal text-xl;
     }
 </style>

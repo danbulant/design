@@ -1,14 +1,12 @@
 <script>
     import Bar from "./bar.svelte";
-    import Split from "./split.svelte";
 </script>
 
 <div class="bottombar">
 	<Bar>
 		<h3>Daniel Bulant</h3>
-		<Split />
 		<h3>
-			2020-2024
+			2020-2025
 		</h3>
 	</Bar>
 </div>
@@ -26,10 +24,6 @@
 		.bottombar {
 			margin: 30px 0 0 0;
 			width: 100%;
-			background: white;
-		}
-		:global(.dark) .bottombar {
-			background: rgb(28, 28, 33);
 		}
 	}
 	.bottombar {
@@ -40,12 +34,8 @@
 		font-weight: bold;
 		margin: 0;
 	}
-	:global(.dark) h3 {
-		color: rgb(191, 191, 191);
-	}
 	h3 {
 		font-size: 29px;
 		font-weight: 400;
-		color: #282B29;
 	}
 </style>

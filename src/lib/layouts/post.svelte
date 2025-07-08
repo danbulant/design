@@ -1,14 +1,11 @@
 <script context="module">
     // module context is used for when something else imports this file.
     // Here, it's used to have custom components for certain elements in blog posts.
-    import span from "../components/posts/span.svelte";
-    import code from "../components/posts/code.svelte";
     import a from "../components/posts/a.svelte";
-    export { span, code, a };
+    export { a };
 </script>
 
 <script>
-    import darkmode from "$lib/stores/darkmode";
     import { DateTime } from "luxon";
 
     export let title;
@@ -167,13 +164,10 @@
         @apply inline;
     }
     :global(body .post-layout pre) {
-        @apply rounded-lg bg-dark-400 p-4 my-4 max-w-full overflow-auto;
-    }
-    :global(.dark .post-layout code) {
-        @apply rounded-lg bg-dark-400 p-1;
+        @apply rounded-lg bg-bg-code p-4 my-4 max-w-full overflow-auto;
     }
     :global(body .post-layout code) {
-        @apply rounded-lg bg-dark-400/03 p-1 transition-colors duration-300;
+        @apply rounded-lg bg-bg-code transition-colors duration-300;
     }
     :global(body .post-layout ul) {
         @apply list-disc mx-4;

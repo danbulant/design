@@ -11,34 +11,35 @@
     onMount(() => {
         let i = setInterval(() => {
             current++;
-            if(current > 3) current = 0;
+            if(current > 4) current = 0;
         }, 5000);
         return () => clearInterval(i);
     });
 </script>
 
-<div class="hero">
-    {#each [0, 1, 2] as i}
+<div class="hero rounded-lg bg-bg-code">
+    <!-- {#each [0, 1, 2] as i}
         <div class="{i !== 1 ? "bg" : "blur"} z-{i}">
             {#if i !== 1}
-                <img class="bg1" style="right: {(current - 3) * 100}%;" src="/screenshots/heaventaker/heaventaker.webp" alt="">
-                <img class="bg2" style="right: {(current - 2) * 100}%;" src="/screenshots/animasher.webp" alt="">
-                <img class="bg3" style="right: {(current - 1) * 100}%;" src="/screenshots/tictactoe.png" alt="">
-                <img class="bg4" style="right: {(current - 0) * 100}%;" src="/screenshots/mangadex.webp" alt="">
+                <img class="bg1" style="right: {(current - 4) * 100}%;" src="/screenshots/heaventaker/heaventaker.webp" alt="">
+                <img class="bg2" style="right: {(current - 3) * 100}%;" src="/screenshots/haxagon.webp" alt="">
+                <img class="bg3" style="right: {(current - 2) * 100}%;" src="/screenshots/animasher.webp" alt="">
+                <img class="bg4" style="right: {(current - 1) * 100}%;" src="/screenshots/tictactoe.png" alt="">
+                <img class="bg5" style="right: {(current - 0) * 100}%;" src="/screenshots/mangadex.webp" alt="">
             {/if}
         </div>
-    {/each}
+    {/each} -->
     <slot />
 </div>
 
 <style>
     .hero {
-        border-radius: 5px;
-        background: rgba(244, 196, 196, 0.616);
+        /* background: rgba(244, 196, 196, 0.616); */
+        /* background: #100d11ab; */
         position: relative;
         padding: 40px 120px;
         padding: 40px min(120px, 10vw);
-        margin: 2rem auto;
+        margin: 2rem auto 3rem;
         max-height: 1080px;
         max-width: 1500px;
     }
@@ -51,7 +52,7 @@
         border-radius: 5px;
         z-index: -1;
         filter: darken(20%);
-        background: #F4C4C4;
+        background: #100d11;
         overflow: hidden;
     }
     .bg img {

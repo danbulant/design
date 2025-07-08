@@ -47,15 +47,16 @@ pnpm init svelte@next
 ```
 
 <Callout color="#139ab4" closed minimal>
-    <span slot="title">
+<span slot="title">
 
-    *(side note: I'm using [pnpm](https://pnpm.io) as it's a faster alternative to npm which also saves disk space)*
-    
-    </span>
+*(side note: I'm using [pnpm](https://pnpm.io) as it's a faster alternative to npm which also saves disk space)*
 
-    [pnpm](https://pnpm.io) uses [symlinks](https://en.wikipedia.org/wiki/Symbolic_link) to store each dependency exactly once on disk
-    (symlinks, symbolic links, are a sort of alias to files), which makes it use less storage. In addition, it's faster and has better
-    monorepo support.
+</span>
+
+[pnpm](https://pnpm.io) uses [symlinks](https://en.wikipedia.org/wiki/Symbolic_link) to store each dependency exactly once on disk
+(symlinks, symbolic links, are a sort of alias to files), which makes it use less storage. In addition, it's faster and has better
+monorepo support.
+
 </Callout>
 
 This creates a new [Svelte Kit](https://kit.svelte.dev) project, by first asking for configuration (i.e. if you want typescript, ESLint and/or prettifier) and then initalizing from a template.
@@ -98,7 +99,7 @@ An example component:
 
 As you can see, little code is needed to achieve simple synchronization between text input, variable and title.
 
-The `bind:` feels almost like magic. Coming from React's `onValueChanged={(value) => this.setState({ value })}`, I immediately fell in love and stopped using React. Now React feels kind of clunky in comparison to me.
+The `bind:` feels almost like magic. Coming from React's `onValueChanged={(value) => this.setState({ value })}{:js}`, I immediately fell in love and stopped using React. Now React feels kind of clunky in comparison.
 
 Another part of the `bind:` directive is that it's bi-directional - `input` doesn't have sole ownership of it, and will change it's contents when `name` changes outside of it, like so:
 
@@ -120,7 +121,7 @@ I personally always prefer dark mode, but I know many people that like light mod
 
 You can try toggling to {$darkmode ? "light" : "dark"} mode using the button on the navigation bar in top right, or using this:
 
-<Button text on:click={() => $darkmode = !$darkmode}>{$darkmode ? "Light" : "Dark"} mode</Button>
+<Button text on:click="{() => $darkmode = !$darkmode}">{$darkmode ? "Light" : "Dark"} mode</Button>
 
 Instead of writing how to use Svelte here, **I'd recommend trying their excellent interactive tutorial [here](https://svelte.dev/tutorial)**.
 

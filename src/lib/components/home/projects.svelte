@@ -8,6 +8,30 @@
 <div class="projects" id="projects">
     <div>
         <Project
+            link="https://haxagon.cz"
+            image="/screenshots/haxagon.webp"
+            name="Haxagon"
+            width={3714}
+            height={2346}
+            >
+            <b>Haxagon</b> - cybersecurity and programming e-learning platform
+
+            <svelte:fragment slot="desc">
+                <p>
+                    Haxagon is a platform for learning cybersecurity and programming skills.
+                    It provides a wide range of challenges, tutorials, and resources to help users improve their skills in these areas.
+                </p>
+                <p>
+                    I'm working on back-end including API, reactivity, permission checking and permissions. I also sometimes dabble into
+                    front-end, my largest additions there being code and challenge editors.
+                </p>
+                <p>
+                    I have also created multiple challenges and lessons, both into our (largest national) CTF competition as well as materials
+                    for my previous job as a teacher at a high school.
+                </p>
+            </svelte:fragment>
+        </Project>
+        <Project
             image="/screenshots/animasher.webp"
             grayscale={appTypeHover && appTypeHover !== "websites"}
             extradark

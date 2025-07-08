@@ -10,18 +10,18 @@ import { writable } from "svelte/store";
 // );
 const darkmode = writable(true)
 
-darkmode.subscribe(v => {
-    if(typeof window !== "undefined")
-        localStorage.setItem("darkmode", JSON.stringify(v));
+// darkmode.subscribe(v => {
+//     if(typeof window !== "undefined")
+//         localStorage.setItem("darkmode", JSON.stringify(v));
 
     
-    if(typeof document !== "undefined") {
-        if(v) {
-            document.body.classList.add("dark");
-        } else {
-            document.body.classList.remove("dark");
-        }
-    }
-});
+//     if(typeof document !== "undefined") {
+//         if(v) {
+//             document.body.classList.add("dark");
+//         } else {
+//             document.body.classList.remove("dark");
+//         }
+//     }
+// });
 
 export default darkmode;

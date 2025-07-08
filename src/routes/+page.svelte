@@ -34,9 +34,7 @@
 
 <main>
 	<Hero {appTypeHover}>
-		<h1 class="font-bold">I'm making <b on:mouseenter={() => appTypeHover = "websites"} on:mouseleave={() => appTypeHover === "websites" && (appTypeHover = null)}>websites</b>,
-			<b on:mouseenter={() => appTypeHover = "applications"} on:mouseleave={() => appTypeHover === "applications" && (appTypeHover = null)}>mobile applications</b> and
-			<b on:mouseenter={() => appTypeHover = "websites"} on:mouseleave={() => appTypeHover === "website" && (appTypeHover = null)}>online games</b>.</h1>
+		<h1 class="font-bold text-white text-6xl">Full-stack developer and cybersecurity enthusiast.</h1>
 		<!-- <h3>To be used later</h3> -->
         <div class="flex gap-4">
             <Button blur class="!p-4" href="#contact">Send me a message</Button>
@@ -72,17 +70,9 @@
 <Bottombar />
 
 <style>
-	img.white {
-		background: white;
-		border-radius: 50%;
-	}
 	main {
 		margin: 0 min(50px, 5%) 0 min(50px, 5%);
 		width: calc(100% - min(100px, 10%));
-	}
-	h1 {
-		color: #282B29;
-		font-size: 64px;
 	}
 	@media (max-width: 1100px) {
 		h1 {

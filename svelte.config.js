@@ -1,14 +1,5 @@
 import adapter from '@sveltejs/adapter-static';
-import { mdsvex } from 'mdsvex';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypeSlug from 'rehype-slug';
-import remarkMath from 'remark-math';
-import remarkTwemoji from 'remark-twemoji';
-import remarkGfm from 'remark-gfm';
-import remarkExtendedTable from 'remark-extended-table';
-import rehypeKatexSvelte from "rehype-katex-svelte";
-import { prettyCode } from './remark/code.js';
-import { rehypeEscapeHighlight, remarkEscapeInlineCode, remarkUnescapeHighlight } from './remark/unescapehighlight.js';
+import { mdsvexrs } from 'mdsvexrs'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -24,32 +15,7 @@ const config = {
 	extensions: ['.svelte', '.md'],
 
 	preprocess: [
-		mdsvex({
-			extensions: ['.md'],
-			layout: {
-				_: "./src/lib/layouts/post.svelte"
-			},
-			smartypants: {
-				quotes: false,
-				backticks: "all"
-			},
-            highlight: false,
-			rehypePlugins: [
-				rehypeSlug,
-				rehypeAutolinkHeadings,
-				rehypeKatexSvelte,
-                rehypeEscapeHighlight
-			],
-			remarkPlugins: [
-				remarkGfm,
-				remarkMath,
-				remarkTwemoji,
-				remarkExtendedTable,
-                remarkUnescapeHighlight,
-                prettyCode,
-                remarkEscapeInlineCode
-			]
-		})
+        mdsvexrs({ layout: "$lib/layouts/post.svelte", customTags: ['a'] })
 	]
 };
 

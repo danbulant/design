@@ -20,7 +20,7 @@
 <Navbar />
 
 {#if $navigating}
-    <div transition:fly={{ duration: 200, opacity: 0, y: -20 }} class="spinner-container">
+    <div transition:fly={{ duration: 200, delay: 100, opacity: 0, y: -20 }} class="spinner-container">
         <Spinner />
     </div>
 {/if}

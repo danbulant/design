@@ -4,7 +4,8 @@ import { error } from '@sveltejs/kit';
 export async function load({ fetch }) {
     const response = await fetch("/api/posts.json");
     if(!response.ok) {
-        throw error(response.statusText, response.status);
+        console.log(response)
+        throw error(response.status, await response.text());
     }
 
     return response.json();

@@ -13,7 +13,7 @@
     });
 </script>
 
-<div class="rounded-lg bg-dark-800 text-gray-300 max-w-100 m-auto mb-5 mt-15 p-5">
+<div class="rounded-lg bg-bg-code text-gray-300 max-w-100 m-auto mb-5 mt-15 p-5">
     <div class="list">
         <a href="https://goo.gl/maps/pM3bGyx9u5uBuqqv5" class="flex items-center justify-center w-full p-5" rel="noreferrer noopener" target="_blank">
             <div class="text-gray-400 h-7 w-7">
@@ -21,7 +21,7 @@
             </div>
             Prague, Czech Republic
         </a>
-        <div class="profiles">
+        <div class="profiles max-w-80 m-auto flex flex-col">
             <!-- svelte-ignore security-anchor-rel-noreferrer -->
             <a href="https://github.com/danbulant" use:goatCounter data-goatcounter-click="contact-github" rel="me noopener" target="_blank">
                 <span class="platform">GitHub</span>
@@ -92,9 +92,6 @@
     }
     .main {
         @apply flex gap-3 pt-1 items-center;
-    }
-    .profiles {
-        @apply max-w-80 m-auto flex flex-col;
     }
     a:hover, a:active {
         @apply no-underline;

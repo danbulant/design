@@ -4,12 +4,12 @@
     let funny = { "amogus": "ඞ", "AMOGUS": "sussy baka", "discord": "proprietary matrix", "never gonna give you up": "never gonna let you down", "wysi": "727", "727": "wysi" };
 </script>
 
-<h1>Hello {funny[name] || name}</h1>
+<h4>Hello {funny[name] || name}</h4>
 
 <input type=text class="text-black" bind:value={name}>
 
 <style lang="postcss">
-    h1 {
+    h4 {
         @apply p-0 m-0 text-xl font-bold;
     }
     input {

@@ -54,7 +54,7 @@
     .header {
         @apply text-black p-4 flex;
     }
-    h1 {
+    h4 {
         @apply text-big p-0 m-0 flex-grow;
     }
     .header.dark-bg {
